@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "CodePlex issues are closed, please report this on the GitHub site. Thanks&#33;",
+    "ClosedDate": "2012-10-24T11:22:30.883-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have an Entity Framework database that I am trying to update a record in.  I have created all the AutoMapper.Mapper.CreateMap entires.  I have also used AutoMapper.Mapper.AssertConfigurationIsValid() to validate off of the CreateMap's and add all the corresponding ForMember's to them and not the AutoMapper.Mapper.AssertConfigurationIsValid() doesn't generate any errors at all.  However when I call AutoMapper.Mapper.Map on the 2 main objects it still says there is an unsupported mapping configuration and it won't tell me what it is, but the fact AutoMapper.Mapper.AssertConfigurationIsValid()  says everything is correct seems to contradict what's going on.",
+    "LastUpdatedDate": "2013-05-16T04:58:53.473-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2012-10-24T06:22:00.75-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapper.Map error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8372
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please can anyone help with this issue.",
+      "PostedDate": "2012-10-24T07:03:37.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-24T11:22:30.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:09.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:53.473-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

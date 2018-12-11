@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This one&#39;s fixed in R77",
+    "ClosedDate": "2009-06-03T18:26:16.11-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The following did not work as I expected:\n \nclass Source \n{\n    public DateTime? SomeDate {get;set;}\n}\n \nclass Destination \n{\n    public MyCustomDate SomeDate {get;set;}\n}\n \n \nI created a map like so:\nMapper.CreateMap<DateTime?, MyCustomDate >()\n    .ConvertUsing(\n    src => src.HasValue\n               ? new MyCustomDate(src.Value.Day, src.Value.Month, src.Value.Year)\n               : null);\n \nHowever, the mapper seems to DateTime? as if it were merely DateTime. The above mapping was not used when converting from my Source to Destination.\n \nSo, I added the following:\nMapper.CreateMap<DateTime, MyCustomDate  >()\n    .ConvertUsing(\n    src => new MyCustomDate (src.Day, src.Month, src.Year));\n \nand then I was able to convert from ource to Destination.",
+    "LastUpdatedDate": "2013-05-16T04:59:08.08-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-05-15T09:21:55.253-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Converting Nullable Types",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1637
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This looks to be fixed on the trunk now.  I moved null behavior back to specific mappers, instead of one specific mapper for nulls.  Can you give this one another go?",
+      "PostedDate": "2009-05-29T14:12:25.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, nevermind.  I only checked DateTime? -> MyCustomDate.  Source -> Destination does not work.",
+      "PostedDate": "2009-05-29T14:15:52.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-03T18:26:16.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:27.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:08.08-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

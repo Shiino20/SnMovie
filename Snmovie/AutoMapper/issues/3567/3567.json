@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Applied in R150.  Thanks for the patch&#33;",
+    "ClosedDate": "2010-01-23T14:59:38.8-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The scenario seems not working. The test is attached.\n \nRegards,\nMichael",
+    "LastUpdatedDate": "2013-05-16T04:59:06.203-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-12-12T10:26:51.407-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error mapping IDataReader to DTO with nullable field",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 3567
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1286,
+      "FileName": "IDataReaderToNullableFieldProblem.cs",
+      "DownloadUrl": ".\\1286"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I already solved it please check \"http://automapper.codeplex.com/SourceControl/PatchList.aspx\" ID=4658\r\n\r\nRegards,\r\nMahmoud",
+      "PostedDate": "2009-12-14T10:18:57.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-23T14:59:38.8-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:24.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:06.203-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

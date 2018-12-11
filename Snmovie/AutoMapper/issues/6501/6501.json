@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:49.663-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "We have an unfortunate situation where the object we are converting from models nullable properties as a non-nullable property and a method to check whether it is null. If it is null then calling the property will cause an exception. Objects of this type are returned by the Data Set Adapters we are using at the DAL. An example class:\n \npublic interface ISource\n{\n    /// <summary>\n    /// Gets the property. Note that this will blow up if the property is null. See IsMyPropNull.\n    /// </summary>\n    public bool MyProp { get; }\n \n    /// <summary>\n    /// Determines if the property is null. If it is then invoking MyProp will fail.\n    /// </summary>\n    public bool IsMyPropNull();\n}\n \nWe convert these objects to a simple class which has a nullable bool as the property value by hand. This is a lot of work and exactly the kind of repetitive work that AutoMapper should be good for. I set to work and created this type converter:\n \npublic class PrimitiveToNullablePrimitiveConverter<T> : ITypeConverter<T, T?> where T : struct\n{\n    public T? Convert(ResolutionContext context)\n    {\n        string memberName = context.MemberName;\n        object sourceValue = context.Parent.SourceValue;\n        MethodInfo methodInfo = sourceValue.GetType().GetMethod(\"Is\" + memberName + \"Null\");\n        if (methodInfo != null)\n        {\n            if ((bool)methodInfo.Invoke(sourceValue, new object[] {}))\n            {\n                return null;\n            }\n        }\n        return (T)context.SourceValue;\n    }\n}\n \nThis works fine for properties that are not null, but blows up for properties that are null. Debugging shows that the Convert method is never invoked in the case that it blows up.\n \nLooking at the ResolutionContext object passed into this method during debug in the success case, it looks like the SourceValue property has already been evaluated. If this is the case then it will definitely die when trying to create the ResolutionContext in the failing case.\n \nI've attached a failing test case. Hopefully you can make the ResolutionContext.SourceValue a lazy property and this will fix the test.",
+    "LastUpdatedDate": "2013-05-16T04:58:56.877-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-04-18T08:44:15.053-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SourceValue property of ResolutionContext should be lazy",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 6501
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2375,
+      "FileName": "TestMapExplodingProperty.cs",
+      "DownloadUrl": ".\\2375"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-09-02T07:36:57.887-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi guys I want to let you know that you did a great job. Unfortunately I can't still find a way to use Func<Dto, bool> in my SOA and I would like to solve this using AutoMapper as it is my mapper for my SOA layer.\nWhat I am trying to do is something like that:\n[code]\n            var func = new Func<Person, bool>(x => x.FirstName.Contains(\"John\"));\n            var funcDto = Mapper.Map<Func<Person, bool>, Func<PersonDto, bool>>(func);\n            Console.WriteLine(func.ToString());\n            Console.WriteLine(funcDto.ToString());\n[/code]\nBut I receive a 'not recognized mapping' ...\nThis works great:\n            var persons = new List<Person>\n                              {\n                                  new Person {Age = 10, FirstName = \"Sam\", LastName = \"Smith\"},\n                                  new Person {Age = 20, FirstName = \"Tom\", LastName = \"John\"}\n                              };\n            var personsDto = Mapper.Map<List<Person>, List<PersonDto>> (persons);\nDo you have any plan to add this future to AutoMapper? \nIt will be awesome and very useful.\nThanks",
+    "LastUpdatedDate": "2013-05-16T04:59:04.483-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-03-09T11:04:30.887-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Map Func<T, bool> and Expression<Func<T, bool>>",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4144
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "If you can show me how you would do this manually, I would be able to make it work.  For example, in your above code, can you create a function, that accepts a Func<Person, bool>, and returns a Func<PersonDto, bool>?  Same with the expression stuff.",
+      "PostedDate": "2010-03-09T18:01:23.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-19T11:53:28.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Too hard to do :(\r\n\r\n\n\n** Closed by jbogard 3/19/2010 11:53 AM",
+      "PostedDate": "2011-09-02T07:34:46.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T07:34:47.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T07:36:22.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T07:36:57.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:22.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:04.483-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

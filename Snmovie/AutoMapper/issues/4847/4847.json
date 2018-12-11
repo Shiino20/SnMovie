@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:29.46-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I need to map an object to a dto object and vs. In mapping configuration for mapping dto to object I use \"using convert\" method. I dont know if I have to use this method for the opposite side. my question is that is it necessary to use the method in both case or I can map one side in a simple way?",
+    "LastUpdatedDate": "2013-05-16T04:59:02.827-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-06-07T11:16:03.35-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapping objects and dtos",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4847
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you post a simple example file to show what you're trying to do?  That would help me figure out the answer.  Thanks!",
+      "PostedDate": "2010-06-08T05:35:37.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "thank you jbogard \r\nhere is an example:\r\nfor getting object and converting it to the dto object I use this configuration\r\nMapper.CreateMap<Person, PersonDto>().ConvertUsing<PersonToPersonDtoConvertor>(); \r\n\r\nconvertor class:\r\npublic class PersonToPersonDtoConvertor : TypeConverter<Person, PersonDto>\r\n\r\n    {\r\n\r\n        protected override PersonDto ConvertCore(Person person)\r\n\r\n        {\r\n\r\n            PersonDto dto = new PersonDto();\r\n            dto.Id = person. Id;\r\n            dto.Gender = person.Gender;\r\n            dto.FirstName = person.FirstName;\r\n            dto.LastName = person.LastName;\r\n\r\nreturn dto;\r\n}\r\n} \r\nand with this method my dto object fills:\r\n\r\n     public PersonDto GetPersonDetails(int? partyId)\r\n\r\n        {\r\n            Person person = Repository<Person>.Get((int)partyId);\r\n            PersonDto personDto = new PersonDto();\r\n            personDto  = Mapper.Map<Person, PersonDto>(person );\r\n            return personDto;\r\n\r\n        } \r\nits ok, but when I wanna convert back these two objects I cant simply use\r\n\r\nMapper.CreateMap<Person, PersonDto>()\r\n.ForMember(x => x.GenderName, x => x.MapFrom(c => c.Gender == 2 ? \"female\" : \"male\"))\r\n\r\n\r\nand I have to use convertUsing again in this way:\r\nMapper.CreateMap<PersonDto, Person>() .ConvertUsing<PersonDtoToPersonConvertor>(); \r\npublic class PersonDtoToPersonConvertor : TypeConverter<PersonDto, Person>\r\n\r\n    { \r\n\r\n\r\n  protected override Person ConvertCore(PersonDto personDto)\r\n        {\r\n            Person p;\r\n            if (personDto.Id != null) \r\n               p = Repository<Person>.Get(personDto.Id);\r\n            else\r\n                p = new Person(); \r\n\r\n            p.FirstName = personDto.FirstName;\r\n            p.LastName = personDto.LastName;\r\n            p.Gender = personDto.Gender;\r\n  return p;\r\n\r\n  }\r\n\r\n} \r\n \r\n\r\nam I right or is there any better way to do these mapping \r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "PostedDate": "2010-06-09T10:32:07.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Guys,\r\n\r\nI am new to this project, so if this feature exists, please just write me back.. \r\n\r\nSo, I am also interested to in such a 'bi-directional' mapping capability where the mapping instructions given during Mapper.CreateMap can apply in Source->Destination scenario's as well as Destination->Source where the same mappings are used, only in the reverse direction.\r\n\r\nSuch a 'feature' would have the following benefits/applications:\r\n1. Save re-writing the same code twice, which would also help prevent forgetful moments where one direction of mapping is updated, but not the reverse\r\n2. Work well for distributed application scenarios where we have 'repository' and 'DTO' versions of the same element. At present we need to map in both directions.\r\n\r\nCheers, Aaron.",
+      "PostedDate": "2011-07-25T04:21:20.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:29.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:20.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:02.827-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

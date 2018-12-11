@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:20:00.293-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a complex object and using a custom resolver to resolve the values for its properties.  I was wondering if there is a way to specify a sequence or order in which the properties will be resolved.  For example, if I have 3 properties in an object: Property1, Property2 and Property3, which appear in the object in that order.  However, Property1 depends on Property3, so I need to resolve Property3 before I resolve Property1.  Is there any way to control that?\n\nThanks,\nAlex",
+    "LastUpdatedDate": "2014-05-08T06:20:00.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-06-17T08:21:03.277-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Set resolver sequence",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 8812
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

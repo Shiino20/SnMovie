@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:14.177-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The code throws a SecurityAccessDeniedException when used from a WCF service. The app is in full trust mode but still throw this -\n{\"Request for the permission of type 'System.Security.Permissions.ReflectionPermission, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089' failed.\"}\n \n   at System.Security.CodeAccessSecurityEngine.Check(Object demand, StackCrawlMark& stackMark, Boolean isPermSet)\n   at System.Security.CodeAccessPermission.Demand()\n   at System.Reflection.Emit.DynamicMethod.PerformSecurityCheck(Type owner, StackCrawlMark& stackMark, Boolean skipVisibility)\n   at System.Reflection.Emit.DynamicMethod..ctor(String name, Type returnType, Type[] parameterTypes, Type owner, Boolean skipVisibility)\n   at AutoMapper.DelegateFactory.CreateDynamicMethod(MemberInfo member, Type sourceType)\n   at AutoMapper.DelegateFactory.CreateSet(PropertyInfo property)\n   at AutoMapper.Internal.PropertyAccessor..ctor(PropertyInfo propertyInfo)\n   at AutoMapper.ReflectionHelper.ToMemberAccessor(MemberInfo accessorCandidate)\n   at AutoMapper.TypeMapFactory.CreateTypeMap(Type sourceType, Type destinationType, IMappingOptions options)\n   at AutoMapper.Configuration.CreateTypeMap(Type source, Type destination, String profileName)\n   at AutoMapper.Configuration.CreateMap[TSource,TDestination](String profileName)\n   at AutoMapper.Configuration.CreateMap[TSource,TDestination]()\n   at AutoMapper.Mapper.CreateMap[TSource,TDestination]()\n   at IE.Servicing.Cards.AccountSummary.Service.AccountService.SetCustomerBackofficeIdentifiers(Collection`1 identifiers, IGetAccountsRequest request)\n   at IE.Servicing.Cards.AccountSummary.Service.AccountService.GetDefaultAccount(Collection`1 backofficeIdentifiers)\n   at IE.Servicing.Cards.AccountSummary.Service.AccountInformation.GetDefaultAccount(Collection`1 backofficeIdentifiers)\n   at SyncInvokeGetDefaultAccount(Object , Object[] , Object[] )\n   at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]& outputs)\n \n \nA fix is to add an assert for the required permission\nnew ReflectionPermission(ReflectionPermissionFlag.ReflectionEmit).Assert();",
+    "LastUpdatedDate": "2013-05-16T04:59:02.667-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-06-29T07:57:56.697-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ReflectionPermission issue when running in WCF service",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 4973
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm currently running into this. What is the actual cause of this error? Is there any known workaround?\r\n\r\n",
+      "PostedDate": "2011-01-18T13:08:10.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-10T03:51:15.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:14.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:20.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:02.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

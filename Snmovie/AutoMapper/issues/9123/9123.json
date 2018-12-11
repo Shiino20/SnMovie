@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:18:48.71-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I think this requirement is needed. I have a source class which some of the properties are being loaded using Lazy Loading, in the get accessor they call a web service to set the property.\n\nThe issue appears when I try to map the class to a destination class. Since the mapper access each property in the source class and there is no way to choose which ones to ignore, it fires the get accessor and calls the web service.\n\nI think its necessary to also have the ability tho choose if a source property should be ignored. so its not even accessed.",
+    "LastUpdatedDate": "2014-05-08T06:18:48.71-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-11-08T16:04:38.183-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "A way to also ignore source properties",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9123
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

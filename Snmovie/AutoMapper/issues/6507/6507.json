@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:48.033-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi\n \nI have a formatter\n \n        public class ColorFormatter : IValueFormatter\n        {\n            public string FormatValue(ResolutionContext context)\n            {\n                return \"green\"\n            }\n        }\n    \t\n    Mapper.CreateMap<MyClass, MyViewModel>().ForMember(dest => dest.bgColor, opt => opt.AddFormatter<ColorFormatter>());\n \n \nMyClass has nothing called bgColor but MyViewModel does and I want all of the bgColors to have \"green\".\n \nSo why is it not being triggered?\n \n \nEverything else in MYClass gets successfully mapped to MyViewModel.",
+    "LastUpdatedDate": "2013-05-16T04:58:56.743-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-04-20T19:26:23.257-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Formatter won't trigger",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6507
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

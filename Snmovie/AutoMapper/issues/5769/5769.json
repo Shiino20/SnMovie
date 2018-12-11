@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:27.31-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm reading from an Excel file and depending on the data in the columns the datareader might think the type is a double or a string.  My destination type is a string and when the source type is a double it seems that the method returned from DataReaderMapper.CreateBuilder is failing.  When it fails the properties on the objects do not seem to exist I have attached a screenshot from Studio's debugger of one of the objects.  The blue rectangles should have property names.",
+    "LastUpdatedDate": "2013-05-16T04:59:00.5-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-10-27T06:36:45.57-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot map using IDataReader if incoming type cannot be cast to destination type.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5769
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2071,
+      "FileName": "Automapper_IDataReader.png",
+      "DownloadUrl": ".\\2071"
+    }
+  ],
+  "Comments": []
+}

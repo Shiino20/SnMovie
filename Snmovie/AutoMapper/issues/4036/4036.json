@@ -1,0 +1,200 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:52.793-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n \nI'd like to suggest to optionally specify a name for a mapping allowing to have multiple mappings of the same type with different configurations.\n \ne.g. Mapper.CreateMap<Order, OrderDto>(\"OrderMapping\");\n \nI see a lot of value in that especially in combination with the Ignore configuration.\n \nIn one of my projects I currently implemented my own mapper which maps nested objects based on input parameters. Some of my service requests allow the consumer to specify whether nested collections are loaded. For example in one instance a consumer wants to load a collection of orders without having the details such as the products attached. In an other instance the consumer may want to retrieve orders with associated products. The mapping for both cases would be of the same type but the Ignore configuration would be different.\n \nThis is similar to unity where you can configure a type and a name to distinguish between various type configurations of the same type. :)",
+    "LastUpdatedDate": "2013-07-11T23:42:18.107-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-14T16:53:01.687-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple mappings for the same type",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 13,
+    "Id": 4036
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "So typically we would create multiple destination types to separate the different scenarios.  In your suggestion, you would then be required to specify the named map on the map side:\r\n\r\nMapper.Map<Order, OrderDto>(order, \"OrderMapping\");\r\n\r\nIs that right?  Obviously the default map wouldn't need the map name.",
+      "PostedDate": "2010-02-18T09:41:26.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The idea is that source and destination types are the same but with different configurations as follows:\r\n\r\nMapper.CreateMap<Order, OrderDto>(\"OrderMappingDefault\"); that could be also Mapper.CreateMap<Order, OrderDto>()\r\nMapper.CreateMap<Order, OrderDto>(\"OrderMappingNoProducts\")\r\n   .ForMember(o => o.Products, opt => opt.Ignore());\r\n\r\nResolving could be as you mentioned:\r\nMapper.Map<Order, OrderDto>(\"OrderMappingDefault\"); or also Mapper.Map<Order, OrderDto>()\r\nMapper.Map<Order, OrderDto>(\"OrderMappingNoProducts\");\r\n\r\nAs you mentioned I would allow to add mappings without specifying a name which is perfectly fine for simple mapping scenarios where you have only one mapping for each type combination (source, target).",
+      "PostedDate": "2010-02-19T00:14:45.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am having the same problem with uliderknecht.  I need to CreateMap on the same types, but have different ignores.\r\n\r\njbogard, that looks fine, the existing methods would imply that we will also need:\r\nMapper.Map<Order, OrderDto>(order, orderDto, \"OrderMapping\");\r\n\r\nPS. and no, default map won't need a map name",
+      "PostedDate": "2010-04-13T05:07:47.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-13T05:08:35.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-13T22:44:31.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-14T20:45:49.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-21T15:11:34.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I agree, this functionality is very much desired for the specific goal of allowing varying Ignore() mappings.",
+      "PostedDate": "2010-11-21T15:14:30.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hey everybody,\r\n\r\nI've extended the source a while ago to cater for that extra functionality and I've been using it in several projects. I also offered to become a contributor of this project to make this part of the official source but unfortunately they never got back to me.\r\n\r\nSo please feel free to send me an email and I'll send you the upgraded version.\r\n\r\nCheers\r\nMichael",
+      "PostedDate": "2010-12-11T17:11:40.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-24T03:04:32.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-09T16:46:13.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I also really need this functionality.",
+      "PostedDate": "2011-03-09T16:46:59.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I also really need this functionality.",
+      "PostedDate": "2011-03-09T16:47:19.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I also really need this functionality.",
+      "PostedDate": "2011-03-09T16:47:55.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for the triple post.  Codeplex is retarded sometimes.",
+      "PostedDate": "2011-03-09T16:49:12.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-03T17:43:21.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-07T07:55:19.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am also facing such scenario and I have got this http://stackoverflow.com/questions/2183401/using-profiles-in-automapper-to-map-the-same-types-with-different-logic from SO.  And I hope this is some what related.\r\n\r\n@uliderknecht: I have sent an email thro codeplex requesting to share ur upgradation.  Pl. help us with ur upgradation.\r\n\r\n@jbogard: You have done a great job and I am very much impressed with Automapper.  As mentioned in the SO post given above, can you provide some sample for that?\r\n\r\nThanks.",
+      "PostedDate": "2011-04-17T05:09:03.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-23T22:22:13.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This could be accomplished if Mapper wasn't static, or if you could create instances of Mapper, that way each instance can have it's own mapping definitions which means you could have multiple mappings for the same types across instances. This would work much nicer with IoC IMHO.\r\n",
+      "PostedDate": "2011-05-23T22:23:42.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Doh! just realized in that thread it says i can already have multiple instances of mapper :)",
+      "PostedDate": "2011-05-23T22:25:28.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Shandem: agree would be much nicer to have an interface and abstract the functionality away instead of having a static mapper class. Send me an email if you want to receive the upgraded version that allows you to have multiple mappings per same type-type mapping.",
+      "PostedDate": "2011-05-23T23:42:38.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@uliderknecht: can u share your upgraded version to me.  I have contacted you earlier and I am yet to get it from you.  Pl. help.  I will sending you an email again from CodePlex after this comment post. Thanks.",
+      "PostedDate": "2011-05-24T02:15:32.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi all,\r\n\r\nI've forked the source on GIT. I hope I'll be able to upload my modified source tonight.\r\n",
+      "PostedDate": "2011-06-06T17:18:00.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-18T05:12:02.873-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-31T09:54:27.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:45:52.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@jbogard, is this Multiple mapping functionality able now in the Automapper?",
+      "PostedDate": "2011-10-11T06:53:34.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@jbogard, is this Multiple mapping functionality available* now in the Automapper? (just a correction)",
+      "PostedDate": "2011-10-11T06:54:57.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:23.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:05.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My fork can be accessed from here:\nhttps://github.com/MichaelUlmann/AutoMapper",
+      "PostedDate": "2013-07-11T23:42:18.107-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

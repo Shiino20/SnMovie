@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "The project has moved to GitHub.",
+    "ClosedDate": "2015-07-30T06:04:30.013-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have created a test cases for my application. All the test works fine when i run them locally. When i set up a build to run all the test every morning in TFS, i get this below error.\n\nError Message looks like this.\n\nClass Initialization method RightsLine.Test.MockTest.CRUDCharacteristicTemplateTest.Setup threw exception. AutoMapper.AutoMapperConfigurationException: AutoMapper.AutoMapperConfigurationException: \nThe following property on System.Int32 cannot be mapped: <PROPERTY>\nAdd a custom mapping expression, ignore, add a custom resolver, or modify the destination type System.Int32.\nContext:\n    Mapping to property <PROPERTY> from System.Byte to System.Int32\n    Mapping from type <CLASS_A> to <CLASS_B>\nException of type 'AutoMapper.AutoMapperConfigurationException' was thrown..`enter code here`\nError Stack Trace looks like this.\n\nAutoMapper.ConfigurationStore.DryRunTypeMap(ICollection`1 typeMapsChecked, ResolutionContext context)\nAutoMapper.ConfigurationStore.DryRunTypeMap(ICollection`1 typeMapsChecked, ResolutionContext context)\nAutoMapper.ConfigurationStore.AssertConfigurationIsValid(IEnumerable`1 typeMaps)\nAutoMapper.ConfigurationStore.AssertConfigurationIsValid()\nAutoMapper.Mapper.AssertConfigurationIsValid()\nWhy this DryRunTypeMap is throwing error when it runs the test build but not when i do it from local. Any help would be appreciated.\n\nThanks.",
+    "LastUpdatedDate": "2015-07-30T06:04:30.013-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-10-31T15:33:46.63-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "TFS Test Build breaks with AutoMapper Exception",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9461
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hello,\r\n\r\nsame problem here (on TeamCity).\nhave you found a solution ?\r\n\r\nCheers,\r\n\r\nLuc",
+      "PostedDate": "2014-11-05T01:51:09.207-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nope, haven't found a solution.",
+      "PostedDate": "2014-11-06T09:52:34.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We have one (thanks to my collegue Geoffrey for finding it)\r\n\r\nIf you have a unit test that fails because of AutoMapper’s  AssertConfigurationIsValid in TeamCity (on the build step that uses MSTest) but doesn’t fail in Visual Studio Test Runner : \n-\tMake sure the AutoMapper nugget package is installer on the test project\n-\tAdd this attribute on the TestClass : [DeploymentItem(\"AutoMapper.Net4.dll\")]\r\n\r\n\nhere you are :) (hope this work for you)",
+      "PostedDate": "2014-11-06T11:32:47.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This does not fix for TFS Build.",
+      "PostedDate": "2014-11-06T12:17:52.657-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2015-07-30T06:04:30.013-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

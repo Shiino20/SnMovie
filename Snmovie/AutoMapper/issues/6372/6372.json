@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Applied pull request to fix - 2.0.0.211",
+    "ClosedDate": "2011-04-15T15:24:58.563-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The attached NUnit test will demonstrate the issue.",
+    "LastUpdatedDate": "2013-05-16T04:58:57.547-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-03-23T10:12:23.937-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot map to properties if the setter is private and the property is of a grandparent of the mapped object's class",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6372
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2315,
+      "FileName": "AutoMapperInheritanceProblemDemo.cs",
+      "DownloadUrl": ".\\2315"
+    }
+  ],
+  "Comments": []
+}

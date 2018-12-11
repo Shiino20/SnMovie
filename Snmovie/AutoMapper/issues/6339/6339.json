@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:59.82-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The next instruction is executed in LINQ to SQL, but not in entity framework:\n   var data = _ctx.Tablas.Select(z => z);\n   var data2 = data.Select(e => AutoMapper.Mapper.Map<DataServices.Tabla, ViewModel.Auditoria.Tablas>(e));\ngives the following error:\nLINQ to Entities does not recognize the method 'ViewModel.Auditoria.Tablas Map[Tabla,Tablas](DataServices.Tabla)' method, and this method cannot be translated into a store expression.\nWhat would be the correct usage? Is this referred to this case?",
+    "LastUpdatedDate": "2013-05-16T04:58:57.957-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-03-17T10:50:31.387-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error LINQ to Entities does not recognize the method with entity framework 4",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6339
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Remember, EF query providers use expression trees to do its thing. Instead, do something like:\r\n\r\nvar data = _cts.Tablas.Select(z => z).ToList(); // Goes to the DB, executes the query, comes back with a regular IList<T>\r\nvar data2 = data.Select(e => AutoMapper.Mapper.Map<DataServices.Tabla, ViewModel.Auditoria.Tablas>(e)); // At this point, we're using LINQ to Objects, and all is well.",
+      "PostedDate": "2011-03-18T09:55:12.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Problem solved. Thank you!",
+      "PostedDate": "2011-03-22T05:33:27.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:59.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:15.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:57.957-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

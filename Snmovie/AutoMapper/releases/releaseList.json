@@ -1,0 +1,129 @@
+[
+  {
+    "Id": "0",
+    "Name": "1.0.1 for Silverlight 3.0 Alpha",
+    "DevelopmentStatus": "Alpha",
+    "Description": "AutoMapper for Silverlight 3.0.\n\nFeatures not supported:\n\n* IDataReader mapping\n* IListSource mapping\n\nAll other features are supported.",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2010-02-18T16:38:31.583-08:00",
+    "Files": [
+      {
+        "Id": "bd7b0d8d-740d-42a7-9f18-18a43e7786fd",
+        "FileName": "AutoMapper.Silverlight.dll",
+        "Url": "./0/bd7b0d8d-740d-42a7-9f18-18a43e7786fd",
+        "Type": "Application",
+        "UploadDate": "2010-02-18T16:38:30.973-08:00"
+      },
+      {
+        "Id": "1ad847c5-5d3b-4649-9ecb-9b9faa0dbbad",
+        "FileName": "AutoMapper.Silverlight-unmerged.zip",
+        "Url": "./0/1ad847c5-5d3b-4649-9ecb-9b9faa0dbbad",
+        "Type": "Application",
+        "UploadDate": "2010-02-18T16:38:31.1-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "1",
+    "Name": "1.0 RTW",
+    "DevelopmentStatus": "Stable",
+    "Description": "! New Features\n* Changing the null substitute method name and allow any type of null substitute\n* Consolidating custom constructor configuration to just one\n* Adding UseValue option for member mappings when you want to just map from a single custom value\n* Added ValueFormatter<T>\n! Enhancements\n* Adding custom mapping action objects (in addition to just functions)\n* Removing configuration validation from dynamic mapping\n* Adding overloads for mapping to existing objects for dynamic mapping\n* Modified ITypeConverter to only use ResolutionContext as the input\n* Added TypeConverter to ease generic scenarios\n* Custom value resolvers now have access to the current resolution context\n* Switching the MapFrom from using Expression to just Func, but with the return type retained\n* Some performance improvements around caching and sealing (only for Initialize scenarios)\n* Fixed profiles so you don't have to provide a name (defaults to type name)\n! Bugs Fixed\n* Fixed bug where a zero-length sequence would throw an exception\n* Applying patch to fix duplicate CreateMap call issue\n* Fixing bug where type map resolution did not attempt to find a map for the underlying member type\n* Fixed bug where destination collections were not cleared before mapping\n* Integrating patch to fix ambiguous match exceptions on multiple IEnumerable implementors\n* Fixed bug where read-only string destination properties had to be marked as ignored\n* Applied patch to fix issue where the DataReader mapper blew up on nullable fields\n* Fixing bug where a bi-directional relationship with an array was messing up\n* Fixed bug where type-specific formatters were not found correctly at the global level",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2010-02-01T14:32:18.643-08:00",
+    "Files": [
+      {
+        "Id": "cb68b62f-f371-4b3d-8f78-38fd98be1486",
+        "FileName": "AutoMapper.dll",
+        "Url": "./1/cb68b62f-f371-4b3d-8f78-38fd98be1486",
+        "Type": "Application",
+        "UploadDate": "2010-02-01T14:29:43.6-08:00"
+      },
+      {
+        "Id": "096b2671-d5ab-4501-b65a-573721174b59",
+        "FileName": "AutoMapper.zip",
+        "Url": "./1/096b2671-d5ab-4501-b65a-573721174b59",
+        "Type": "Application",
+        "UploadDate": "2010-02-01T14:29:43.663-08:00"
+      }
+    ]
+  },
+  {
+    "Id": "2",
+    "Name": "1.0 RC1",
+    "DevelopmentStatus": "Beta",
+    "Description": "! New Features\n* Added non-generic CreateMap overload\n* Can specify custom mapping ordering for individual destination members\n* Before/After map callbacks for custom pre/post processing\n* Registration of custom pre- and postfixes on member type names (i.e. CustomerKey can map to Customer)\n* Mapping from dictionaries to split out key-value pairs\n* Basic support for IDataReader/IDataRecord\n* Support for custom naming conventions\n* Support for IListSource (for Entity Framework)\n! Enhancements\n* AllowNullDestinationValues now defaults to \"true\"\n* Mapping operations thread-safe\n* Performance improvements for mapping pipeline, including late-bound expression trees and Lightweight Code Generation\n* Allowing using the destination value for individual members\n* Lots of internal refactoring around the mapping engine to support various IoC scenarios\n* Assembly marked as CLS compliant\n* Registering global and profile-specific aliases for names\n* Support for custom destination type constructors\n* Upgraded to latest LinFu release\n! Bug Fixes\n* Validation errors on explicitly implemented interfaces\n* Collections with null elements caused exceptions\n* Readonly destination members were causing validation errors\n* Removed null checking in custom value resolvers",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-09-14T17:31:50.66-07:00",
+    "Files": [
+      {
+        "Id": "dc76392e-bf7f-45d1-8d8c-53ef71fa6d09",
+        "FileName": "AutoMapper.dll",
+        "Url": "./2/dc76392e-bf7f-45d1-8d8c-53ef71fa6d09",
+        "Type": "Application",
+        "UploadDate": "2009-09-14T17:19:41.787-07:00"
+      },
+      {
+        "Id": "2e584540-e6f9-4530-92a2-51e5987012b3",
+        "FileName": "AutoMapper.zip",
+        "Url": "./2/2e584540-e6f9-4530-92a2-51e5987012b3",
+        "Type": "Application",
+        "UploadDate": "2009-09-14T17:19:41.803-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "3",
+    "Name": "0.3.1 Beta",
+    "DevelopmentStatus": "Beta",
+    "Description": "! New Features\n* New mapper for System.ComponentModel.TypeConverter (requires the [url:TypeConverterAttribute|http://msdn.microsoft.com/en-us/library/system.componentmodel.typeconverterattribute.aspx])\n* Bi-directional and parent-child relationships supported\n* Flags enumerations supported\n! Enhancements\n* Allow partially trusted callers for medium-trust environments\n* Configuration validation for IEnumerable types (List<T> etc.)\n* Mapper registry for easy access to built-in object mappers\n* More friendly to IoC scenarios\n! Bug Fixes\n* Mapping to IDictionary<,> now supported\n* Stack overflow for self-referential destination types\n* Bug around using interfaces for enumerable element types",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-05-12T18:10:48.97-07:00",
+    "Files": [
+      {
+        "Id": "d1353eab-d2a9-44f0-b4e3-af9628162e2f",
+        "FileName": "AutoMapper.dll",
+        "Url": "./3/d1353eab-d2a9-44f0-b4e3-af9628162e2f",
+        "Type": "Application",
+        "UploadDate": "2009-05-12T18:07:49.217-07:00"
+      },
+      {
+        "Id": "fc65c08c-8a32-4e7c-86a5-1177caf4bb55",
+        "FileName": "AutoMapper.zip",
+        "Url": "./3/fc65c08c-8a32-4e7c-86a5-1177caf4bb55",
+        "Type": "Application",
+        "UploadDate": "2009-05-12T18:10:21.83-07:00"
+      }
+    ]
+  },
+  {
+    "Id": "4",
+    "Name": "0.3.0 Beta",
+    "DevelopmentStatus": "Beta",
+    "Description": "! New Features\n* *Mapping to interfaces*\n** Do not need any implementation configured\n** Implementation is created at runtime using proxies\n* *Dynamic mapping*\n** Do not need to configure source/destination type\n** Used with Mapper.DynamicMap\n** Checks configuration before executing the map\n** Allows mapping from anonymous types source\n* Mapping to fields on the destination type\n* Configuring null destination objects behavior\n* Mapping to IDictionary<,>\n* Configuring global constructors for IValueFormatters, IValueResolvers, and ITypeConverters\n** Common use it to substitute an IoC container\n! Enhancements\n* Configuration validation does a dry run, includes array element type checking\n* Better configuration exception messages\n* Better mapping exception messages, gives resolution context hierarchy\n* Mapping to camelCase members\n* Custom top-level type converters with ITypeConverter<TSource, TDestination>\n! Bugs Fixed\n* Configuration validation did not respect ignored destination members\n* Support for international characters in member names\n! Thanks\nThanks to the following peeps that sent in patches or made contributions otherwise:\njordanterrell, Jeffrey Palermo, hallgrim.flatland, smh, pacoaw",
+    "ReleasedDatge": "0001-01-01T00:00:00",
+    "ModifiedDate": "2009-04-04T21:31:14.857-07:00",
+    "Files": [
+      {
+        "Id": "0e5c56df-3ee8-484f-b872-9bcf8a309f96",
+        "FileName": "AutoMapper.dll",
+        "Url": "./4/0e5c56df-3ee8-484f-b872-9bcf8a309f96",
+        "Type": "Application",
+        "UploadDate": "2009-04-04T21:31:14.48-07:00"
+      },
+      {
+        "Id": "d6fcc06a-c11e-4e18-8c2d-ccc7a6abac69",
+        "FileName": "AutoMapper-merged.zip",
+        "Url": "./4/d6fcc06a-c11e-4e18-8c2d-ccc7a6abac69",
+        "Type": "Application",
+        "UploadDate": "2009-04-04T21:31:14.623-07:00"
+      },
+      {
+        "Id": "15ced792-7f73-4023-9585-f0066e2861f5",
+        "FileName": "AutoMapper.zip",
+        "Url": "./4/15ced792-7f73-4023-9585-f0066e2861f5",
+        "Type": "Application",
+        "UploadDate": "2009-04-04T21:31:14.747-07:00"
+      }
+    ]
+  }
+]

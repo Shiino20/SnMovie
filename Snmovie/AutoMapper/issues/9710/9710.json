@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Create issues on GitHub",
+    "ClosedDate": "2017-03-31T11:13:54.353-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n\ncan anyone help me with profile settings for entities with many-to-many relationship. Tried many configurations, but none worked. The problem is, that when mapping between viewmodels and entities it creates clones. Whole project is in attachement.\n\nThanks for relpy.",
+    "LastUpdatedDate": "2017-03-31T11:13:54.353-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2017-01-02T09:23:58.69-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Automapper Profile settings with EF6",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9710
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4661,
+      "FileName": "AutomapperTest.rar",
+      "DownloadUrl": ".\\4661"
+    }
+  ],
+  "Comments": []
+}

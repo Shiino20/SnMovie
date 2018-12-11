@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:17:42.277-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I experimented with AutoMapper for about an hour and I can't continue to use it because your exception messages need some work.\n\nIt is not acceptable to throw a NullReferenceException under any circumstances.  In this case, it was on a call to Project(), which makes no sense.  The source parameter for the extension method is not null, nor are any of its parameters (it has none).  It is inappropriate to throw a NullReferenceException in this case.\n\nWhen I got past that by essentially blindly poking around and adding .Ignore()s to everything that should be mapped, I got an exception whose message was:\n\n\"Argument types do not match.\"\n\nReally?  Which arguments?  Which types?  Why?\n\nI love the concept of AutoMapper, but in order for it to live up to its name it needs to be slightly more automatic.  Good error messages will help significantly.",
+    "LastUpdatedDate": "2014-05-08T06:17:42.277-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-12-13T14:57:49.593-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Throw better exception messages",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 2,
+    "Id": 9158
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

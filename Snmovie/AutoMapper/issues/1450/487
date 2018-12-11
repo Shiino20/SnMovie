@@ -1,0 +1,196 @@
+Index: AutoMapper/Internal/ReflectionHelper.cs
+===================================================================
+--- AutoMapper/Internal/ReflectionHelper.cs	(revision 43)
++++ AutoMapper/Internal/ReflectionHelper.cs	(working copy)
+@@ -3,6 +3,7 @@
+ using System.Linq.Expressions;
+ using System.Reflection;
+ using AutoMapper.Internal;
++using System.Collections.Generic;
+ 
+ namespace AutoMapper
+ {
+@@ -68,17 +69,34 @@
+ 
+             public static IMemberAccessor[] GetPublicReadAccessors(this Type type)
+             {
+-                MemberInfo[] members = type.FindMembers(MemberTypes.Property | MemberTypes.Field,
+-                                                         BindingFlags.Instance | BindingFlags.Public,
+-                                                         (m, f) =>
+-                                                         m is FieldInfo ||
+-                                                         (m is PropertyInfo && ((PropertyInfo) m).CanRead),null);
+-                
+-                var accessors = new IMemberAccessor[members.Length];
+-                for (int i = 0; i < members.Length; i++)
+-                    accessors[i] = members[i].ToMemberAccessor();
+-                return accessors;
++                // Collect that target type, its base type, and all implemented/inherited interface types
++                var typesToScan = new[] { type, type.BaseType }
++                    .Concat(type.FindInterfaces((m, f) => true, null));
+ 
++                // Scan all types for public properties and fields
++                var members = typesToScan
++                    .Where(x => x != null) // filter out null types (e.g. type.BaseType == null)
++                    .SelectMany(x => x.FindMembers(MemberTypes.Property | MemberTypes.Field,
++                                                     BindingFlags.Instance | BindingFlags.Public,
++                                                     (m, f) =>
++                                                     m is FieldInfo ||
++                                                     (m is PropertyInfo && ((PropertyInfo)m).CanRead), null));
++
++                // Multiple types may define the same property (e.g. the class and multiple interfaces) - filter this to one of those properties
++                var filteredMembers = members
++                    .Where(x => x is PropertyInfo) // only interested in filtering properties
++                    .OfType<PropertyInfo>()
++                    .GroupBy(x => x.Name) // group properties of the same name together
++                    .Select(x =>
++                        x.Any(y => y.CanRead && y.CanWrite) ? // favor the first property that can both read & write - otherwise pick the first one
++                            x.Where(y => y.CanRead && y.CanWrite).First() :
++                            x.First())
++                    .OfType<MemberInfo>() // cast back to MemberInfo so we can add back FieldInfo objects
++                    .Concat(members.Where(x => x is FieldInfo));  // add FieldInfo objects back
++
++                return filteredMembers
++                    .Select(x => x.ToMemberAccessor())
++                    .ToArray();
+             }
+ 
+             public static IMemberAccessor GetAccessor(this Type targetType,string accessorName,BindingFlags bindingFlags)
+Index: UnitTests/InterfaceMapping.cs
+===================================================================
+--- UnitTests/InterfaceMapping.cs	(revision 43)
++++ UnitTests/InterfaceMapping.cs	(working copy)
+@@ -109,5 +109,133 @@
+ 			}
+ 		}
+ 
++        public class When_mapping_a_derived_interface_to_an_derived_concrete_type : AutoMapperSpecBase
++        {
++            private Destination _result = null;
++
++            public interface ISourceBase
++            {
++                int Id { get; }
++            }
++
++            public interface ISource : ISourceBase
++            {
++                int SecondId { get; }
++            }
++
++            private class Source : ISource
++            {
++                public int Id { get; set; }
++                public int SecondId { get; set; }
++            }
++
++            private abstract class DestinationBase
++            {
++                public int Id { get; set; }
++            }
++
++            private class Destination : DestinationBase
++            {
++                public int SecondId { get; set; }
++            }
++
++            protected override void Establish_context()
++            {
++                Mapper.CreateMap<ISource, Destination>();
++            }
++
++            protected override void Because_of()
++            {
++                _result = Mapper.Map<ISource, Destination>(new Source { Id = 7, SecondId = 42 });
++            }
++
++            [Test]
++            public void Should_map_base_interface_property()
++            {
++                _result.Id.ShouldEqual(7);
++            }
++
++            [Test]
++            public void Should_map_derived_interface_property()
++            {
++                _result.SecondId.ShouldEqual(42);
++            }
++
++            [Test]
++            public void Should_pass_configuration_testing()
++            {
++                Mapper.AssertConfigurationIsValid();
++            }
++        }
++
++        public class When_mapping_a_derived_interface_to_an_derived_concrete_type_with_readonly_interface_members : AutoMapperSpecBase
++        {
++            private Destination _result = null;
++
++            public interface ISourceBase
++            {
++                int Id { get; }
++            }
++
++            public interface ISource : ISourceBase
++            {
++                int SecondId { get; }
++            }
++
++            private class Source : ISource
++            {
++                public int Id { get; set; }
++                public int SecondId { get; set; }
++            }
++
++            public interface IDestinationBase
++            {
++                int Id { get; }
++            }
++
++            public interface IDestination : IDestinationBase
++            {
++                int SecondId { get; }
++            }
++
++            private abstract class DestinationBase : IDestinationBase
++            {
++                public int Id { get; set; }
++            }
++
++            private class Destination : DestinationBase, IDestination
++            {
++                public int SecondId { get; set; }
++            }
++
++            protected override void Establish_context()
++            {
++                Mapper.CreateMap<ISource, Destination>();
++            }
++
++            protected override void Because_of()
++            {
++                _result = Mapper.Map<ISource, Destination>(new Source { Id = 7, SecondId = 42 });
++            }
++
++            [Test]
++            public void Should_map_base_interface_property()
++            {
++                _result.Id.ShouldEqual(7);
++            }
++
++            [Test]
++            public void Should_map_derived_interface_property()
++            {
++                _result.SecondId.ShouldEqual(42);
++            }
++
++            [Test]
++            public void Should_pass_configuration_testing()
++            {
++                Mapper.AssertConfigurationIsValid();
++            }
++        }
++
+ 	}
+ }
+\ No newline at end of file

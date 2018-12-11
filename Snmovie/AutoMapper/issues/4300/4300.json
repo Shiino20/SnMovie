@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:42.49-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Automapper.AssertConfigurationIsValid reports missing mappings after all members are set to ignore.\n \n(See unittest below)\n------------------------------------\nusing NUnit.Framework;\n \nnamespace AutoMapper.UnitTests.Bug\n{\n    [TestFixture]\n    public class AssertConfigIsValid\n    {\n\t\tprivate class ModelObjectNotMatching\n\t\t{\n\t\t\tpublic string Foo_notfound { get; set; }\n                        public string Bar_notfound;\n\t\t}\n \n\t\tprivate class ModelDto\n\t\t{\n\t\t\tpublic string Foo { get; set; }\n\t\t\tpublic string Bar;\n\t\t}\n \n        [Test]\n        // [Ignore(\"maybe bug. Posted to codeplex-forum 22.4.2010\")]\n        public void ForAllIgnore()\n        {\n\t    Mapper.CreateMap<ModelObjectNotMatching, ModelDto>()\n                .ForAllMembers(opt => opt.Ignore());\n            Mapper.AssertConfigurationIsValid(); // should not fail\n        }\n    }\n}",
+    "LastUpdatedDate": "2013-05-16T04:59:03.96-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-04-21T23:41:24.007-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AssertConfigurationIsValid false positives after .ForAllMembers(opt => opt.Ignore());",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4300
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

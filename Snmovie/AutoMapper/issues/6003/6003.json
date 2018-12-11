@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:27.79-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This will throw a NullReferenceException:\n \n    class Program\n    {\n        static void Main(string[] args)\n        {\n             Mapper.CreateMap<Source, Destination>()\n                .ForMember(d => d.X, o => o.Condition(s => s.A != null))\n                .ForMember(d => d.X, o => o.MapFrom(s => s.A.GetHashCode()));\n \n            var dest = Mapper.Map<Source, Destination>(new Source());\n        }\n    }\n \n    class Source\n    {\n        public string A { get; set; }\n    }\n \n    class Destination\n    {\n        public int X { get; set; }\n    }\n \nI understand that a ValueResolver is probably the right solution, but you can imagine flattening an object hierarchy with some null values fairly high up and in that case a ValueResolver would be the wrong solution.",
+    "LastUpdatedDate": "2013-05-16T04:58:59.263-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-12-29T15:03:47.177-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MapFrom expressions are evaluated even when the condition is false",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 6003
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "What you could do is:\r\n\r\n.ForMember(d => d.X, o => o.MapFrom(s => s.A != null ? s.A.GetHashCode() : null));\r\nBut it would be better if this was configurable in AutoMapper.",
+      "PostedDate": "2011-07-26T05:00:21.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:27.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:16.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:59.263-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

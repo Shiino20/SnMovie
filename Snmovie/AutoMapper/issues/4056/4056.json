@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Instead of &#34;UseValue&#34;, which is a static value, use MapFrom&#40;src &#61;&#62; DateTime.Now&#41;, which is evaluated every time.",
+    "ClosedDate": "2010-03-20T20:22:17.557-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a problem:\n \n [Test]\n        public void TestMapping()\n        {\n            Mapper.CreateMap<Anything, Something>()\n                .ForMember(x => x.Time, opt => opt.UseValue(DateTime.Now));\n            \n            var something = Mapper.Map<Anything, Something>(new Anything { Title = \"title\" });\n            Thread.Sleep(2000);\n            var something2 = Mapper.Map<Anything, Something>(new Anything { Title = \"title\" });\n \n            Assert.AreNotEqual(something2.Time, something.Time);\n        } \n \n    public class Something\n    {\n        public DateTime Time { get; set; }\n        public string Title { get; set; }\n    }\n \n    public class Anything\n    {\n        public string Title { get; set; }\n    }\n \nLooks like it allways gets Time value at compile time or something. How do i avoid this in general, not just with the concrete sample?",
+    "LastUpdatedDate": "2013-05-16T04:59:04.877-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-18T07:06:12.753-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "using UseValue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4056
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

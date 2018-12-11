@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:57.95-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nWe're using Automapper for mapping between EF entities and our Dto's. All works well but I have a little problem for specific mapping. I'll try to make it clear.\n \nHere's my simplified EF Entities : \n \npublic class Context : EntityObject\n{\n     \"some properties\"\n \n     public EntityCollection<Context_Geo1> Context_Geo1 {get; set;}\n}\n \npublic class Context_Geo1 : EntityObject\n{\n      public int IdContextGeo\n      public int? IdContext\n      public int? IdGeo\n}\n \nHere my \"Signle\" Dto\n \npublic class ContextDto\n{\n     \"some properties\"\n \n     public IEnumerable<int> StructureGeo1 {get; set;}\n}\n \nWhat I need to do is to map from Entity to Dto. I need to map idGeo property from Context_Geo1 to ContextDto.StructureGeo1.\n \nI did a CustomValueResolver for that and configured my map like this.\n \nMapper.CreateMap<Context, ContextDto>().FormMember(p => p.StructureGeo1, opt => opt.Ignore());\nMapper.CreateMap<Context_Geo1, int>().ForMember(p => p, opt => opt.ResolveUsing<ContextValueResolver>());\n \nWhere ContextValueResolver returns Context_Geo1.IdGeo (an int as I want).\n \nWhen I run that I have several Automapper exceptions like this (right after my custom resolver was called which for tests returns 1) :\n \nTest method Bali.Offer.Tests.Data.DataMapperTests.ContextShouldBeMappedFromEntityToDto threw exception: \nAutoMapper.AutoMapperMappingException: Trying to map System.Data.Objects.DataClasses.EntityCollection`1[[Bali.Offer.Data.Context_Geo1, Bali.Offer.Data, Version=0.4.0.0, Culture=neutral, PublicKeyToken=null]] to System.Collections.Generic.IEnumerable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].\nException of type 'AutoMapper.AutoMapperMappingException' was thrown. ---> AutoMapper.AutoMapperMappingException: Trying to map Bali.Offer.Data.Context_Geo1 to System.Int32.\nUsing mapping configuration for Bali.Offer.Data.Context_Geo1 to System.Int32\nException of type 'AutoMapper.AutoMapperMappingException' was thrown. ---> System.NullReferenceException: Object reference not set to an instance of an object.\n \nI don't know if I'm doing it well. Thanks for your help.\n \nThomas",
+    "LastUpdatedDate": "2013-05-16T04:59:01.903-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-08-04T01:57:04.163-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapping EF collections to IEnumerable",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 5332
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "AutoMapper gives you the most important exception at the bottom: \r\n\r\nSystem.NullReferenceException: Object reference not set to an instance of an object.\r\n\r\nMy guess is that the Context.Context_Geo1 property is null. ",
+      "PostedDate": "2011-01-11T08:01:00.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-24T02:49:15.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-30T02:45:11.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:45:57.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:19.643-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:01.903-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "The project has moved to GitHub.",
+    "ClosedDate": "2015-07-30T06:04:43.653-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have an entity class like this...\n\n```\n    public partial class OrderItem\n    {\n        public int OrderItemId { get; set; }\n        public int OrderNumber { get; set; }\n        public string isbn13 { get; set; }\n        public string isbn8 { get; set; }\n        public int quantityOrdered { get; set; }\n        public double priceBeforeDiscount { get; set; }\n        public Nullable<double> percentageDiscount { get; set; }\n    \n        public virtual Order Order { get; set; }\n    }\n```\n\nand my DTO class looks like this...\n\n```\npublic class PricingDetails\n    {\n        public decimal? Amount { get; set; }\n\n        public decimal? StockPrice { get; set; }\n\n        public decimal? DiscountPercentage { get; set; }\n    }\n```\n\nWhen I try to convert the Db class to the DTO it throws the following error...\n\n> AutoMapper.AutoMapperMappingException was caught\n  HResult=-2146233088\n  Message=\n\nMapping types:\nInt32 -> Nullable`1\nSystem.Int32 -> System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]\n\nDestination path:\nIEnumerable`1[0].ItemDetails.ItemDetails.ItemDetails0[0].PricingDetails.PricingDetails.Amount.Amount\n\nSource value:\n0\n  Source=AutoMapper\n  StackTrace:\n       at Broker.Repositories.RapOrderRepository.ReadDispatchableOrders(List`1 entities) in d:\\Projects\\Gyldendal_OrderEngine\\Broker\\Features\\Rap Orders\\Src\\Broker.DataAccess\\Broker.Repositories\\RapOrderRepository.cs:line 127\n       at Broker.Repositories.RapOrderRepository.GetUndispatchedOrders(Guid batch) in d:\\Projects\\Gyldendal_OrderEngine\\Broker\\Features\\Rap Orders\\Src\\Broker.DataAccess\\Broker.Repositories\\RapOrderRepository.cs:line 341\n       at OrderBroker.Utilities.Brokers.RapOrderBroker.<ProcessOrders>d__1.MoveNext() in d:\\Projects\\Gyldendal_OrderEngine\\Broker\\Features\\Rap Orders\\Src\\Broker.Common\\OrderBroker.Utilities\\Brokers\\RapOrderBroker.cs:line 61\n  InnerException: System.InvalidCastException\n       HResult=-2147467262\n       Message=Specified cast is not valid.\n       Source=Anonymously Hosted DynamicMethods Assembly\n       StackTrace:\n            at lambda_method(Closure , Object , Object )\n            at AutoMapper.Impl.PropertyAccessor.SetValue(Object destination, Object value)\n            at AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.AssignValue(PropertyMap propertyMap, Object mappedObject, Object propertyValueToAssign)\n            at AutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.MapPropertyValue(ResolutionContext context, IMappingEngineRunner mapper, Object mappedObject, PropertyMap propertyMap)\n       InnerException: \n\n\nDon't know where is that Int32 coming from...",
+    "LastUpdatedDate": "2015-07-30T06:04:43.653-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-09-08T22:09:44.583-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "AutoMapper does not convert the decimal? type",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9426
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

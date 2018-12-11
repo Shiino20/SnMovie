@@ -1,0 +1,166 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:54.667-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nI am trying to flatten some Entities to three nested DTO. At the end of the mapping, I see everything allright except the information of the third DTO which is null.\n \nHere is the code:\n \n//Mapping of 3rd DTO\n IMappingExpression<EntidadesProcedimientos.NormativaProcedimiento, DtoNormativa> mapperNormativas = Mapper.CreateMap<EntidadesProcedimientos.NormativaProcedimiento, DtoNormativa>();\n \n//Mapping of 2nd DTO\n \n IMappingExpression<EntidadesProcedimientos.NormativaProcedimiento, DtoNormativaProcedimiento> mapperNormativasProcedimiento = Mapper.CreateMap<EntidadesProcedimientos.NormativaProcedimiento, DtoNormativaProcedimiento>();\n \n//Mapping of 1st DTO\n IMappingExpression<EntidadesProcedimientos.ProcedimientoOrdenJurisdiccional, DtoFichaProcedimiento> mapperProcedimiento = Mapper.CreateMap<EntidadesProcedimientos.ProcedimientoOrdenJurisdiccional, DtoFichaProcedimiento>();\n                mapperProcedimiento.ForMember(\n                                                destino => \n                                                            destino.Normativas, \n                                                mapper => \n                                                            mapper.MapFrom(\n                                                                            origen => \n                                                                                        origen.NormativasProcedimientos\n                                                                          ));\nvar dtoProcedimiento = Mapper.Map<EntidadesProcedimientos.ProcedimientoOrdenJurisdiccional, DtoFichaProcedimiento>(procedimiento);\n \nI think I have to map something more between the second and third DTO, but I do not know how.\n \nThanks",
+    "LastUpdatedDate": "2013-05-16T04:58:57.41-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-04-07T09:45:41.69-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot map nested DTO",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 14,
+    "Id": 6460
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2352,
+      "FileName": "code.zip",
+      "DownloadUrl": ".\\2352"
+    },
+    {
+      "FileId": 2356,
+      "FileName": "code.zip",
+      "DownloadUrl": ".\\2356"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I forgot to attach the model.",
+      "PostedDate": "2011-04-08T00:10:12.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T00:11:12.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Code and model",
+      "PostedDate": "2011-04-08T00:11:14.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T00:44:14.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:11:42.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:11:47.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:16:13.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:17:55.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:18:18.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:18:20.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:18:30.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:22:05.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:22:14.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:54:50.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T02:56:48.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T03:07:57.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T03:10:16.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T03:11:55.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-08T03:16:06.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-10T23:08:13.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:54.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:14.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:57.41-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

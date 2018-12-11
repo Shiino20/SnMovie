@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:28.98-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "So that this would work instead of throwing ExecutionEngineException:\nMapper.CreateMap( typeof( Foo<> ), typeof( FooDto<> ) );\nvar dto = Mapper.Map<Foo<string>,FooDto<string>>(new Foo<string>(  \"a\" ));",
+    "LastUpdatedDate": "2013-05-16T04:59:04.617-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-03-05T03:09:59.543-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Support open generic types",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 14,
+    "Id": 4134
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

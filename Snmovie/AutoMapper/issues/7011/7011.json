@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:15.817-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm trying to have a condition that uses the destination value, but it's NULL from some reason.\n \nfrom some reason ctx.DestinationValue is always NULL !\n \n \nFor now I'm using reflection to bypass it -\n \n\t\t\tconfiguration.CreateMap<Symbol, Symbol>()\n\t\t\t\t.ForAllMembers(opt => opt.Condition(ctx =>\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t// of course i could use ctx.DestenationValue but from some reason it is always NULL, so I over passed it using reflection\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tSymbol destSymbol = (Symbol)ctx.Parent.DestinationValue;\n \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tobject destValue = destSymbol.GetType().GetProperty(ctx.MemberName).GetValue(destSymbol, null);\n \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tbool areEqual = Equals(ctx.SourceValue, destValue);\n \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\treturn !areEqual;\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t));",
+    "LastUpdatedDate": "2013-05-16T04:58:55.313-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-07T03:12:56.357-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "CreateMap.ForAllMembers - Condition - Destination value is NULL",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7011
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

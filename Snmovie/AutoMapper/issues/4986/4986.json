@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:35.697-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Why are all my Visual Studio test results “Not executed” : http://stackoverflow.com/questions/525578/why-are-all-my-visual-studio-test-results-not-executed\n \n-----\n \nThis is not really a bug but rather a request for assistance. I am trying to follow the tutorial \"The Big Boy MVC Series\" (http://www.weirdlover.com/2010/07/01/the-big-boy-mvc-series-part-22-whoop/).\n \nIn part 22, step 5, we have to add a reference to AutoMapper. What I did in the two projects (Web & Test) . But immediatly after that, all my unit tests do not run any more. As you can see, they don't fail, they are just \"Not Executed\" : http://twitpic.com/21p30v\n \nFeatures of my solution:\n- MVC 2\n- ASP.NET 3.5\n- Visual Studio 2008 in French\n- AutoMapper.dll: 1.1.0.188\n \nDoes anyone has had this kind of problem?\n \nMerci.\nMichel",
+    "LastUpdatedDate": "2013-05-16T04:59:02.363-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-07-02T00:11:07.7-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unit tests not executed after adding reference to AutoMapper (resolved)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4986
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

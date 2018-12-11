@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:08.427-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm having problems with configuration via profiles. I'm using the Task Scheduler library from Codeplex (http://taskscheduler.codeplex.com),  and using AutoMapper (v1.1.0.188) to map its classes to a set of DTOs being used as WCF data contracts. I've defined the mappings in a Profile, and when I load the profile and run AssertConfigurationIsValid, everything reports OK. However, when I try to map a scheduled task, I'm getting a StackOverflowException. Originally, I had all my mappings defined in one great big Mapper.Initialize statement, but now that I'm breaking them up into smaller chunks and moving the code into profiles, it's all going pear-shaped. Is there a better way of composing mapping classes?\n \nI've attached a test project that demonstrates what's happening. It includes a batch file to create the scheduled tasks necessary - just remember to delete them afterwards otherwise you'll have Calculator instances popping up every hour :-). Run any of the tests, and you should get a StackOverflowException (I'm running Resharper, so I don't see the exception explicitly, it just crashes the Resharper test runner).\n \nI've narrowed it down to the mapping of the various Microsoft.Win32.TaskScheduler.Trigger classes; if you comment out the relevant mapping (e.g. comment out the DailyTrigger mapping for the daily scheduled task), then you get a regular AutoMapperMappingException when trying to map the task.",
+    "LastUpdatedDate": "2013-05-16T04:58:54.9-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-14T17:12:49.24-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AutoMapper throws StackOverflowException when using Profiles",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7061
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2577,
+      "FileName": "AutoMapperTest.zip",
+      "DownloadUrl": ".\\2577"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Never mind, I've figured out what was going wrong - the Task class has a reference to TaskService, which has a reference to TaskFolder, which exposes a collection of Task objects. Lather, rinse, repeat, and bang, one StackOverflowException. What it doesn't explain is why I wasn't getting the exception before I changed the implementation, but TBH, I don't really care now. I'm deleting the TaskService reference on my DTO, as I don't really use it.",
+      "PostedDate": "2011-08-14T19:22:14.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:08.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:11.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:54.9-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+<div class="wikidoc">AutoMapper only requires configuration of element types, not of any array or list type that might be used.  For example, we might have a simple source and destination type:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Source
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Destination
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />All the basic generic collection types are supported:<br /><br /><div style="color:Black;background-color:White;"><pre>
+Mapper.CreateMap&lt;Source, Destination&gt;();
+
+<span style="color:Blue;">var</span> sources = <span style="color:Blue;">new</span>[]
+	{
+		<span style="color:Blue;">new</span> Source { Value = 5 },
+		<span style="color:Blue;">new</span> Source { Value = 6 },
+		<span style="color:Blue;">new</span> Source { Value = 7 }
+	};
+
+IEnumerable&lt;Destination&gt; ienumerableDest = Mapper.Map&lt;Source[], IEnumerable&lt;Destination&gt;&gt;(sources);
+ICollection&lt;Destination&gt; icollectionDest = Mapper.Map&lt;Source[], ICollection&lt;Destination&gt;&gt;(sources);
+IList&lt;Destination&gt; ilistDest = Mapper.Map&lt;Source[], IList&lt;Destination&gt;&gt;(sources);
+List&lt;Destination&gt; listDest = Mapper.Map&lt;Source[], List&lt;Destination&gt;&gt;(sources);
+Destination[] arrayDest = Mapper.Map&lt;Source[], Destination[]&gt;(sources);
+</pre></div><br />To be specific, the source collection types supported include:
+<ul><li>IEnumerable</li>
+<li>IEnumerable&lt;T&gt;</li>
+<li>ICollection</li>
+<li>ICollection&lt;T&gt;</li>
+<li>IList</li>
+<li>IList&lt;T&gt;</li>
+<li>List&lt;T&gt;</li>
+<li>Arrays</li></ul>
+For the non-generic enumerable types, only unmapped, assignable types are supported, as AutoMapper will be unable to &quot;guess&quot; what types you&#39;re trying to map.  As shown in the example above, it&#39;s not necessary to explicitly configure list types, only their member types.<br /><br />As of release 0.2.0, no custom destination collection types are supported.
+<h1>Polymorphic element types in collections</h1>Many times, we might have a hierarchy of types in both our source and destination types.  AutoMapper supports polymorphic arrays and collections, such that derived source/destination types are used if found.<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ParentSource
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value1 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ChildSource : ParentSource
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value2 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ParentDestination
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value1 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> ChildDestination : ParentDestination
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value2 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />AutoMapper still requires explicit configuration for child mappings, as AutoMapper cannot &quot;guess&quot; which specific child destination mapping to use.  Here is an example of the above types:<br /><br /><div style="color:Black;background-color:White;"><pre>
+Mapper.CreateMap&lt;ParentSource, ParentDestination&gt;()
+	.Include&lt;ChildSource, ChildDestination&gt;();
+Mapper.CreateMap&lt;ChildSource, ChildDestination&gt;();
+
+<span style="color:Blue;">var</span> sources = <span style="color:Blue;">new</span>[]
+	{
+		<span style="color:Blue;">new</span> ParentSource(),
+		<span style="color:Blue;">new</span> ChildSource(),
+		<span style="color:Blue;">new</span> ParentSource()
+	};
+
+<span style="color:Blue;">var</span> destinations = Mapper.Map&lt;ParentSource[], ParentDestination[]&gt;(sources);
+
+destinations[0].ShouldBeInstanceOf&lt;ParentDestination&gt;();
+destinations[1].ShouldBeInstanceOf&lt;ChildDestination&gt;();
+destinations[2].ShouldBeInstanceOf&lt;ParentDestination&gt;();
+</pre></div></div><div class="ClearBoth"></div>

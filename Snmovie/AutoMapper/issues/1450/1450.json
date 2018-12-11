@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed in R52",
+    "ClosedDate": "2009-04-04T15:10:34.793-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've got a property, Id, defined on an interface, IBase.  I have a derived interface, IDerived, which inherits the Id property from IBase.  Trying to map IDerived to a simple class with an Id property is failing (e.g. CreateMap<IDerived, Destination>()).  I've attached a simple code file to expose this issue.  Perhaps there is another part of the API that I need to exercise, but this seems like a standard mapping it should support by default.\n \nThanks - Jordan",
+    "LastUpdatedDate": "2013-05-16T04:59:08.333-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-03-24T07:36:53.727-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapping base interface property via derived interface (source) to class (destination) does not work...",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 1450
+  },
+  "FileAttachments": [
+    {
+      "FileId": 485,
+      "FileName": "AutoMapperBug.zip",
+      "DownloadUrl": ".\\485"
+    },
+    {
+      "FileId": 486,
+      "FileName": "Issue1450Fix.patch",
+      "DownloadUrl": ".\\486"
+    },
+    {
+      "FileId": 487,
+      "FileName": "Issue1450FixV2.patch",
+      "DownloadUrl": ".\\487"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I've created a fix for this issue (see attached).  Patch includes tests for fix - all tests pass (with exception of tests already being ignored).",
+      "PostedDate": "2009-03-24T09:45:25.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T09:45:27.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've created a better fix for this problem.  Ignore file \"Issue1450Fix.patch\" - use \"Issue1450FixV2.patch\".",
+      "PostedDate": "2009-03-24T11:47:40.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T11:47:41.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Jordan!  I'll take a look at this one.",
+      "PostedDate": "2009-04-04T14:59:12.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Your patch is in R52 - thanks!",
+      "PostedDate": "2009-04-04T15:10:23.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-04T15:10:34.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:27.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:08.333-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+using AutoMapper;
+using NUnit.Framework;
+using NBehave.Spec.NUnit;
+
+namespace AutoMapperSamples
+{
+	namespace NestedMappings
+	{
+		[TestFixture]
+		public class Sample
+		{
+			public class OuterSource
+			{
+				public int Value { get; set; }
+				public InnerSource Inner { get; set; }
+				public InnerSource[] InnerArray { get; set; }
+			}
+
+			public class InnerSource
+			{
+				public int OtherValue { get; set; }
+				public int IgnoreValue { get; set; }
+			}
+
+			public class OuterDest
+			{
+				public int Value { get; set; }
+				public InnerDest Inner { get; set; }
+				public InnerDest[] InnerArray { get; set; }
+			}
+
+			public class InnerDest
+			{
+				public int OtherValue { get; set; }
+				public int IgnoreValue { get; set; }
+			}
+
+			[Test]
+			public void Example()
+			{
+				Mapper.CreateMap<OuterSource, OuterDest>();
+				Mapper.CreateMap<InnerSource, InnerDest>().ForMember(a => a.IgnoreValue, act => act.Ignore());
+				Mapper.AssertConfigurationIsValid();
+
+				var source = new OuterSource
+					{
+						Value = 5,
+						Inner = new InnerSource { OtherValue = 15 },
+						InnerArray = new[] { new InnerSource { OtherValue = 2, IgnoreValue = 22 }, new InnerSource { OtherValue = 3, IgnoreValue = 33 } }
+					};
+
+				var dest = Mapper.Map<OuterSource, OuterSource>(source);
+
+				dest.Value.ShouldEqual(5);
+				dest.Inner.ShouldNotBeNull();
+				dest.Inner.OtherValue.ShouldEqual(15);
+				foreach (var innerArray in dest.InnerArray)
+				{
+					innerArray.IgnoreValue.ShouldBeTheSameAs(0);
+				}
+			}
+
+			[SetUp]
+			public void SetUp()
+			{
+				Mapper.Reset();
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:21.06-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "We suddenly started seeing this error in production and we did not see it in other environment.\nThe interesting thing it caused some of our payments to fail but then it seem to recover by itself after an hour or so.\n \nWe are at loss since we never saw this error beforee and it happened one time and then disappered by itself. We are using Automapper within a WCF web service (.net 4.0) which copies request objects into the data layer objects.\n \nAny ideas???\n \nException mapping in MakePayments: System.NullReferenceException: Object reference not set to an instance of an object.\n   at AutoMapper.Configuration.<>c__DisplayClass13.<FindExplicitlyDefinedTypeMap>b__12(TypeMap x)\n   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)\n   at AutoMapper.Configuration.FindExplicitlyDefinedTypeMap(Type sourceType, Type destinationType)\n   at AutoMapper.Configuration.CreateTypeMap(Type source, Type destination, String profileName)\n   at AutoMapper.Configuration.CreateMap[TSource,TDestination](String profileName)\n   at AutoMapper.Configuration.CreateMap[TSource,TDestination]()\n   at AutoMapper.Mapper.CreateMap[TSource,TDestination]()\n   at TaxPaymentService.TaxPaymentService.MakePayments(MakePaymentRequest request)",
+    "LastUpdatedDate": "2013-05-16T04:58:55.933-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-07-14T13:47:59.557-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper suddenly started throwing exception and then it worked",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 6931
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I have seen the same problem after I got a new laptop with 64bit Windows7. Just recompiling a webapplication with the same version of AutoMapper (1.1.0.188) started throwing the above errors when debugging in Visual Studio 2010. These errors where never encountered before. I suspect that being in a 64bit environment is causing this, but I do not know why.\r\n",
+      "PostedDate": "2011-08-04T04:50:22.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-04T04:50:59.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:21.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:12.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:55.933-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

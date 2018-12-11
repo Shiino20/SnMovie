@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:35.41-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have the following classes:\n \n    class ParentSource\n    {\n        public string ParentProp { get; set; }\n    }\n \n    class ChildSource : ParentSource\n    {\n        public string ChildProp { get; set; }\n    }\n \n    class Dest\n    {\n        public string Prop1 { get; set; }\n        public string Prop2 { get; set; }\n    }\n \nAnd what I'm trying to achieve is to be able to map from instances of ParentSource and ChildSource to Dest like this:\n \n  * if I have an instance of ParentSource I would like to map to a Dest instance with ParentProp mapped to Prop1 and Prop2 left null.\n  * if I have an instance of ChildSource  I would like to map to a Dest instance with ParentProp mapped to Prop1 and ChildProp mapped to Prop2.\n \nI've tried the following mappings:\n \n        Mapper\n            .CreateMap<ParentSource, Dest>()\n            .ForMember(\n                dest => dest.Prop1,\n                opt => opt.MapFrom(src => src.ParentProp)\n            );\n \n        Mapper\n            .CreateMap<ChildSource, Dest>()\n            .ForMember(\n                dest => dest.Prop2,\n                opt => opt.MapFrom(src => src.ChildProp)\n            );\n \n        var source = new ChildSource\n        {\n            ParentProp = \"parentProp\",\n            ChildProp = \"childProp\"\n        };\n        var dst = Mapper.Map<ChildSource, Dest>(source); \n \nIn this case dst.Prop1 = null and dst.Prop2 = \"childProp\". If I repeat the ForMember mapping of Prop1 in the second CreateMap it works but that's what I am trying to avoid. Is this even possible and make sense or do I need to simply copy-paste all the rules defined for the parent mapper in the child mapper?\n \nKind regards,\nDarin.",
+    "LastUpdatedDate": "2013-05-16T04:59:03.53-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-05-12T07:57:50.57-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Support for polymorphic mappings",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 4629
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:44.22-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "public class User : BaseEntity, IPersistentDataObjectMapper, IEntityMapper\n    {\n        public decimal Id { get; set; }\n        public string UserName { get; set; }\n        public string Password { get; set; }\n        public Employee Employee { get; set; }\n        public IList<SessionLog> UserSessionLogs { get; set; }\n        public int? TotalRecord { get; set; }\n        public IList<UserRole> UserRoles { get; set; }\n}\n \nMy Question is that the collection of SessionLog is an entity that also contains other collections of entities. Automapper is not mapping this . Can any one help , any example or link would be highly helpful.",
+    "LastUpdatedDate": "2013-05-16T04:58:59.11-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-01-07T02:25:10.507-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper not mapping child collection within entities.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6044
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": ".ForMember(dest => dest.YourDestinationList, opt => opt.MapFrom<IList<SessionLog>>(src => src.UserSessionLogs)) \r\n\r\nif you are mapping the SessionLog to something else you will need to do another Mapper.CreateMap<SessionLog,NewSessionLogObject>()\r\nI do this to copy hierarchical SOAP objects to EF objects where the SOAP object is in the following pattern\r\n\r\nA has a collection of B has a collection of C etc etc.",
+      "PostedDate": "2011-05-04T09:05:40.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:44.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:16.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:59.11-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

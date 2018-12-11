@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:47.793-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Right now flattening only works for non-collection types.  If I have a source type of:\n \nclass Product\n{\n  public string Name { get; set; }\n}\n \nI can't do something like this:\n \nclass Catalog\n{\n    IEnumerable<Product> GetProducts();\n}\n \nclass CatalogDto\n{\n   public string[] ProductsName { get; set; }\n}",
+    "LastUpdatedDate": "2013-05-16T04:59:06.467-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-11-12T05:45:04.13-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Allow flattening of collection items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 3332
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

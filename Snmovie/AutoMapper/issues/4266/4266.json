@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This one&#39;s definitely a bug, and fixed in the latest push.  Check out the teamcity.codebetter.com site for the latest drop.Thanks&#33;Jimmy",
+    "ClosedDate": "2010-04-14T09:00:05.41-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "typeMap local variable is always overwritten.\n \nFor example, typeMap which is not null, was found on the first iteration of the foreach loop. Then on the second iteration after execution of the following line\n \ntypeMap = ((IConfigurationProvider)this).FindTypeMapFor(source, sourceInterface, destinationType);\n \ntypeMap becomes null. So even if one typeMap was found which is not null, the method will return null if subsequent calls to FindTypeMapFor return null.",
+    "LastUpdatedDate": "2013-05-16T04:59:04.087-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-04-13T05:52:32.82-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Incorrect behaviour of the method AutoMapper.Configuration.FindTypeMap(object, Type, Type) when sourceType implements more than one interface",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4266
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

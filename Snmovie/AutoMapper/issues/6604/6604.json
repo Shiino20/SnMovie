@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:50.87-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When you have entities with bidirectional relationships (e.g. parent/child) and specify an AfterMap handler, that handler gets invoked multiple times. Only the last call is actually *after* the mapping. The previous calls happens when AutoMapper finds the object in its cache and are before the mapping is complete, meaning some of the properties are not yet mapped. \n \nThis feels like a bug to me. If you add a BeforeMap handler it's only invoked once as expected.\n \nI've attached a modified version of the BidirectionalRelationships.cs unit test to show this behaviour\n \nMoving the AfterMap call from TypeMapMapper.Map to TypeMapObjectMapperRegistry.Map (i.e same place that BeforeMap is called) seems to solve the problem. All other tests still pass after doing that change.",
+    "LastUpdatedDate": "2013-05-16T04:58:56.487-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-05-09T09:12:14.287-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple calls to AfterMap for bidirectional relationships",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 6604
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2434,
+      "FileName": "BidirectionalRelationships.cs",
+      "DownloadUrl": ".\\2434"
+    }
+  ],
+  "Comments": []
+}

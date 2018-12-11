@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "149694",
+    "ThreadId": "44923",
+    "Html": "<p>Hi.</p>\r\n<p>Great work on this mapper. Love the code. However, one of the unit tests is failing when run on my machine (which is using nb-NO as its culture):</p>\r\n<p></p>\r\n<p>When_applying_type_specific_global_formatting_rules.Should_format_using_concrete_formatter_class : FailedNUnit.Framework.AssertionException:   String lengths are both 10. Strings differ at index 2.<br>\r\nExpected: &quot;12/25/2004&quot;<br>\r\nBut was:  &quot;12.25.2004&quot;<br>\r\n-------------^<br>\r\n<br>\r\nat NUnit.Framework.Assert.That(Object actual, Constraint constraint, String message, Object[] args)<br>\r\nat NUnit.Framework.Assert.That(Object actual, Constraint constraint)<br>\r\nat NBehave.Spec.NUnit.Extensions.ShouldEqual(Object actual, Object expected)<br>\r\nat AutoMapper.UnitTests.CustomFormatters.When_applying_type_specific_global_formatting_rules.Should_format_using_concrete_formatter_class() in CustomFormatters.cs: line 109 <br>\r\n</p>\r\n<p></p>\r\n<p>A fix is shown below:</p>\r\n<p></p>\r\n<p> \t\tprivate class ShortDateFormatter : IValueFormatter<br>\r\n{<br>\r\npublic string FormatValue(ResolutionContext context)<br>\r\n{<br>\r\n// This works<br>\r\nreturn ((DateTime)context.SourceValue).ToString(&quot;MM/dd/yyyy&quot;, CultureInfo.InvariantCulture);<br>\r\n// This does not<br>\r\n//return ((DateTime) context.SourceValue).ToString(&quot;MM/dd/yyyy&quot;);<br>\r\n}<br>\r\n}<br>\r\n<br>\r\nBest regards</p>\r\n<p>Lars Andreas</p>\r\n<p></p>\r\n<p></p>\r\n",
+    "PostedDate": "2009-01-22T04:19:10.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150216",
+    "ThreadId": "44923",
+    "Html": "Ah, there are probably some other places in the actual AutoMapper codebase that don't do culture-invariant string-based operations.&nbsp; Thanks, I'll get that in the next drop.<br>\r\n",
+    "PostedDate": "2009-01-23T05:33:20.807-08:00",
+    "UserRole": "Coordinator",
+    "MarkedAsAnswerDate": null
+  }
+]

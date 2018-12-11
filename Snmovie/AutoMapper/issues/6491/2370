@@ -1,0 +1,247 @@
+// ReSharper disable ClassNeverInstantiated.Global
+using System;
+using System.Data;
+using AutoMapper;
+using NUnit.Framework;
+
+namespace AutoMapperTester
+{
+	[TestFixture]
+	public class AutoMapperTests
+	{
+		internal const string IntegerFieldName = "Integer";
+		internal const int IntegerFieldValue = 7;
+		internal const string DecimalFieldName = "Decimal";
+		internal const decimal DecimalFieldValue = (decimal) 8.0;
+		internal const int IntegerFieldDefaultValue = 3;
+
+		internal class DtoWithSingleNullableField
+		{
+			public int? Integer { get; set; }
+
+			public AnotherClass Inside { get; set; }
+		}
+
+		internal class DtoWithSingleNullableFieldWithDefaultConstructor
+		{
+			public DtoWithSingleNullableFieldWithDefaultConstructor()
+			{
+				Integer = IntegerFieldDefaultValue;
+			}
+
+			public DtoWithSingleNullableFieldWithDefaultConstructor(int? item)
+			{
+				Integer = item;
+			}
+
+			public int? Integer { get; set; }
+
+			public AnotherClass Inside { get; set; }
+		}
+
+		internal class DtoWithSingleNullableFieldWithoutDefaultConstructor
+		{
+			public DtoWithSingleNullableFieldWithoutDefaultConstructor(int? item)
+			{
+				Integer = item;
+			}
+
+			public int? Integer { get; set; }
+
+			public AnotherClass Inside { get; set; }
+		}
+
+		internal class AnotherClass
+		{
+			public decimal? Decimal { get; set; }
+		}
+
+		internal class DataBuilder
+		{
+			public static IDataReader BuildDataReaderWithNullableField()
+			{
+				var table = new DataTable();
+
+				var column1 = table.Columns.Add(IntegerFieldName, typeof(int));
+				column1.AllowDBNull = true;
+
+				var column2 = table.Columns.Add(DecimalFieldName, typeof(decimal));
+				column2.AllowDBNull = true;
+
+				var row1 = table.NewRow();
+				row1[IntegerFieldName] = IntegerFieldValue;
+				row1[DecimalFieldName] = DecimalFieldValue;
+				table.Rows.Add(row1);
+
+				var row2 = table.NewRow();
+				row2[IntegerFieldName] = DBNull.Value;
+				row2[DecimalFieldName] = DBNull.Value;
+				table.Rows.Add(row2);
+
+				return table.CreateDataReader();
+			}
+		}
+
+		[Test]
+		public void ThenResultsShouldBeAsExpected()
+		{
+			Mapper.Reset();
+			Mapper.CreateMap<IDataReader, DtoWithSingleNullableField>()
+				.ForMember(dest => dest.Inside,
+				           opt => opt.MapFrom(src => new AnotherClass
+				                                     	{
+															Decimal = src.IsDBNull(src.GetOrdinal(DecimalFieldName)) ? null : (decimal?)src.GetDecimal(src.GetOrdinal(DecimalFieldName))
+				                                     	}));
+
+			_dataReader = DataBuilder.BuildDataReaderWithNullableField();
+
+			while (_dataReader.Read())
+			{
+				var dto = Mapper.Map<IDataReader, DtoWithSingleNullableField>(_dataReader);
+
+				if (_dataReader.IsDBNull(0))
+				{
+					Assert.That(dto.Integer.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Integer.Value, Is.EqualTo(IntegerFieldValue));
+				}
+
+				if (_dataReader.IsDBNull(1))
+				{
+					Assert.That(dto.Inside.Decimal.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Inside.Decimal.Value, Is.EqualTo(DecimalFieldValue));
+				}
+			}
+		}
+
+		[Test]
+		public void ThenResultsShouldBeAsExpectedButAreNotBecauseThereIsNoDefaultConstructor()
+		{
+			Mapper.Reset();
+			Mapper.CreateMap<IDataReader, DtoWithSingleNullableFieldWithoutDefaultConstructor>()
+				.ConstructUsing(src => new DtoWithSingleNullableFieldWithoutDefaultConstructor(src.IsDBNull(src.GetOrdinal(IntegerFieldName)) ? null : (int?)src.GetInt32(src.GetOrdinal(IntegerFieldName))))
+				.ForMember(dest => dest.Inside,
+						   opt => opt.MapFrom(src => new AnotherClass
+						   {
+							   Decimal = src.IsDBNull(src.GetOrdinal(DecimalFieldName)) ? null : (decimal?)src.GetDecimal(src.GetOrdinal(DecimalFieldName))
+						   }));
+
+			_dataReader = DataBuilder.BuildDataReaderWithNullableField();
+
+			while (_dataReader.Read())
+			{
+				var dto = Mapper.Map<IDataReader, DtoWithSingleNullableFieldWithoutDefaultConstructor>(_dataReader);
+
+				if (_dataReader.IsDBNull(0))
+				{
+					Assert.That(dto.Integer.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Integer.Value, Is.EqualTo(IntegerFieldValue));
+				}
+
+				if (_dataReader.IsDBNull(1))
+				{
+					Assert.That(dto.Inside.Decimal.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Inside.Decimal.Value, Is.EqualTo(DecimalFieldValue));
+				}
+			}
+		}
+
+		[Test]
+		public void ThenResultsShouldBeAsExpectedButAreNotBecauseTheMapIsNotFiringTheConstructUsing()
+		{
+			Mapper.Reset();
+			Mapper.CreateMap<IDataReader, DtoWithSingleNullableFieldWithDefaultConstructor>()
+				.ConstructUsing(src => new DtoWithSingleNullableFieldWithDefaultConstructor(src.IsDBNull(src.GetOrdinal(IntegerFieldName)) ? null : (int?)src.GetInt32(src.GetOrdinal(IntegerFieldName))))
+				.ForMember(dest => dest.Integer, opt => opt.Ignore())
+				.ForMember(dest => dest.Inside,
+						   opt => opt.MapFrom(src => new AnotherClass
+						   {
+							   Decimal = src.IsDBNull(src.GetOrdinal(DecimalFieldName)) ? null : (decimal?)src.GetDecimal(src.GetOrdinal(DecimalFieldName))
+						   }));
+
+			_dataReader = DataBuilder.BuildDataReaderWithNullableField();
+
+			while (_dataReader.Read())
+			{
+				var dto = Mapper.Map<IDataReader, DtoWithSingleNullableFieldWithDefaultConstructor>(_dataReader);
+
+				if (_dataReader.IsDBNull(0))
+				{
+					Assert.That(dto.Integer.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Integer.Value, Is.Not.EqualTo(IntegerFieldValue));
+					Assert.That(dto.Integer.Value, Is.EqualTo(IntegerFieldDefaultValue));
+				}
+
+				if (_dataReader.IsDBNull(1))
+				{
+					Assert.That(dto.Inside.Decimal.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Inside.Decimal.Value, Is.EqualTo(DecimalFieldValue));
+				}
+			}
+		}
+
+		[Test]
+		public void ThenResultsShouldBeAsExpectedButAreNotBecauseTheMapIsNotFiringTheConstructUsingWithMethod()
+		{
+			Mapper.Reset();
+			Mapper.CreateMap<IDataReader, DtoWithSingleNullableFieldWithDefaultConstructor>()
+				.ConstructUsing(src => ConstructDtoWithSingleNullableFieldWithDefaultConstructor(src.IsDBNull(src.GetOrdinal(IntegerFieldName)) ? null : (int?)src.GetInt32(src.GetOrdinal(IntegerFieldName))))
+				.ForMember(dest => dest.Integer, opt => opt.Ignore())
+				.ForMember(dest => dest.Inside,
+						   opt => opt.MapFrom(src => new AnotherClass
+						   {
+							   Decimal = src.IsDBNull(src.GetOrdinal(DecimalFieldName)) ? null : (decimal?)src.GetDecimal(src.GetOrdinal(DecimalFieldName))
+						   }));
+
+			_dataReader = DataBuilder.BuildDataReaderWithNullableField();
+
+			while (_dataReader.Read())
+			{
+				var dto = Mapper.Map<IDataReader, DtoWithSingleNullableFieldWithDefaultConstructor>(_dataReader);
+
+				if (_dataReader.IsDBNull(0))
+				{
+					Assert.That(dto.Integer.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Integer.Value, Is.Not.EqualTo(IntegerFieldValue));
+					Assert.That(dto.Integer.Value, Is.EqualTo(IntegerFieldDefaultValue));
+				}
+
+				if (_dataReader.IsDBNull(1))
+				{
+					Assert.That(dto.Inside.Decimal.HasValue, Is.EqualTo(false));
+				}
+				else
+				{
+					Assert.That(dto.Inside.Decimal.Value, Is.EqualTo(DecimalFieldValue));
+				}
+			}
+		}
+
+		private static DtoWithSingleNullableFieldWithDefaultConstructor ConstructDtoWithSingleNullableFieldWithDefaultConstructor(int? value)
+		{
+			return new DtoWithSingleNullableFieldWithDefaultConstructor(value);
+		}
+
+		private IDataReader _dataReader;
+	}
+}

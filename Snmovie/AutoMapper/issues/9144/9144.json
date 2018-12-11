@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:17:56.347-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When trying to map DB and ViewModel classes Automapper throws StackOverFlowException while project a query.\n\nClasses that are beiing mapped:\n\n     public class SystemRightsGroup : BaseModel\n    {\n        #region Db properties \n\n        public string Name { get; set; }\n\n        #endregion\n\n        #region Relations\n\n        public ICollection<SystemRightsGroupSystemRight> SystemRightsGroupSystemRights { get; set; }\n\n        #endregion\n    }\n\n    public class SystemRightsGroupViewModel : BaseViewModel\n    {\n        [Required]\n        public string Name { get; set; }\n\n        #region Relations \n\n        public virtual ICollection<SystemRightsGroupSystemRightViewModel> SystemRightsGroupSystemRights { get; set; }\n\n        #endregion\n    }\n\n    public class SystemRightsGroupSystemRight : BaseModel\n    {\n        #region Db properties \n\n        [Required]\n        public string SystemRightGroupId { get; set; }\n\n        #endregion\n\n        #region relations\n\n        public virtual SystemRightsGroup SystemRightsGroup { get; set; }\n\n        #endregion\n    }\n\n    public class SystemRightsGroupSystemRightViewModel : BaseViewModel    \n    {\n\n        [Required]\n        public string SystemRightsGroupId { get; set; }\n\n        #region Relations \n\n        public virtual SystemRightsGroupViewModel SystemRightsGroup { get; set; }\n\n        #endregion\n    }\n\n\nMapping config:\n\n            Mapper.CreateMap<Models.DbClasses.SystemRightsGroup, ViewModels.Administration.SystemRightsGroupViewModel>();\n            Mapper.CreateMap<Models.DbClasses.SystemRightsGroupSystemRight, ViewModels.Administration.SystemRightsGroupSystemRightViewModel>();\n\nQuery projection call:\n\nSystemRightGroups = UnitOfWork.SystemRightsGroupsRepository.GetAsQueryable(\n                filter: item => (String.IsNullOrEmpty(Name) ? true : item.Name == Name)\n                //&& (String.IsNullOrEmpty(SystemRightId) ? true : item.SystemRightsGroupSystemRights.Any(record => record.SystemRightId == SystemRightId))\n                && (String.IsNullOrEmpty(Id) ? true : item.ID.Equals(Id))).Project().To<Service.ViewModels.Administration.SystemRightsGroupViewModel>();\n\nI commented out the second filter, cause I thought that was causing the problem, but it wasn't. Also, all variables are used as filter and have null values.",
+    "LastUpdatedDate": "2014-05-08T06:17:56.347-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-12-03T07:00:41.51-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Automapper throws StackOverFlowException",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9144
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

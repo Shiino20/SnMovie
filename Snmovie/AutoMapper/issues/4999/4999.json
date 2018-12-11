@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:58.18-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "NUnit test demonstrating problem attached.\n \nA town has many streets (each of which has a town), a street has many houses (each of which has a street). \nMapping a hierarchy between two such identical looking data structures maps the street / house relationship correctly (i.e. the street property on each house within a street is equal to the street in question). However, the town/street relationshyip is not mapped correctly when there is more than one street in the town (i.e. for the second street, town.street[1].town does not equal town).",
+    "LastUpdatedDate": "2013-05-16T04:59:02.203-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-07-05T07:02:20.743-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Bidirectional many-to-one relationships not mapped for multiple levels",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 4999
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1870,
+      "FileName": "AutoMapperTests.cs",
+      "DownloadUrl": ".\\1870"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I found out that the lookup in the Dictionary<ResolutionContext, object> InstanceCache fails to find other instances because the GetHashCode() functions return different values for the same instance, this breaks rules where Equals and GetHashCodes should give back consistent values for the same pair of objects. This is broken due to hashcode formula using\r\n result = (result*397) ^ (ArrayIndex.HasValue ? ArrayIndex.Value : 0);\r\nNot matching this instance brings Automapper to use the wrong ITypeMapObjectMapper ( NewObjectPropertyMapMappingStrategy instead of CacheMappingStrategy). So when is ArrayIndex set? this happens inside the EnumerableMapperBase<TEnumerable> that in a loop calls CreateElementContext.\r\n\r\nSince ArrayIndex is only used inside ResolutionContext.MemberName maybe is not that important to keep it in the GetHashCode math.",
+      "PostedDate": "2010-09-07T16:18:20.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Commenting out ResolutionContext.cs line 210 enables the test. I've been working with AutoMapper for few weeks, i don't know if this patch will break any other test, but i'm finally able to map Self Tracking Entities.",
+      "PostedDate": "2010-09-07T16:24:18.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you provide an example i also have the same problem , please demonstrate a simple example , I am also stukc in such a situation while using automapper.",
+      "PostedDate": "2011-01-07T02:32:45.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-25T06:38:27.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:58.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:19.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:02.203-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

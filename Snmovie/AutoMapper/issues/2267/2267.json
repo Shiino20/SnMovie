@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:51.02-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Nested mappings are not taken into consideration when they are arrays or collections.\nSee attached modified your unit test.",
+    "LastUpdatedDate": "2013-05-16T04:59:07.66-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-07-22T06:38:06.27-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "NestedMappings don't work properly when nested type is Array(or Collection)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2267
+  },
+  "FileAttachments": [
+    {
+      "FileId": 748,
+      "FileName": "NestedMappings.cs",
+      "DownloadUrl": ".\\748"
+    },
+    {
+      "FileId": 1029,
+      "FileName": "ClassDiagram.gif",
+      "DownloadUrl": ".\\1029"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The problem appears only when source maping type equals destination type.\r\nAs you can see in attached test, I used:\r\nvar dest = Mapper.Map<OuterSource, OuterSource>(source);\r\n\r\nThis behavior is due to condition in class EnumerableMapperBase:\r\n\r\nif (context.DestinationType.IsAssignableFrom(context.SourceType) && context.SourceValue != null)\r\n{\r\n   return context.SourceValue;\r\n}\r\n",
+      "PostedDate": "2009-07-23T01:27:53.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not sure I understand the failing test - you're mapping something to itself, so it just returns the object.  Do you have one that highlights the collection issue?",
+      "PostedDate": "2009-08-15T17:47:18.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, I am mapping object with the same source and destination type.\r\nOuterSource.InnerArray is an array, and despite of I ignore some fields (Mapper.CreateMap<InnerSource, InnerDest>().ForMember(a => a.IgnoreValue, act => act.Ignore());)\r\nin result set I get InnerArray with all fields.\r\n Maybe I should write:\r\nMapper.CreateMap<InnerSource, InnerSource>().ForMember(a => a.IgnoreValue, act => act.Ignore());\r\n?",
+      "PostedDate": "2009-08-16T23:34:16.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi!\r\n\r\nWe had a similar problem (see attached class diagram). I initialized the Mapper as followed:\r\n\r\n//Client -> Proxy\r\nMapper.CreateMap<IndexDocument, Proxy.IndexDocument>();\r\nMapper.CreateMap<IndexField, Proxy.IndexField>();\r\nMapper.CreateMap<TextField, Proxy.TextField>();\r\nMapper.CreateMap<BinaryField, Proxy.BinaryField>();\r\nMapping from IndexDocument to Proxy.IndexDocument:\r\nvar proxy = Mapper.Map<IndexDocument, Proxy.IndexDocument>(document);\r\n\r\nMy IndexDocument contains 3 TextFields. Therefore my Proxy-IndexDocument should contain 3 Proxy.TextFields as well – but it doesn’t. Instead 3 Proxy.IndexFields have been created. I think the problem lies in the Map Method of EnumerableMapperBase<TEnumerable>:\r\n\r\n//Do not use the Generic Type of the IEnumerable, because it could be a base type or interface.\r\n// Instead use the type of the item when iterating over the enumerable.\r\n//Type sourceElementType = TypeHelper.GetElementType(context.SourceType, sourceValue);\r\nType destElementType = TypeHelper.GetElementType(context.DestinationType);\r\n\r\nIn the foreach for enumerableValue I retrieve Source- and Destination-Type as follows:\r\n\r\n//Use the concret type of the list item\r\nvar sourcType = item.GetType();\r\n//Retrieve destination type from mapper\r\nvar destinationType = (from m in mapper.ConfigurationProvider.GetAllTypeMaps()\r\n                                 where m.SourceType.Equals(sourcType)\r\n                                 select m.DestinationType).FirstOrDefault();\r\n\r\nI know that is not optimal to retrieve the mapped destination-type for each source-type. There should be a kind of caching.  I did not find a way to retrieve the destination-type by only specifying the source-type. I think that would be nice, too. E.g.:\r\n\r\nvar destinationType = mapper.ConfigurationProvider.FindDestinationType(Type sourceType)\r\n// or\r\nvar sourceType = mapper.ConfigurationProvider.FindSourceType(Type destinationType)\r\n\r\nBest regards,\r\nDominik",
+      "PostedDate": "2009-10-08T03:27:35.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-08T03:27:37.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:47:51.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:26.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:07.66-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

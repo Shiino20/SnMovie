@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Solved with backing interface on ASPX page, I believe",
+    "ClosedDate": "2009-09-13T11:29:25.303-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hey there,\n \nI'll try to simplify the scenario, so, not all the names and practices below are real world or topic for criticism:\n \nLet's say I have EmployeeEntity object, and EditEmployee.aspx page, which has private field _employeeEntity.\n \n \nIn my Page_Load event I might have something like:\nPage_Load:\n _employeeEntity = new EmployeeEntity( Request.QueryString[\"id\"] );\n if(!IsPostPack) LoadUIFromEmployeeModel();\n \nSay I also have a Save button, where the button click is something like:\nSaveEmployee_Click:\n LoadEmployeeModelFromUI();\n _employeeEntity.Save(); // or EmployeeRepository.Save(_employeeEntity); .. whatever\n \n \nCam Automapper help me with LoadUIFromEmployeeModel() and LoadEmployeeModelFromUI() ?\nI mean, where the two functions look like:\n \nLoadUIFromEmployeeModel():\n txtName.Text =  _employeeEntity.Name; //text box\n chkIsActive.Checked =  _employeeEntity.IsActive; //check box\n ddlDepartmentId.Items.SelectByValue(_employeeEntity.DepartmentId); // drop down list\n \nLoadUIFromEmployeeModel():\n _employeeEntity.Name = txtName.Text; //text box\n _employeeEntity.IsActive = chkIsActive.Checked; //check box\n _employeeEntity.DepartmentId = ddlDepartmentId.SelectedValue; // drop down list\n \n \nCan I automate this somehow using Automap?\nIf yes, what is the sample code of doing it?\nAlso, if yes, what are the limitations (for example, the drop down list line or say if I have the Name as two text boxes: txtName_FirstName mapping to _employeeEntity.Name.FirstName and txtName_LastName mapping to _employeeEntity.Name.LastName)?",
+    "LastUpdatedDate": "2013-05-16T04:59:07.257-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-08-10T22:35:40.783-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Use with webforms load/save typical scenarios",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 2407
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I think I would do this with interfaces - make an IView that exposes the controls as simple properties, string Name { get; set; }.  This is what I did when I used MVP with WebForms, it worked quite nicely. Then you only need to map IEmployeeView to Employee.  Make sense?",
+      "PostedDate": "2009-08-15T17:49:04.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-13T11:29:25.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:26.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:07.257-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

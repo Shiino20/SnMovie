@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "157145",
+    "ThreadId": "46981",
+    "Html": "Can someone help me with setting up the mapping so I only create them once.<br>\r\n<br>\r\nI guess that I need some kind of singleton pattern. but I am a little green.<br>\r\n",
+    "PostedDate": "2009-02-12T11:13:43.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157277",
+    "ThreadId": "46981",
+    "Html": "What kind of app are you running (WinForms, <a href=\"http://ASP.NET\">ASP.NET</a>, console, Silverlight)?<br><br><div>On Thu, Feb 12, 2009 at 1:13 PM, mhnyborg <span dir=ltr>&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br>\r\n<blockquote style=\"margin:0pt 0pt 0pt 0.8ex;padding-left:1ex\">   <div> <p>From: mhnyborg</p> <div>Can someone help me with setting up the mapping so I only create them once.<br>\r\n\r\n<br>\r\nI guess that I need some kind of singleton pattern. but I am a little green.<br>\r\n</div> <div> <p>Read the <a href=\"http://www.codeplex.com/AutoMapper/Thread/View.aspx?ThreadId=46981&ANCHOR#Post157145\">full discussion online</a>.</p> <p>To add a post to this discussion, reply to this email (<a href=\"mailto:AutoMapper@discussions.codeplex.com?subject=[AutoMapper:46981]\">AutoMapper@discussions.codeplex.com</a>)</p>\r\n <p>To start a new discussion for this project, email <a href=\"mailto:AutoMapper@discussions.codeplex.com\">AutoMapper@discussions.codeplex.com</a></p> <p>You are receiving this email because you subscribed to this discussion on CodePlex. You can <a href=\"http://www.codeplex.com/site/discussions/project/unsubscribe/AutoMapper\">unsubscribe or change your settings</a> on codePlex.com.</p>\r\n <p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at <a href=\"http://codeplex.com\">codeplex.com</a></p> </div> </div> </blockquote>\r\n</div><br>",
+    "PostedDate": "2009-02-12T20:16:47.74-08:00",
+    "UserRole": "Coordinator",
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157382",
+    "ThreadId": "46981",
+    "Html": "I have a Silverlight app getting data from a CSLA wpfPortal that has Http Context enabled.\r\n",
+    "PostedDate": "2009-02-13T04:15:31.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "157419",
+    "ThreadId": "46981",
+    "Html": "I'm not too familiar with Silverlight BUT....<br><br>All .NET applications have some kind of &quot;entry point&quot; where you can place all of your registration code.  For WinForms/Console apps, it was Main(), for <a href=\"http://ASP.NET\">ASP.NET</a>, it's in Application_Start.  You don't need to worry about singletons, just a static class/method will work just fine.  Registration code only needs to execute once, so putting it in the startup piece of Silverlight works fine.<br>\r\n<br><div>On Fri, Feb 13, 2009 at 6:15 AM, mhnyborg <span dir=ltr>&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br><blockquote style=\"margin:0pt 0pt 0pt 0.8ex;padding-left:1ex\">\r\n   <div> <p>From: mhnyborg</p> <div>I have a Silverlight app getting data from a CSLA wpfPortal that has Http Context enabled.\r\n</div><div> <div> <p>Read the <a href=\"http://www.codeplex.com/AutoMapper/Thread/View.aspx?ThreadId=46981&ANCHOR#Post157382\">full discussion online</a>.</p> <p>To add a post to this discussion, reply to this email (<a href=\"mailto:AutoMapper@discussions.codeplex.com?subject=[AutoMapper:46981]\">AutoMapper@discussions.codeplex.com</a>)</p>\r\n <p>To start a new discussion for this project, email <a href=\"mailto:AutoMapper@discussions.codeplex.com\">AutoMapper@discussions.codeplex.com</a></p> <p>You are receiving this email because you subscribed to this discussion on CodePlex. You can <a href=\"http://www.codeplex.com/site/discussions/project/unsubscribe/AutoMapper\">unsubscribe or change your settings</a> on codePlex.com.</p>\r\n <p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at <a href=\"http://codeplex.com\">codeplex.com</a></p> </div> </div></div> </blockquote>\r\n</div><br>",
+    "PostedDate": "2009-02-13T06:15:30.557-08:00",
+    "UserRole": "Coordinator",
+    "MarkedAsAnswerDate": null
+  }
+]

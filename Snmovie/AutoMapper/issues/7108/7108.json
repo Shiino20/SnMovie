@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:59.703-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Silverlight 4 project, Mapping from Class to Interface.\n \nCastle.DynamicProxy.Generators.InterfaceProxyWithTargetGenerator.GetTypeImplementerMapping(Type[] interfaces, Type proxyTargetType, IEnumerable`1& contributors, INamingScope namingScope)\nCastle.DynamicProxy.Generators.InterfaceProxyWithoutTargetGenerator.GenerateType(String typeName, Type proxyTargetType, Type[] interfaces, INamingScope namingScope)\nCastle.DynamicProxy.Generators.InterfaceProxyWithTargetGenerator.GenerateCode(Type proxyTargetType, Type[] interfaces, ProxyGenerationOptions options)\nCastle.DynamicProxy.DefaultProxyBuilder.CreateInterfaceProxyTypeWithoutTarget(Type interfaceToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options)\nCastle.DynamicProxy.ProxyGenerator.CreateInterfaceProxyTypeWithoutTarget(Type interfaceToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options)\nCastle.DynamicProxy.ProxyGenerator.CreateInterfaceProxyWithoutTarget(Type interfaceToProxy, Type[] additionalInterfacesToProxy, ProxyGenerationOptions options, IInterceptor[] interceptors)\nCastle.DynamicProxy.ProxyGenerator.CreateInterfaceProxyWithoutTarget(Type interfaceToProxy, IInterceptor interceptor)\nAutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.CreateObject(ResolutionContext context)\nAutoMapper.Mappers.TypeMapObjectMapperRegistry.NewObjectPropertyMapMappingStrategy.GetMappedObject(ResolutionContext context, IMappingEngineRunner mapper)\nAutoMapper.Mappers.TypeMapObjectMapperRegistry.PropertyMapMappingStrategy.Map(ResolutionContext context, IMappingEngineRunner mapper)\nAutoMapper.Mappers.TypeMapMapper.Map(ResolutionContext context, IMappingEngineRunner mapper)\nAutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)",
+    "LastUpdatedDate": "2013-05-16T04:58:54.327-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-29T01:58:46.263-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "System.Security.VerificationException: Operation could destabilize the runtime",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7108
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

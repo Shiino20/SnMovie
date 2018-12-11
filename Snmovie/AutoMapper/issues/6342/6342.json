@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:03.377-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, there exists an annoying incompatibility when making from models to llbl entities. The issue pops up when you are mapping *TO* an entity (not from an entity). If you are trying to map values to a property on the entity that is of type EntityCollection<T> (which is an LLBL collection class used to contain, in this case, related entities). It tries to clear the collections (its calls Clear()) list source... \n \nto be honest its been a year since I came up with the work around and I am a bit hazy on the details now but it's described in detail here: http://llblgen.com/TinyForum/Messages.aspx?ThreadID=17504\n \nIt seems to stem from the fact that EntityCollection doesn't implement IList, it implement IListSource.",
+    "LastUpdatedDate": "2013-05-16T04:58:57.82-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-03-17T20:35:49.483-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AutoMapper not playing nice with LLBLGen",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6342
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "(also EntityCollection properties are not settable)",
+      "PostedDate": "2011-03-17T20:36:47.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:47:03.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:15.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:57.82-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

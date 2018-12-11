@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:44.663-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "To be consistent with default behavior of other mappers it seems that DataReaderMapper should perform case-insensitive mapping. The simplest way to implement this would be to change this line in DataReaderMapper.CreateBuilder:\n \nvar propertyInfo = destinationType.GetProperty(dataRecord.GetName(i));\n \nto something like the following\n \nvar dataName = dataRecord.GetName(i);\nvar propertyInfo = destinationType.GetProperties().Where(p => p.Name.Equals(dataName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();",
+    "LastUpdatedDate": "2013-05-16T04:58:58.64-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-01-20T20:30:07.71-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DataReaderMapper should create case-insensitive mappings by default",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 6127
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

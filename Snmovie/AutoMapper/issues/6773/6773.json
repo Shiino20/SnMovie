@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:17.553-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hey guys,\n \nI need help with my mapper program..\ni have two types (Lets say A and B)and i want to have two different mappings.\nIn one method i want to use the first mapping between A and B and in other method i want to take the second. \n \nI saw that \"Mapper\" Class is static...so i can't use CreateMap twice.\nIs this possible?\n \nthanks..",
+    "LastUpdatedDate": "2013-05-16T04:58:56.08-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-06-03T13:24:18.38-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multiple mappings for the same type",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6773
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I think that you can use \"Profiles\" for that purpose.\r\n\r\nAlso you can create many mappers -\r\nConfiguration configuration = new Configuration(new TypeMapFactory(), MapperRegistry.AllMappers.Invoke());\t\r\n// do the configurations ....\r\nvar engine = new MappingEngine(configuration);",
+      "PostedDate": "2011-08-07T03:08:45.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:17.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:12.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:56.08-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

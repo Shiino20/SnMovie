@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Yes, just set the source member naming convention&#58;Mapper.Initialize&#40;cfg &#61;&#62; &#123;cfg.SourceMemberNamingConvention &#61; new LowerUnderscoreNamingConvention&#40;&#41;&#59;cfg.CreateMap&#60;publisher_type_with_underscorses, Publisher&#62;&#40;&#41;&#59;&#125;&#41;&#59;This can also be done on a per-profile basis, if not all the types you map follow this convention.",
+    "ClosedDate": "2010-03-20T20:24:40.52-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "can I specify AutoMapper to map properties like publisher_name -> PublisherName",
+    "LastUpdatedDate": "2013-05-16T04:59:05.003-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-17T13:07:34.333-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Map from property with _ to camel case",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4052
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Yes, just set the source member naming convention:\r\n\r\nMapper.Initialize(cfg => {\r\n    cfg.SourceMemberNamingConvention = new LowerUnderscoreNamingConvention();\r\n    cfg.CreateMap<publisher_type_with_underscorses, Publisher>();\r\n});\r\n\r\nThis can also be done on a per-profile basis, if not all the types you map follow this convention.",
+      "PostedDate": "2010-02-18T10:20:46.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-20T20:24:40.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:23.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:05.003-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<div class="wikidoc"><h1>Flattening</h1>
+One of the common usages of object-object mapping is to take a complex object model and flatten it to a simpler model.  You can take a complex model such as:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Order
+{
+	<span style="color:Blue;">private</span> <span style="color:Blue;">readonly</span> IList&lt;OrderLineItem&gt; _orderLineItems = <span style="color:Blue;">new</span> List&lt;OrderLineItem&gt;();
+
+	<span style="color:Blue;">public</span> Customer Customer { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+
+	<span style="color:Blue;">public</span> OrderLineItem[] GetOrderLineItems()
+	{
+		<span style="color:Blue;">return</span> _orderLineItems.ToArray();
+	}
+
+	<span style="color:Blue;">public</span> <span style="color:Blue;">void</span> AddOrderLineItem(Product product, <span style="color:Blue;">int</span> quantity)
+	{
+		_orderLineItems.Add(<span style="color:Blue;">new</span> OrderLineItem(product, quantity));
+	}
+
+	<span style="color:Blue;">public</span> <span style="color:Blue;">decimal</span> GetTotal()
+	{
+		<span style="color:Blue;">return</span> _orderLineItems.Sum(li =&gt; li.GetTotal());
+	}
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Product
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">decimal</span> Price { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Name { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> OrderLineItem
+{
+	<span style="color:Blue;">public</span> OrderLineItem(Product product, <span style="color:Blue;">int</span> quantity)
+	{
+		Product = product;
+		Quantity = quantity;
+	}
+
+	<span style="color:Blue;">public</span> Product Product { <span style="color:Blue;">get</span>; <span style="color:Blue;">private</span> <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Quantity { <span style="color:Blue;">get</span>; <span style="color:Blue;">private</span> <span style="color:Blue;">set</span>;}
+
+	<span style="color:Blue;">public</span> <span style="color:Blue;">decimal</span> GetTotal()
+	{
+		<span style="color:Blue;">return</span> Quantity*Product.Price;
+	}
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Customer
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Name { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />We want to flatten this complex Order object into a simpler OrderDto that contains only the data needed for a certain scenario:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> OrderDto
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> CustomerName { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">decimal</span> Total { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />When you configure a source/destination type pair in AutoMapper, the configurator attempts to match properties and methods on the source type to properties on the destination type.  If for any property on the destination type a property, method, or a method prefixed with &quot;Get&quot; does not exist on the source type, AutoMapper splits the destination member name into individual words (by PascalCase conventions).<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">// Complex model</span>
+
+<span style="color:Blue;">var</span> customer = <span style="color:Blue;">new</span> Customer
+	{
+		Name = <span style="color:#A31515;">&quot;George Costanza&quot;</span>
+	};
+<span style="color:Blue;">var</span> order = <span style="color:Blue;">new</span> Order
+	{
+		Customer = customer
+	};
+<span style="color:Blue;">var</span> bosco = <span style="color:Blue;">new</span> Product
+	{
+		Name = <span style="color:#A31515;">&quot;Bosco&quot;</span>,
+		Price = 4.99m
+	};
+order.AddOrderLineItem(bosco, 15);
+
+<span style="color:Green;">// Configure AutoMapper</span>
+
+Mapper.CreateMap&lt;Order, OrderDto&gt;();
+
+<span style="color:Green;">// Perform mapping</span>
+
+OrderDto dto = Mapper.Map&lt;Order, OrderDto&gt;(order);
+
+dto.CustomerName.ShouldEqual(<span style="color:#A31515;">&quot;George Costanza&quot;</span>);
+dto.Total.ShouldEqual(74.85m);
+</pre></div><br />We configured the type map in AutoMapper with the CreateMap method.  AutoMapper can only map type pairs it knows about, so we have explicitly register the source/destination type pair with CreateMap.  To perform the mapping, we use the Map method.<br /><br />On the OrderDto type, the Total property matched to the GetTotal() method on Order.  The CustomerName property matched to the Customer.Name property on Order.  As long as we name our destination properties appropriately, we do not need to configure individual property matching.</div><div class="ClearBoth"></div>

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:39.28-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When multiple sufixes are defined and the target property is a match for a sufix but includes another no mapping is found. This is best illustrated with a test:\n \n    [TestFixture]\n    public class IxesTest\n    {\n        [SetUp]\n        public void Before()    \n        {\n            Mapper.Reset();\n            Mapper.Configuration.RecognizeDestinationPostfixes(\"CodeKey\", \"Key\");\n            Mapper.CreateMap<Stuff, StuffView>();\n        }\n \n        [Test]\n        public void Mapper_configuration_should_be_valid()\n        {\n            Mapper.AssertConfigurationIsValid();\n        }\n \n        public class Stuff\n        {\n            public int Id { get; set; }\n            public string Name { get; set; }\n            public string RankCode { get; set; }\n        }\n \n        public class StuffView\n        {\n            public int IdCodeKey { get; set; }\n            public string NameKey { get; set; }\n            public string RankCodeKey { get; set; }\n        }\n    }",
+    "LastUpdatedDate": "2013-05-16T04:58:56.207-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-05-18T07:56:17.1-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Recognize sufixes bug",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6656
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

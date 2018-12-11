@@ -1,0 +1,83 @@
+﻿namespace CoreTests.ObjectModel
+{
+    using System.Reflection;
+
+    using AutoMapper;
+
+    using NUnit.Framework;
+
+    [TestFixture]
+    public class TestMapExplodingProperty
+    {
+        /// <summary>
+        /// Converts a primitive type to a nullable version of the same type.
+        /// The source type property won't be called unless the parent owning the propery does not have a method called IsFooNull();
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public class PrimitiveToNullablePrimitiveConverter<T> : ITypeConverter<T, T?> where T : struct
+        {
+            public T? Convert(ResolutionContext context)
+            {
+                string memberName = context.MemberName;
+                object sourceValue = context.Parent.SourceValue;
+                MethodInfo methodInfo = sourceValue.GetType().GetMethod("Is" + memberName + "Null");
+                if (methodInfo != null)
+                {
+                    if ((bool)methodInfo.Invoke(sourceValue, new object[] {}))
+                    {
+                        return null;
+                    }
+                }
+                return (T)context.SourceValue;
+            }
+        }
+
+        /// <summary>
+        /// A simple wrapper around a nullable boolean property that exposes it as a non-nullable boolean and a property to perform the test.
+        /// This isn't a good way to model it but its a simplified version of what comes out of the Data Table Adapters.
+        /// </summary>
+        public class Source
+        {
+            private bool? _myProp;
+            public Source(bool? prop)
+            {
+                _myProp = prop;
+            }
+
+            /// <summary>
+            /// Gets the property. Note that this will blow up if the property is null. See IsMyPropNull.
+            /// </summary>
+            public bool MyProp
+            {
+                get
+                {
+                    return _myProp.Value;
+                }
+            }
+
+            /// <summary>
+            /// Determines if the property is null. If it is then invoking MyProp will fail.
+            /// </summary>
+            /// <returns></returns>
+            public bool IsMyPropNull()
+            {
+                return !_myProp.HasValue;
+            }
+        }
+
+        public class Target
+        {
+            public bool? MyProp { get; set; }
+        }
+
+        [Test]
+        public void TestMapping()
+        {
+            Mapper.CreateMap<bool, bool?>().ConvertUsing(new PrimitiveToNullablePrimitiveConverter<bool>());
+            Mapper.CreateMap<Source, Target>();
+            Assert.IsTrue(Mapper.Map<Source, Target>(new Source(true)).MyProp.Value);
+            Assert.IsFalse(Mapper.Map<Source, Target>(new Source(false)).MyProp.Value);
+            Assert.IsNull(Mapper.Map<Source, Target>(new Source(null)).MyProp);
+        }
+    }
+}

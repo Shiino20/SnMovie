@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:45:47.277-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nI find it confusing that automapper still executes mapping code for objects that don't meet the specified condition. Shouldn't it skip trying to map the value in the first test?\nThis forces me to handle properties that I'm not even trying to map. For instance, null values on reference type properties.\n \nE.g: For the mapping below, both tests hit the TestMapping method. \n          Mapper.Initialize(cfg => \n          {\n                    cfg.CreateMap<Source, Destination>().ForMember(dest => dest.Value, opt =>  {  opt.Condition(src => src.Value > 0); }  opt.MapFrom(s => TestMapping(s.Value));  });\n          });\n          \n            int TestMapping(int value)   {  return value + 1;  }\n \n            [Test]\n            public void Should_skip_the_mapping_when_the_condition_is_true()\n            {\n                var destination = Mapper.Map<Source, Destination>(new Source {Value = -1});\n                destination.Value.ShouldEqual(0);\n            }\n \n            [Test]\n            public void Should_execute_the_mapping_when_the_condition_is_false()\n            {\n                var destination = Mapper.Map<Source, Destination>(new Source { Value = 7 });\n                destination.Value.ShouldEqual(7);\n            }",
+    "LastUpdatedDate": "2013-05-16T04:58:54.177-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-09-01T13:50:48.28-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Conditional mapping MapFrom is executed even when the condition hasn't been met",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7122
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

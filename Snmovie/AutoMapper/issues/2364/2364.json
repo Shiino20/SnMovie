@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Supported now with the ConstructServicesUsing&#40;&#41; configuration option.",
+    "ClosedDate": "2010-03-19T13:14:18.81-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It would be handy if dependencies could be injected into mapping handler objects created by the AutoMapper when performing a mapping (such as IValueResolver implementations, Profile).",
+    "LastUpdatedDate": "2013-05-16T04:59:07.527-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-08-06T09:26:30.837-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Support dependency injection?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 6,
+    "Id": 2364
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

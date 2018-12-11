@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:19:38.08-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am using automapper in my prism application to Map the Data Access Entities to Business Layer Entities. But its seems to be consuming a lot of memory.\n\n```\n```\n public EMRBusinessLogic(IUnityContainer container, IRegionManager regionManager)\n        {\n            this.regionManager = regionManager;\n            this.container = container;\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.AnatomicStructure, AnatomicStructure>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.Encounter, Encounter>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.EntityBase, EntityBase>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.ExamFinding, ExamFinding>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.MedicalNote, MedicalNote>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.PatientExamFinding, PatientExamFinding>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.PatientExamStructure, PatientExamStructure>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.AnatomicStructureType, AnatomicStructureType>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.EncounterStatus, EncounterStatus>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.FindingLaterality, FindingLaterality>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.MedicalNoteStatus, MedicalNoteStatus>();\n            Mapper.CreateMap<VCA.Sparky.DataAccess.EMR.Sex, Sex>();\n        }\n\npublic List<AnatomicStructure> GetAnatomicStructure()\n        {\n            var ienumerableDest = Mapper.Map<List<DataAccess.EMR.AnatomicStructure>, List<AnatomicStructure>>(ExamFindingDataManager.GetAllTopAnatomicStructures());\n            return ienumerableDest;\n        }\n\n```\n```\n\nWhats the issue in this. The Automapper is not disposing it seems to be in the memory with a lot of live intances.",
+    "LastUpdatedDate": "2014-05-08T06:19:38.08-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-09-22T23:17:44.057-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Memory Issues with AutoMapper",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9028
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

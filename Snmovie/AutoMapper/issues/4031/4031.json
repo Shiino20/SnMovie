@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "There&#39;s nothing you need to do here, AutoMapper only really cares about the destination members.  It only tries to map what it finds on the destination type.",
+    "ClosedDate": "2010-03-20T17:57:03.927-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I would like to be able to ignore SOURCE properties, as my destination may possibly not include something which the source does. A good example is if you would like to map from a DataContracted type via a service reference. .Net generates some new properties on the type (ExtensionData for example) which I do not want my target to have to implement.\n \nCan I do this at the moment, or is this a new feature request?\n \nThanks.",
+    "LastUpdatedDate": "2013-05-16T04:59:05.483-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-12T09:36:39.437-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Ignore source properties",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 4031
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:19:48.473-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm new to AutoMapper and i have the following manual mapping in CustomerService in Service Layer in my application, where i tried to find out the equivalent AutoMapper mapping code but i couldn't due to nested and complex objects and collections, so please help me to resolve this issue\n\nhere the code from CustomerService : Service.Customer is the DataContract and Data.Customer is the Entity\n\npublic Service.Customer GetCustomer(string customerID)\n    {\n        Data.Customer customer\n            = _northwindEntities\n                .Customers.Single(\n                    c => c.CustomerID == customerID);\n        return new Service.Customer\n                   {\n                       CustomerID = customer.CustomerID,\n                       CompanyName = customer.CompanyName,\n                       ContactName = customer.ContactName,\n                       Address = customer.Address,\n                       City = customer.City,\n                       Country = customer.Country,\n                       Region = customer.Region,\n                       PostalCode = customer.PostalCode,\n                       Phone = customer.Phone,\n                       Orders \n                        = GetOrders(customer.Orders)\n                   };\n    }\n\nService.Order is the DataContract and Data.Order is the Entity ...\n\nprivate static IEnumerable<Service.Order> GetOrders(\n        IEnumerable<Data.Order> order)\n    {\n        return order.Select(o => new Service.Order\n            {\n                OrderID = o.OrderID,\n                OrderDate = o.OrderDate,\n                OrderDetails = GetOrderDetails(o),\n                Freight = o.Freight,\n                ShippedDate = o.ShippedDate\n            }).ToList();\n    }\n\nService.OrderDetail is the DataContract and Data.Order is the Entity ...\n\nprivate static IEnumerable<Service.OrderDetail> GetOrderDetails(\n        Data.Order order)\n    {\n\n        return order.Order_Details.Select(\n            o => new Service.OrderDetail\n            {\n                Product \n                    = new Service.Product\n                    {\n                        ProductID \n                            = o.Product.ProductID,\n                        ProductName \n                            = o.Product.ProductName\n                    },\n                Quantity = o.Quantity,\n                UnitPrice = o.UnitPrice\n            }).ToList();\n    }\n\nSo OrderDetails are nested inside Oreders and Orders are nested inside Customer ...How to reflect this hierarchy using AutoMapper Thanks in advance",
+    "LastUpdatedDate": "2014-05-08T06:19:48.473-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-07-30T11:24:47.933-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Mapping EFcomplex Entities into WCF DataContracts using AutoMapper",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 8911
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

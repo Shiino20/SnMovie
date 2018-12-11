@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:56.317-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have two objects that expose a property called \"Type\" that is an enumerator. For some reason is breaks automapper completely. When I rename the property, it works again. Is there some special meaning to that property name that automapper uses?",
+    "LastUpdatedDate": "2013-05-16T04:58:58.487-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-01-31T08:03:39.2-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper breaks when mapping objects with a property named \"Type\"",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6181
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Having yet to use AutoMapper, but reading the brief, perhaps it's due to the way GetXXX methods are automatically mapped to XXX if they exist.  So in your case, perhaps it's trying to use GetType() ? .",
+      "PostedDate": "2011-03-27T13:42:42.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:56.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:15.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:58.487-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

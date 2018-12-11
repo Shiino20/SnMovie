@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:04.83-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've noticed there's a feature that would save me a lot of effort and wouldn't be too terribly hard to implement, I think.\n \nLet's say I have an object I'm reading/loading from a DB using EntityFramework.  Call the object \"Company\" and the model I'm mapping it to CompanyViewModel.  Now let's say I'm doing some pretty ordinary mapping... \n \nCompany.State.Abbreviation => CompanyViewModel.StateAbbreviation\nCompany.PrimaryContact.Name => CompanyViewModel.PrimaryContactName\n \nIf I'm going to load a large number of these, such as for a grid/table of them on a website, then I'd really like the EntityFramework call to use \".Include(c => c.State).Include(c => c.PrimaryContact)\" to join the data and load it effeciently in one call instead of 1+N*2 calls.\n \nWhile I can code that by hand, I know that by using the code-generated attributes from EntityFramework it would actually be very easy to implement a function that would do that automatically.  Something like \".AutoIncludes<CompanyViewModel>()\".  It could be implemented as an elegant extension method on EntityFramework objects to automatically detect needed Includes and then add them to the query.\n \nThat would be pretty awesome, and I don't even think it would be hard to implement!",
+    "LastUpdatedDate": "2013-05-16T04:58:54.487-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-19T07:07:08.37-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AutoInclude for EntityFramework",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7082
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

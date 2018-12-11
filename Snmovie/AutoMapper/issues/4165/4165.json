@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "See comment",
+    "ClosedDate": "2010-03-19T11:52:59.69-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n \nI'm doing basic mappings (see below for an example) on the serverside of a WCF service call and although they originally worked fine they now throws \"Trying to map Domain.Entities.BasicContact to Facade.Dto.BasicContact. Exception of type 'AutoMapper.AutoMapperMappingException' was thrown.\"  I checked all the inputs and the mappings, and after reading some of the issues here, I've even checked that we're not using nullables anywhere or have namspace issues. Everything looks OK, so I was wondering if you had a debugging version with an AutoMapper.pdb so I can step into the code and see whats causing the exception in more detail?\n \nDto.BasicContact contact = AutoMapper.Mapper.Map<Domain.Entities.BasicContact, Facade.Dto.BasicContact>( domainContact );",
+    "LastUpdatedDate": "2013-05-16T04:59:04.357-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-03-17T03:56:17.053-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Debug Version",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4165
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The easiest way to get a debug version is clone the github repo and build.  Otherwise, I'd welcome patches to the build script :)",
+      "PostedDate": "2010-03-19T11:52:48.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-19T11:52:59.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:22.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:04.357-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:46.377-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a class with a single public constructor; that constructor has two parameters, which are both optional; however, AutoMapper refuses to construct the instance, complaining that there is no default constructor. Well, strictly speaking there isn't, but not so strictly speaking, that shouldn't be a problem as if you don't pass any parameters to the constructor, it will use the default values.\n \nHow do I work around the current limitation?",
+    "LastUpdatedDate": "2013-05-16T04:58:57.28-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-04-11T15:21:25.19-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot map to default constructor with optional parameters",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6481
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "OK, I found the workaround (using the .ConstructFrom method, see http://stackoverflow.com/questions/2239143/automapper-how-to-map-to-constructor-parameters-instead-of-property-setters); but AutoMapper should still be able to cater for this scenario without having to write the extra code.",
+      "PostedDate": "2011-04-11T15:49:28.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Remember, optional parameters are a compile-time, not run-time optimization. It's why the Framework Design Guidelines recommends NOT using them. Weird, I know, but basically reflection-based APIs don't know about optional parameters, unfortunately. Nor do they know about conversion operators unless I do some rather bizarre assumptions.\r\n\r\nHave you tried a private no-arg constructor?",
+      "PostedDate": "2011-04-15T15:34:06.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, so if it's a limitation of the reflection APIs then I guess there's not too much that can be done to fix it. The .ConstructFrom workaround should suffice then, thanks!",
+      "PostedDate": "2011-04-26T17:31:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:46.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:14.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:57.28-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

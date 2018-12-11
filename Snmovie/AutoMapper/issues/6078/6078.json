@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:13.927-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Here's a small example case where polymorph mapping works and fails:\ninterface IBase { }\ninterface IDerived : IBase { }\nclass Base : IBase { }\nclass Derived : Base, IDerived { }\nclass BaseDto { }\nclass DerivedDto : BaseDto { }\n \nand following mappings:\nMapper.CreateMap<Base, BaseDto>().Include<Derived, DerivedDto>();\nMapper.CreateMap<Derived, DerivedDto>();\n// try with and without the following two lines, also try with just the following two lines\nMapper.CreateMap<IBase, BaseDto>().Include<IDerived, DerivedDto>();\nMapper.CreateMap<IDerived, DerivedDto>();\n \nList<Base> list = new List<Base>() { new Derived() };\nConsole.WriteLine(Mapper.Map<IEnumerable<Base>, BaseDto[]>(list).First().GetType() == typeof(DerivedDto));\n \nIf the interface mappings are not created, the Console will output True as expected and documented. However if only the interface mappings are created it will output False. I had hoped that it would have worked with just the interfaces (even though I understand that this may be difficult with multiple interface inheritance), but I didn't expect that it doesn't work anymore when interface mappings were created _in addition_ to the class mappings.",
+    "LastUpdatedDate": "2013-05-16T04:58:58.79-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-01-11T09:09:41.727-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Polymorphic collection mapping may break if interface mappings are added",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6078
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Nope, this is a bug, and fixed",
+    "ClosedDate": "2010-06-08T05:12:40.977-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\n \nI'm trying to automatically map from a nullable enum (public CapacityCode? CapacityCode { get; set; }), to a Nullable byte property.\nHowever, when attempting to do so, I get the following exception:\n \n{\"Trying to map System.Byte to System.Nullable`1[[x.CapacityCode, x.Core, Version=0.9.80.0, Culture=neutral, PublicKeyToken=null]].\\nUsing mapping configuration for x.TradeConfirm to x.Models.DTO.TradeConfirmDTO\\nDestination property: CapacityCode\\nException of type 'AutoMapper.AutoMapperMappingException' was thrown.\"}\n \nAm I missing something here or does this require a custom converter to work?\n \nThanks,\n \nTom",
+    "LastUpdatedDate": "2013-05-16T04:59:03.13-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-06-04T09:35:25.537-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Map Nullable byte to Nullable Enum",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4826
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

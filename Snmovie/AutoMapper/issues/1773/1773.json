@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed this one in R81.  I changed how nullable mappers work, I was trying to be clever, rarely a good idea.",
+    "ClosedDate": "2009-06-11T08:54:25.14-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the latest DLL on Google Code (r79), I am still unable to map between two Nullable<double> types.  Both ends of the mapping are Nullable<double>, yet I cannot map between them.  Here's how my mapping is setup:\n \n\t\t\tMapper.CreateMap<Foo, Bar>()\n\t\t\t\t.ForMember(b => b.Component.Minimum, opt => opt.MapFrom(f => f.Minimum));\n \nBoth Bar.Component.Minimum and Foo.Minimum are defined as Nullable<double>.  When it tries to map them, this is the exception that is thrown:\n \nException of type 'AutoMapper.AutoMapperMappingException' was thrown.\n  ----> AutoMapper.AutoMapperMappingException : Trying to map System.Double to System.Nullable`1[[System.Double, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].\nUsing mapping configuration for Foo to Bar\nDestination property: Minimum\nException of type 'AutoMapper.AutoMapperMappingException' was thrown.\n  ----> System.Reflection.TargetException : Object does not match target type.\n\tat AutoMapper.MappingEngine.AutoMapper.IMappingEngineRunner.Map(ResolutionContext context)\n\tat AutoMapper.MappingEngine.Map(Object source, Object destination, Type sourceType, Type destinationType)\n\tat AutoMapper.MappingEngine.Map[TSource,TDestination](TSource source, TDestination destination)\n\tat AutoMapper.Mapper.Map[TSource,TDestination](TSource source, TDestination destination)",
+    "LastUpdatedDate": "2013-05-16T04:59:07.94-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-06-04T06:01:57.863-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapping between Nullable types doesn't work",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 1773
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Whoops.  I'll take a look at this one, looks like I wound up breaking something with the fix for Bennage's issue with nullable types + custom type resolvers.",
+      "PostedDate": "2009-06-04T17:41:52.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm new to AutoMapper and I faced an issue with nullables but I'm not sure If this is the same issue here.\r\nThe point that I'm mapping a property of type DateTime to Nullable<DateTime> because it is in a nested type that may not be available.\r\nlike this:\r\nMapper.CreateMap<Customer, CustomerDTO>()\r\n\t.ForMember(dest => dest.ActualCheckOutTime, opt => opt.MapFrom(src => src.CheckOutInfo.ActualCheckOutTime))\r\n\r\nSo if the customer did not check out there will be no CheckOutInfo this is why I used Nullable<DateTime>\r\n\r\nI got the following exception:\r\nException of type 'AutoMapper.AutoMapperMappingException' was thrown.\r\n---> AutoMapper.AutoMapperMappingException: Trying to map Customer to CustomerDTO.\r\nUsing mapping configuration for Diar.Core.Customer to Diar.Core.DataTrasferObjects.CustomerDTO\r\nException of type 'AutoMapper.AutoMapperMappingException' was thrown.\r\n---> AutoMapper.AutoMapperMappingException: Trying to map System.Object to System.Nullable`1[[System.DateTime, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]].\r\nUsing mapping configuration for Customer to CustomerDTO\r\nDestination property: ActualCheckOutTime\r\n\r\nAfter a many hours I reached the following. I defined a type converter (from Object to DateTime?)\r\n\r\n\t\tMapper.CreateMap<Object, DateTime?>().ConvertUsing<ObjectToDateTimeConverter>();\r\n\r\n\t\tpublic class ObjectToDateTimeConverter : ITypeConverter<Object, DateTime?>\r\n\t\t{\r\n\t\t\tpublic DateTime? Convert(object source)\r\n\t\t\t{\r\n\t\t\t\tDateTime result;\r\n\t\t\t\tbool isDateTime = false;\r\n\t\r\n\t\t\t\tif (source == null) return null;\r\n\t\t\t\tif (source.GetType() == typeof(DateTime)) return ((DateTime)source);\r\n\t\t\t\tif (source as String != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tisDateTime = DateTime.TryParse((string)source, out result);\r\n\t\t\t\t\tif (isDateTime) return result;\r\n\t\t\t\t}\r\n\r\n\t\t\t\tthrow new InvalidCastException(\"Can not convert to Nullable DateTime\");\r\n\t\t\t}\r\n\t\t}\r\n\r\nThen, the exception disappeared & tests started to work fine.\r\nKindly, I'd like to let me know if this is same issue & If I should remove this code after fixing this issue.",
+      "PostedDate": "2009-06-08T06:37:18.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Waheed\r\n\r\nIt's the same issue, because the nullable-type mapper uses the source type for matching, instead of the destination type.  For custom-mapped members, it doesn't know what the source type would be for nulls.",
+      "PostedDate": "2009-06-08T08:32:37.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-10T03:01:40.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-11T08:54:25.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:27.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:07.94-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

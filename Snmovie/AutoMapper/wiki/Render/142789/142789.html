@@ -1,0 +1,36 @@
+<div class="wikidoc">Projection transforms a source to a destination beyond flattening the object model.  Without extra configuration, AutoMapper requires a flattened destination to match the source type&#39;s naming structure.  When you want to project source values into a destination that does not exactly match the source structure, you must specify custom member mapping definitions.  For example, we might want to turn this source structure:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> CalendarEvent
+{
+	<span style="color:Blue;">public</span> DateTime EventDate { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Title { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />Into something that works better for an input form on a web page:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> CalendarEventForm
+{
+	<span style="color:Blue;">public</span> DateTime EventDate { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> EventHour { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> EventMinute { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Title { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />Because the names of the destination properties do not exactly match up to the source property (CalendarEventForm.EventDate would need to be CalendarEventForm.EventDateDate), we need to specify custom member mappings in our type map configuration:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Green;">// Model</span>
+<span style="color:Blue;">var</span> calendarEvent = <span style="color:Blue;">new</span> CalendarEvent
+	{
+		EventDate = <span style="color:Blue;">new</span> DateTime(2008, 12, 15, 20, 30, 0),
+		Title = <span style="color:#A31515;">&quot;Company Holiday Party&quot;</span>
+	};
+
+<span style="color:Green;">// Configure AutoMapper</span>
+Mapper.CreateMap&lt;CalendarEvent, CalendarEventForm&gt;()
+	.ForMember(dest =&gt; dest.EventDate, opt =&gt; opt.MapFrom(src =&gt; src.EventDate.Date))
+	.ForMember(dest =&gt; dest.EventHour, opt =&gt; opt.MapFrom(src =&gt; src.EventDate.Hour))
+	.ForMember(dest =&gt; dest.EventMinute, opt =&gt; opt.MapFrom(src =&gt; src.EventDate.Minute));
+
+<span style="color:Green;">// Perform mapping</span>
+CalendarEventForm form = Mapper.Map&lt;CalendarEvent, CalendarEventForm&gt;(calendarEvent);
+
+form.EventDate.ShouldEqual(<span style="color:Blue;">new</span> DateTime(2008, 12, 15));
+form.EventHour.ShouldEqual(20);
+form.EventMinute.ShouldEqual(30);
+form.Title.ShouldEqual(<span style="color:#A31515;">&quot;Company Holiday Party&quot;</span>);
+</pre></div><br />The each custom member configuration uses an action delegate to configure each member.  In the above example, we used the MapFrom option to perform custom source/destination member mappings.  The MapFrom method takes a lambda expression as a parameter, which then evaluated later during mapping.  The MapFrom expression can be any Func&lt;TSource, object&gt; lambda expression.</div><div class="ClearBoth"></div>

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:25.663-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "See this stackoverflow topic:\n \nhttp://stackoverflow.com/questions/4082658/automapper-ignore-exact-match-and-use-postfix-match-instead",
+    "LastUpdatedDate": "2013-05-16T04:59:00.373-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-11-04T07:28:20.25-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AutoMapper fails on \"Ignore()\" when it comes to complex types of a base class",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5793
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

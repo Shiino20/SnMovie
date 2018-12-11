@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Move issue to GitHub",
+    "ClosedDate": "2014-05-08T06:16:36.513-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a property in my DTO declared as: \n\n        public LookupItem RegionType { get; set; }\n\nHowever, when I invoke the mapping, it generates the error, \"Expressions mapping from methods not supported yet.\". \n\nHowever, if I change the string in the property name \"Type\" to anything else like \"Typeo\" or \"ASDF\", the mapping succeeds.  Am I breaking any convention rules here?  Below is the generated error: \n\nResult Message:\t\nTest method Rep.Tests.PlanServiceTest.GetBuildings threw exception: \nSystem.NotImplementedException: Expressions mapping from methods not supported yet.\nResult StackTrace:\t\nat AutoMapper.PropertyMap.ResolveExpression(Type currentType, Expression instanceParameter)\n   at AutoMapper.QueryableExtensions.Extensions.CreateMemberBindings(IMappingEngine mappingEngine, Type typeIn, TypeMap typeMap, Expression instanceParameter)\n   at AutoMapper.QueryableExtensions.Extensions.CreateMapExpression(IMappingEngine mappingEngine, Type typeIn, Type typeOut, Expression instanceParameter)\n   at AutoMapper.QueryableExtensions.Extensions.CreateMapExpression(IMappingEngine mappingEngine, Type typeIn, Type typeOut)\n   at AutoMapper.QueryableExtensions.Extensions.<>c__DisplayClass1`2.<CreateMapExpression>b__0(TypePair tp)\n   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)\n   at AutoMapper.Internal.DictionaryFactoryOverride.ConcurrentDictionaryImpl`2.GetOrAdd(TKey key, Func`2 valueFactory)\n   at AutoMapper.QueryableExtensions.Extensions.CreateMapExpression[TSource,TDestination](IMappingEngine mappingEngine)\n   at AutoMapper.QueryableExtensions.ProjectionExpression`1.To[TResult]()\n   at Rep.Services.PlanService.GetBuildings() in c:\\Dev\\REP\\Rep\\Services\\PlanService.cs:line 369\n   at Rep.Tests.PlanServiceTest.GetBuildings() in c:\\Dev\\REP\\Rep.Tests\\PlanServiceTest.cs:line 50",
+    "LastUpdatedDate": "2014-05-08T06:16:36.513-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-03-26T06:46:39.297-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error generated due to property name",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9274
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

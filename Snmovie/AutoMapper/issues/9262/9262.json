@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:17:20.6-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am having a major issue with this version of Auto Mapper which for some reason is accessing the get method of a mapped item.\n\nI have my map set to ignore all un-mapped items and only deal with items that have been explicitly mapped.\n\nThe offending line is as follows:\n\n.ForMember(d => d.DateOfDecision,\nopt => opt.MapFrom(s => s.DateOfDecision == DateTime.MinValue ? (DateTime?) null : s.DateOfDecision))\n\nd.DateOfDecision is null at this point as this is its default value. The mapper should set this value for me, it should not access the get method of this item as there is no need for it to do so.\n\nThe question is why is it accessing the get method, and how to I stop it.",
+    "LastUpdatedDate": "2014-05-08T06:17:20.6-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-03-18T01:35:08.917-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Auto Mapper 3.1.1.0 accessing destination item get method",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9262
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,71 @@
+using System.Web.Mvc;
+using AutoMapper;
+using NUnit.Framework;
+
+namespace AutoMapperTests
+{
+	[TestFixture]
+	public class AutoMapperReproCases
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		private class Component
+		{
+			/// <summary>
+			/// 
+			/// </summary>
+			public double? Value { get; set; }
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private class Source
+		{
+			/// <summary>
+			/// 
+			/// </summary>
+			public double? Value { get; set; }
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private class Destination
+		{
+			/// <summary>
+			/// 
+			/// </summary>
+			public Component Component { get; set; }
+
+			/// <summary>
+			/// 
+			/// </summary>
+			public Destination()
+			{
+				Component = new Component();
+			}
+		}
+
+		/// <summary>
+		/// Demonstrates a bug in AutoMapper.
+		/// </summary>
+		[Test]
+		public void AutoMapperTest()
+		{
+			Mapper.CreateMap<Source, Destination>()
+				.ForMember(d => d.Component.Value, opt => opt.MapFrom(s => s.Value));
+
+			Source source = new Source { Value = 5 };
+
+			Destination destination = new Destination();
+
+			Mapper.Map(source, destination);
+
+			Assert.AreEqual(5, destination.Component.Value);
+		}
+	}
+}
+
+#endif

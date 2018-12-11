@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:01.343-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm using AutoMapper to map my entities to datacontracts on a small Silverlight project, and I ran into a single issue. I'm not sure if it's a limitation I hit or what it is.\n \nWhen I'm mapping from ITweet to TweetContract everything is working as expected, but when I map the other way around I end up with a Castle.Proxies.ITweetProxy instead of the expected ITweet. Now the items is accessible with all the properties but in the give project I have to cast it to a concrete Tweet due to legacy db-stuff, and that is where the castle crumbles.\n \nIf you look at the project there is a WCF service in the webproject that reproduces the issue at hand.\n \nUnable to cast object of type 'Castle.Proxies.ITweetProxy' to type 'DataLib.Tweet'.",
+    "LastUpdatedDate": "2013-05-16T04:58:54.627-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-19T01:53:59.933-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapping back from a contract to an interface leaves me with Castle proxies",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 7080
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2579,
+      "FileName": "AutoMapperRepo.zip",
+      "DownloadUrl": ".\\2579"
+    }
+  ],
+  "Comments": []
+}

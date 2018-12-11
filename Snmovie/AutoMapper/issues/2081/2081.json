@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Right now AutoMapper does not support un-flattening like this.  This should really be a configuration error, you cannot configure anything but members on the configured type, not members on other types.",
+    "ClosedDate": "2009-07-07T15:44:10.817-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I found another bug concerning mapping nullable types with AutoMapper.  I'm using the latest release (r87).  It looks like simple mappings work correctly with nullable types, but mappings from a nullable property on one class to a property of a nested class in the target class does not work.  I've attached a simple NUnit test fixture to demonstrate the bug.",
+    "LastUpdatedDate": "2013-05-16T04:59:07.79-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-06-23T09:06:30.407-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Another AutoMapperMappingException with Nullable Types",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2081
+  },
+  "FileAttachments": [
+    {
+      "FileId": 650,
+      "FileName": "autoMapperBug.cs",
+      "DownloadUrl": ".\\650"
+    }
+  ],
+  "Comments": []
+}

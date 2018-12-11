@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "The project has moved to github.",
+    "ClosedDate": "2015-07-30T06:03:53.827-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "IMO when defining mapping thru ConstructUsing it means we don't want / need to define full mapping for target properties. Hence Assert.ConfigurationIsValid should ignore not-mapped properties on targets  resolved with ConstructUsing.\n\nExample with failed expectation:\n\n    public class IdentifierBase\n    {\n        public string Id { get; private set; }\n        public IdentifierBase(string id)\n        {\n            Id = id;\n        }\n    }\n\n    [TestFixture]\n    public class MappingTest\n    {\n        [Test]\n        public void ShouldNotRequireFieldsMappingWhenConstructUning()\n        {\n            Mapper.CreateMap<string, IdentifierBase>().ConstructUsing(o => new IdentifierBase(o));\n            Assert.DoesNotThrow(() =>  Mapper.AssertConfigurationIsValid());\n        }\n    }",
+    "LastUpdatedDate": "2015-07-30T06:03:53.827-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2015-03-12T04:19:58.023-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Assert.ConfigurationIsValid throws an exception when  target is constructed with ConstructUsing",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9541
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

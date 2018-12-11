@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:37.443-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There is no support for multithreading work now as I see. I think it would be good desing choose to redevelop from static objects to non-static objects, like:\nMapperInstance mapper = Mapper.CreateMapper();\nmapper.CreateMap<TA, TB>();\n.....\nvar result = mapper.Map<TA, TB>(source);",
+    "LastUpdatedDate": "2013-05-16T04:59:06.86-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-10-29T02:26:21.943-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Multithreading support",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 3197
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Mapper.CreateMap is not threadsafe, nor will it ever be.  However, Mapper.Map is thread-safe.  The Mapper static class is just a thin wrapper on top of the MappingEngine and Configuration objects.",
+      "PostedDate": "2009-10-29T18:05:32.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You mention that Mapper.Map is thread-safe, but my experience with Mapper.DynamicMap is that it is not thread-safe because of the call to Configuration.CreateTypeMap.  It seems like DynamicMap should be consistent with Map.",
+      "PostedDate": "2010-01-04T09:39:12.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:48:29.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Perhaps, but DynamicMap isn't Map. It's CreateMap, then Map.  I could lock the configuration, however for that operation.",
+      "PostedDate": "2010-01-07T08:12:06.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-14T08:46:57.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:47:37.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:25.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:06.86-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<div class="wikidoc"><h1>Custom Value Resolvers</h1>
+Although AutoMapper covers quite a few destination member mapping scenarios, there are the 1 to 5% of destination values that need a little help in resolving.  Many times, this custom value resolution logic is domain logic that can go straight on our domain.  However, if this logic pertains only to the mapping operation, it would clutter our source types with unnecessary behavior.  In these cases, AutoMapper allows for configuring custom value resolvers for destination members.  For example, we might want to have a calculated value just during mapping:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Source
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value1 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value2 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Destination
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Total { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />For whatever reason, we want Total to be the sum of the source Value properties.  For some other reason, we can&#39;t or shouldn&#39;t put this logic on our Source type.  To supply a custom value resolver, we&#39;ll need to first create a type that implements IValueResolver:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">interface</span> IValueResolver
+{
+	ResolutionResult Resolve(ResolutionResult source);
+}
+</pre></div><br />The ResolutionContext contains all of the contextual information for the current resolution operation, such as source type, destination type, source value and so on.  For most scenarios, we won&#39;t need this more advanced interface.  Instead, we can derive from the ValueResolver&lt;TSource, TDestination&gt; abstract class:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> CustomResolver : ValueResolver&lt;Source, <span style="color:Blue;">int</span>&gt;
+{
+	<span style="color:Blue;">protected</span> <span style="color:Blue;">override</span> <span style="color:Blue;">int</span> ResolveCore(Source source)
+	{
+		<span style="color:Blue;">return</span> source.Value1 + source.Value2;
+	}
+}
+</pre></div><br />Once we have our IValueResolver implementation, we&#39;ll need to tell AutoMapper to use this custom value resolver when resolving a specific destination member.  We have several options in telling AutoMapper a custom value resolver to use, including:
+<ul><li>ResolveUsing&lt;TValueResolver&gt;</li>
+<li>ResolveUsing(typeof(CustomValueResolver))</li>
+<li>ResolveUsing(aValueResolverInstance)</li></ul>
+In the below example, we&#39;ll use the first option, telling AutoMapper the custom resolver type through generics:<br /><br /><div style="color:Black;background-color:White;"><pre>
+Mapper.CreateMap&lt;Source, Destination&gt;()
+	.ForMember(dest =&gt; dest.Total, opt =&gt; opt.ResolveUsing&lt;CustomResolver&gt;());
+Mapper.AssertConfigurationIsValid();
+
+<span style="color:Blue;">var</span> source = <span style="color:Blue;">new</span> Source
+	{
+		Value1 = 5,
+		Value2 = 7
+	};
+
+<span style="color:Blue;">var</span> result = Mapper.Map&lt;Source, Destination&gt;(source);
+
+result.Total.ShouldEqual(12);
+</pre></div><br />Although the destination member (Total) did not have any matching source member, specifying a custom resolver made the configuration valid, as the resolver is now responsible for supplying a value for the destination member.  
+<h2>Custom constructor methods</h2>Because we only supplied the type of the custom resolver to AutoMapper, the mapping engine will use reflection to create an instance of the value resolver.<br /><br />If we don&#39;t want AutoMapper to use reflection to create the instance, we can either supply the instance directly, or use the ConstructedBy method to supply a custom constructor method:<br /><br /><div style="color:Black;background-color:White;"><pre>
+Mapper.CreateMap&lt;Source, Destination&gt;()
+	.ForMember(dest =&gt; dest.Total, 
+		opt =&gt; opt.ResolveUsing&lt;CustomResolver&gt;().ConstructedBy(() =&gt; <span style="color:Blue;">new</span> CustomResolver())
+	);
+</pre></div><br />AutoMapper will execute this callback function instead of using reflection during the mapping operation, helpful in scenarios where the resolver might have constructor arguments or need to be constructed by an IoC container.
+<h2>Customizing the source value supplied to the resolver</h2>Coming soon
+<h2>Custom value resolution expressions</h2>Coming soon</div><div class="ClearBoth"></div>

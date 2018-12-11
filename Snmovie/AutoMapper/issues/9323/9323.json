@@ -1,0 +1,50 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Move issue to GitHub",
+    "ClosedDate": "2014-05-08T06:16:19.237-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have the following test code. I am not getting Project().To option for  IQueryable collection. \n\nusing System.Collections.Generic;\nusing System.Linq;\n\nnamespace AutoMapper.MapperToLinq\n{\n    class MapperToLinq\n    {\n        public MapperToLinq()\n        {\n            Mapper.CreateMap<OrderLine, OrderLineDTO>()\n.ForMember(dto => dto.Item, conf => conf.MapFrom(ol => ol.Item.Name));\n\n            List<OrderLine> lnList = new List<OrderLine>();\n            OrderLine L1;\n            foreach (int i in Enumerable.Range(1, 10))\n            {\n                L1 = new OrderLine();\n                L1.Id = string.Format(\"OrdLn-{0}\",i);\n                L1.OrderId = string.Format(\"Ord-{0}\",i+1000);\n                L1.Quantity = 100 + 1;\n                L1.Item = new Item();\n                L1.Item.Id = string.Format(\"ItmId-{0}\", i);\n                L1.Item.Name = string.Format(\"ItmNm-{0}\", i);\n                lnList.Add(L1);\n            }\n\n            IQueryable<OrderLine> quarable = lnList.AsQueryable<OrderLine>();\n            var mapped = quarable.Where(itm => itm.Quantity > 0)__.Project()__ //Not getting this option at all\n        }\n    }\n\n    public class OrderLine\n    {\n        public string Id { get; set; }\n        public string OrderId { get; set; }\n        public Item Item { get; set; }\n        public decimal Quantity { get; set; }\n    }\n\n    public class Item\n    {\n        public string Id { get; set; }\n        public string Name { get; set; }\n    }\n\n    public class OrderLineDTO\n    {\n        public string Id { get; set; }\n        public string OrderId { get; set; }\n        public string Item { get; set; }\n        public decimal Quantity { get; set; }\n    }\n}",
+    "LastUpdatedDate": "2014-05-08T06:16:19.237-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-05-08T03:54:57.45-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Not getting ProjectTo option for IQueryable collection",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9323
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The CodePlex project is closed - I can't prevent new issues. Can you post this on GitHub? I tried to make this as large as possible as the top Issue and on the homepage :(",
+      "PostedDate": "2014-05-08T06:14:38.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-05-08T06:16:19.237-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

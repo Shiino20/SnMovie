@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:12.293-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I tried to update the AutoMapper version but the error continues(just \nchanged the stacktrace) \nI am using 2.0.0.223 on GoDaddy and get this error: \n \n[SecurityException: Request for the permission of type \n'System.Security.Permissions.ReflectionPermission, mscorlib, \nVersion=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089' \nfailed.] \n   System.Security.CodeAccessSecurityEngine.Check(Object demand, \nStackCrawlMark& stackMark, Boolean isPermSet) +0 \n   System.Security.CodeAccessSecurityEngine.Check(CodeAccessPermission \ncap, StackCrawlMark& stackMark) +31 \n   System.Security.CodeAccessPermission.Demand() +46 \n   System.Reflection.Emit.DynamicMethod.PerformSecurityCheck(Type \nowner, StackCrawlMark& stackMark, Boolean skipVisibility) +9453279 \n   System.Reflection.Emit.DynamicMethod..ctor(String name, Type \nreturnType, Type[] parameterTypes, Type owner, Boolean skipVisibility) \n+40 \n   AutoMapper.DelegateFactory.CreateDynamicMethod(MemberInfo member, \nType sourceType) +291 \n   AutoMapper.DelegateFactory.CreateSet(PropertyInfo property) +52 \n   AutoMapper.Internal.PropertyAccessor..ctor(PropertyInfo \npropertyInfo) +64 \n   AutoMapper.ReflectionHelper.ToMemberAccessor(MemberInfo \naccessorCandidate) +209 \n   AutoMapper.TypeMapFactory.CreateTypeMap(Type sourceType, Type \ndestinationType, IMappingOptions options) +256 \n   AutoMapper.ConfigurationStore.CreateTypeMap(Type source, Type \ndestination, String profileName) +83 \n   AutoMapper.ConfigurationStore.CreateMap(String profileName) +92 \n   AutoMapper.ConfigurationStore.CreateMap() +53 \n   AutoMapper.Mapper.CreateMap() +76 \nFujiyBlog.Web.Infrastructure.AutoMapper.Profiles.AdminUserViewModel.Configu re() \n+13 \n   AutoMapper.ConfigurationStore.AddProfile(Profile profile) +22 \nFujiyBlog.Web.Infrastructure.AutoMapper.AutoMapperConfiguration.Configure() \n+58 \n   FujiyBlog.Web.MvcApplication.Application_Start() +383 \nMy classes: \n    public class AutoMapperConfiguration \n    { \n        public static void Configure() \n        { \n            Mapper.AddProfile(new AdminUserViewModel()); \n            Mapper.AddProfile(new AdminPostViewModel()); \n            Mapper.AddProfile(new AdminPageViewModel()); \n        } \n    } \n    public class AdminUserViewModel : Profile \n    { \n        protected override void Configure() \n        { \n            Mapper.CreateMap<AdminUserSave, User>(); \n            Mapper.CreateMap<AdminUserCreate, User>(); \n        } \n    }",
+    "LastUpdatedDate": "2013-05-16T04:58:55.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-10T04:01:00.213-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Security Exception",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7039
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

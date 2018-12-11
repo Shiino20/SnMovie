@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:32.237-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "enum One { Red = 3, Green = 5 }\nenum Two { Green = 3, Red = 5 }  // Same names, different values\n \nMapper.CreateMap<One, Two>();\nMapper.Map<One, Two>(One.Green).AssertIsEqualTo(Two.Green);  // Fails\n \n// Keep EnumMapper only:\nMapper.Reset();\nMapperRegistry.AllMappers = () => new IObjectMapper[] { new EnumMapper() };\nMapper.Map<One, Two>(One.Green).AssertIsEqualTo(Two.Green);  // Succeeds",
+    "LastUpdatedDate": "2013-05-16T04:59:01.483-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-09-03T00:34:19.54-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Name-based EnumMapping doesn't work out-of-the-box",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5538
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Seems like this is by design.\r\nIf no enum mapping is created then name-based mapping is used by default and then value-based (if matching name is not found)\r\n\r\nMapper.Reset();\r\nMapper.Map<One, Two>(One.Green).AssertIsEqualTo(Two.Green); // Succeeds\r\n",
+      "PostedDate": "2010-09-05T01:02:01.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:47:32.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:19.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:01.483-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

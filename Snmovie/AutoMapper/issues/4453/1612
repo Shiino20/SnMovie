@@ -1,0 +1,146 @@
+﻿using System;
+using System.Collections.Generic;
+using AutoMapper;
+using NUnit.Framework;
+
+namespace Rbs.Gbm.Sds.Services.Tests.Integration
+{
+    [TestFixture]
+    public class TestInnerCollectionsInInnerCollectsMapCorrectly
+    {
+        [SetUp]
+        public void TestSetup()
+        {
+            Mapper.CreateMap<A, ADto>();
+            Mapper.CreateMap<ADto, A>();
+            Mapper.CreateMap<B, BDto>();
+            Mapper.CreateMap<BDto, B>();
+            Mapper.CreateMap<C, CDto>();
+            Mapper.CreateMap<CDto, C>();
+        }
+
+        [Test]
+        public void TestInnerCollectionsDontCloneBackPointedInstances()
+        {
+            var a = new A();
+            var b1 = new B
+            {
+                ParentA = a,
+            };
+            b1.SecondCollection.Add(new C { ParentB = b1 });
+            var b2 = new B
+            {
+                ParentA = a,
+            };
+            b2.SecondCollection.Add(new C { ParentB = b2 });
+
+            a.FirstCollection.Add(b1);
+            a.FirstCollection.Add(b2);
+
+            Assert.AreSame(a.FirstCollection[0], a.FirstCollection[0].SecondCollection[0].ParentB);
+            Assert.AreSame(a.FirstCollection[1], a.FirstCollection[1].SecondCollection[0].ParentB);
+
+            var adto = Mapper.Map<A, ADto>(a);
+
+            Assert.AreSame(adto.FirstCollection[0], adto.FirstCollection[0].SecondCollection[0].ParentB);
+            Assert.AreSame(adto.FirstCollection[1], adto.FirstCollection[1].SecondCollection[0].ParentB);
+        }
+
+        [Test]
+        public void TestInnerCollectionsDontCloneBackPointedInstancesConvertBack()
+        {
+            var a = new ADto();
+            var b1 = new BDto
+            {
+                ParentA = a,
+            };
+            b1.SecondCollection.Add(new CDto { ParentB = b1 });
+            var b2 = new BDto
+            {
+                ParentA = a,
+            };
+            b2.SecondCollection.Add(new CDto { ParentB = b2 });
+
+            a.FirstCollection.Add(b1);
+            a.FirstCollection.Add(b2);
+
+            Assert.AreSame(a.FirstCollection[0], a.FirstCollection[0].SecondCollection[0].ParentB);
+            Assert.AreSame(a.FirstCollection[1], a.FirstCollection[1].SecondCollection[0].ParentB);
+
+            var anormal = Mapper.Map<ADto, A>(a);
+
+            Assert.AreSame(anormal.FirstCollection[0], anormal.FirstCollection[0].SecondCollection[0].ParentB);
+            Assert.AreSame(anormal.FirstCollection[1], anormal.FirstCollection[1].SecondCollection[0].ParentB);
+        }
+
+        private class A
+        {
+            private List<B> firstCollection = new List<B>();
+
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public List<B> FirstCollection
+            {
+                get { return firstCollection; }
+                set { firstCollection = value; }
+            }
+        }
+
+        private class B
+        {
+            private List<C> secondCollection = new List<C>();
+
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public A ParentA { get; set; }
+
+            public List<C> SecondCollection
+            {
+                get { return secondCollection; }
+                set { secondCollection = value; }
+            }
+        }
+
+        private class C
+        {
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public B ParentB { get; set; }
+        }
+
+        private class ADto
+        {
+            private List<BDto> firstCollection = new List<BDto>();
+
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public List<BDto> FirstCollection
+            {
+                get { return firstCollection; }
+                set { firstCollection = value; }
+            }
+        }
+
+        private class BDto
+        {
+            private List<CDto> secondCollection = new List<CDto>();
+
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public ADto ParentA { get; set; }
+
+            public List<CDto> SecondCollection
+            {
+                get { return secondCollection; }
+                set { secondCollection = value; }
+            }
+        }
+
+        private class CDto
+        {
+            private Guid uniqueInstanceId = Guid.NewGuid();
+
+            public BDto ParentB { get; set; }
+        }
+    }
+}

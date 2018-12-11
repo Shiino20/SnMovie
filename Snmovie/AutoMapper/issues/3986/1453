@@ -1,0 +1,57 @@
+using NUnit.Framework;
+
+namespace AutoMapper.UnitTests
+{
+    public class NestedMappingBug : AutoMapperSpecBase
+    {
+        private Dto dto;
+
+        protected override void Establish_context()
+        {
+            Mapper.CreateMap<B, ChildDto>().ForMember(d => d.BorC, opt => opt.MapFrom(s => s.GetB()));
+            Mapper.CreateMap<C, ChildDto>().ForMember(d => d.BorC, opt => opt.MapFrom(s => s.GetC()));
+            Mapper.CreateMap<Container, Dto>().ForMember(d => d.ChildDto, opt => opt.MapFrom(s => s.a));
+        }
+
+        public abstract class A
+        {
+        }
+
+        public class B : A
+        {
+            public string GetB()
+            {
+                return "B";
+            }
+        }
+
+        public class C : A
+        {
+            public string GetC()
+            {
+                return "C";
+            }
+        }
+
+        public class Container
+        {
+            public A a { get; set; }
+        }
+
+        public class Dto
+        {
+            public ChildDto ChildDto { get; set; }
+        }
+
+        public class ChildDto
+        {
+            public string BorC { get; set; }
+        }
+
+        [Test]
+        public void should_configure()
+        {
+            Mapper.AssertConfigurationIsValid();
+        }
+    }
+}

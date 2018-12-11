@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Supported with VS2010 and VB10",
+    "ClosedDate": "2010-03-20T17:45:53.243-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Somewhere between 0.3.1 beta and 1.0 RC1, the Ignore() option was changed to return void (or was changed from a Sub to a Function).  For devs using VB, this prevents the use of the Ignore option in the MapFrom method:\n\"Function(opt) opt.Ignore()\"\nVB indicates that the expression does not produce a result.  This works in 0.3.1 beta, so we are not able to upgrade to the full release 1.0 version.\nIf you need more information, please contact me.",
+    "LastUpdatedDate": "2013-05-16T04:59:05.927-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-03T08:51:16.143-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Ignore option is no longer Function (or now returns void)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 3970
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is an issue that will be fixed with the language enhancements in VB10, which brings VB on par with C# in terms of lambda expressions, anonymous functions and so on.  Instead of making methods return nonsensical values, I'm opting just to wait for VB10.",
+      "PostedDate": "2010-02-03T17:47:37.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for commenting on this.  While I would generally agree with you that simply upgrading to VB10 (or shifting to C#) is the ideal path, I work on a project where that is simply not possible.  We've been using AutoMapper since the first official beta and are currently using the 0.3.1 beta.  These versions have worked well, but if several bugs have been resolved, it would be best for us to upgrade to the full 1.0 release.  However, this is not possible because of the breaking change in the Ignore option.  (I was not able to conduct any testing of the upgraded version in the project because we use the Ignore option quite a bit.)\r\n\r\nIf my project is the only one that has this issue, then I'll be happy to just download the source and compile a branch of our own.  Do you know if anyone else who uses AutoMapper has experienced this issue and avoided the update?",
+      "PostedDate": "2010-02-03T19:47:49.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep, it's come up on the discussion list before.  There are a couple of other VOID method in the DSL that give the VB folks headaches as well.  I think right now they just pulled down the source and modified those bits accordingly.",
+      "PostedDate": "2010-02-04T05:52:42.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-10T19:30:51.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-20T17:45:53.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:24.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:05.927-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

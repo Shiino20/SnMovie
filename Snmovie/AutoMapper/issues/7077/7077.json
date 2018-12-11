@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:06.61-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I recently tried adding AutoMapper to a Silverlight 4 application using NuGet only to find that the SL assembly is not in the package. Please take the couple of seconds necessary to add this assembly into the AutoMapper NuGet package.",
+    "LastUpdatedDate": "2013-05-16T04:58:54.76-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-08-18T09:11:21.673-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Put AutoMapper.Silverlight into NuGet package",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 7077
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

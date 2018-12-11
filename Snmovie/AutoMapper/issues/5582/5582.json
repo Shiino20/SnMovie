@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:40.87-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nI tried to use AutoMapper on a WP7 project.\n \nAt runtime, at the start of the app I get the following exception :\n \nCould not load type 'AutoMapper.Mapper' from assembly 'AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=BE96CD2C38EF1005'.\n \nI know the Silverlight engine on WP7 is somewhere between Silverlight 3 and Silverlight 4.\n \nIs there a fundamental problem with what I am trying to do?\n \nThanks",
+    "LastUpdatedDate": "2013-05-16T04:59:01.087-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-09-12T07:27:13.757-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Usisng AutoMapper on Windows Phone 7",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 5582
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

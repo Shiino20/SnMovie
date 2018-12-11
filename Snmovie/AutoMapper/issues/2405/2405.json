@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Could not reproduce, need the full example.",
+    "ClosedDate": "2009-09-13T11:30:11.057-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a class like this:\n \npublic class Category\n{\n\tpublic int CategoryID { get; set; }\n \n\tpublic string Name { get; set; }\n \n\tpublic Category Parent { get; set; }\n \n\tpublic IList<Category> Children { get; set; }\n}\n \nAnd because of this Parent/Children relationship the conversion DTO/POCO threw a stackoverflow exception.\n \nHave you any troubleshooting in this case?\n \nThanks!",
+    "LastUpdatedDate": "2013-05-16T04:59:07.39-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2009-08-10T12:32:46.917-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper threw stackoverflow exception",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 2405
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi,\r\n\r\nCan you provide an example using Mapper.Map, with the source/destination types?",
+      "PostedDate": "2009-08-15T17:32:03.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-13T11:30:11.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:26.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:07.39-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:52.98-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I think it will be great to have an ability to easily compare objects by value via automapper. Comparison overriding is not flexible but it will be nice to have some kind of \"Compare\" method which will automatically compare values of 2 objects with similar field names or mapped via Automapper on each other.",
+    "LastUpdatedDate": "2013-05-16T04:58:57.14-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2011-04-14T16:59:16.43-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature request] Value comparer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 6489
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

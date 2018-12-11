@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:19.3-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I add the Automapper assembly as reference to my project, I get an error about it requiring System.Web. I don't see why this would be the case of a way around it.",
+    "LastUpdatedDate": "2013-05-16T04:59:01.617-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-08-12T02:59:30.47-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 5402
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I am getting the same error.  Will this work with a WPF applicatinon?",
+      "PostedDate": "2010-08-26T05:49:46.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like this came from adding Castle reference.  I'm going to switch back to LinFu for proxy creation, which didn't have this problem.",
+      "PostedDate": "2010-08-26T08:58:12.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-10-06T03:41:24.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "NDepend says that it's from Castle.Core.Logging's WebLogger class that references HttpContext.\r\n\r\nCastle.Core 2.5.1 and above no longer have this class, so would not require a reference to System.Web.\r\n\r\n-dave",
+      "PostedDate": "2010-11-03T18:04:29.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Seconding the question: will this work with a WPF application?",
+      "PostedDate": "2010-11-23T07:13:27.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah of course it will.  Set Project -> Properties -> Application -> Target Framework to \".NET Framework 4\" rather than \".NET Framework 4 Client Profile\"",
+      "PostedDate": "2010-11-24T08:50:45.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-06T11:15:48.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just recompiled sources with Client Profile successfully. Would be nice if NuGet packages get updated.",
+      "PostedDate": "2011-08-06T11:17:38.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:19.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:19.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:01.617-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

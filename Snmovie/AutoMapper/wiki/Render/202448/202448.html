@@ -1,0 +1,19 @@
+<div class="wikidoc"><h1>Getting Started</h1><h2>What is AutoMapper?</h2>
+AutoMapper is an object-object mapper.  Object-object mapping works by transforming an input object of one type into an output object of a different type.  What makes AutoMapper interesting is that it provides some interesting conventions to take the dirty work out of figuring out how to map type A to type B.  As long as type B follows AutoMapper&#39;s established convention, almost zero configuration is needed to map two types.<br />
+<h2>Why use AutoMapper?</h2>
+Mapping code is boring.  Testing mapping code is even more boring.  AutoMapper provides simple configuration of types, as well as simple testing of mappings.  The real question may be &quot;why use object-object mapping?&quot;  Mapping can occur in many places in an application, but mostly in the boundaries between layers, such as between the UI/Domain layers, or Service/Domain layers.  Concerns of one layer often conflict with concerns in another, so object-object mapping leads to segregated models, where concerns for each layer can affect only types in that layer.<br />
+<h2>How do I use AutoMapper?</h2>
+First, you need both a source and destination type to work with.  The destination type&#39;s design can be influenced by the layer in which it lives, but AutoMapper works best as long as the names of the members match up to the source type&#39;s members.  If you have a source member called &quot;FirstName&quot;, this will automatically be mapped to a destination member with the name &quot;FirstName&quot;.  AutoMapper also supports <a href="https://automapper.codeplex.com/wikipage?title=Flattening&referringTitle=Getting%20Started">Flattening</a>, which can get rid of all those pesky null reference exceptions you might encounter along the way.<br /><br />Once you have your types, and a reference to AutoMapper, you can create a map for the two types.<br /><br /><span class="codeInline">Mapper.CreateMap&lt;Order, OrderDto&gt;();</span><br /><br />The type on the left is the source type, and the type on the right is the destination type.  To perform a mapping, use the Map method.<br /><br /><span class="codeInline">OrderDto dto = Mapper.Map&lt;Order, OrderDto&gt;(order);</span><br /><br />AutoMapper also has non-generic versions of these methods, for those cases where you might not know the type at compile time.<br />
+<h2>Where do I configure AutoMapper?</h2>
+If you&#39;re using the static Mapper method, configuration only needs to happen once per AppDomain.  That means the best place to put the configuration code is in application startup, such as the Global.asax file for ASP.NET applications.  Typically, the configuration bootstrapper class is in its own class, and this bootstrapper class is called from the startup method.<br />
+<h2>How do I test my mappings?</h2>
+To test your mappings, you need to create a test that does two things:
+<ul><li>Call your bootstrapper class to create all the mappings</li>
+<li>Call Mapper.AssertConfigurationIsValid</li></ul>
+Here&#39;s an example:<br /><pre>
+AutoMapperConfiguration.Configure();
+
+Mapper.AssertConfigurationIsValid();
+</pre><br />
+<h2>Can I see a demo?</h2>
+Check out the dnrTV episode on AutoMapper: <a href="http://www.dnrtv.com/default.aspx?showNum=155">http://www.dnrtv.com/default.aspx?showNum=155</a></div><div class="ClearBoth"></div>

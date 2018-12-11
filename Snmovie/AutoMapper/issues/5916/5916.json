@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:15.613-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It appears that there is no way to register mappings without providing a reference to the static MapperRegistry. While a static wrapper around non-static registration, as a helper, would be fine, the requirement for static registration is problematic - even if the implementation is actually thread safe. When unit testing static state in general is bad as it spans individual tests, corrupting those tests. Additionally, while the self-test method on AutoMapper is cool, it is also a static method (which in turn relies on static registration). This is also bad in that unit tests executing concurrently are sharing state, and thread safety doesn't resolve the resulting cross-test corruption. It would be *much* better for AutoMapper to be fully non-static apart from optional helpers.",
+    "LastUpdatedDate": "2013-05-16T04:58:59.433-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-12-08T08:31:52.003-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Do not require static registration",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 5916
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

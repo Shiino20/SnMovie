@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:24.37-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi,\ni'm getting a strange behavior when mapping inner collection. What happens is that the inner property isn't correctly filled. But if I map the inner property I get the mapping done. As shown in the sample bellow, the call to the map the collection to the _to variable works, but when I map the _message variable, the _message.To has 0 items.\n \nAny thoughts why?\nThanks\n \n//Configuration\nMapper.CreateMap<MailMessage, System.Net.Mail.MailMessage>();\n \nMapper.CreateMap<MailAddress, System.Net.Mail.MailAddress>()\n    .ConstructUsing(x => new System.Net.Mail.MailAddress(x.Address));\n \nMapper.CreateMap<MailAddressCollection, System.Net.Mail.MailAddressCollection>()\n    .ConvertUsing(new MailAddressCollectionConverter());\n \nMapper.AssertConfigurationIsValid(); // ALL OK :)\n \npublic void Send(MailMessage message)\n{\n var _to = Mapper.Map<MailAddressCollection, System.Net.Mail.MailAddressCollection>(message.To); // OK _To.Count = 1 has expected\n System.Net.Mail.MailMessage _message = Mapper.Map<MailMessage, System.Net.Mail.MailMessage>(message); // NOT OK _message.To.Count = 0 :(\n \n \n \ninternal class MailAddressCollectionConverter : ITypeConverter<MailAddressCollection, System.Net.Mail.MailAddressCollection>\n    {\n        #region ITypeConverter<MailAddressCollection,MailAddressCollection> Members\n \n        public System.Net.Mail.MailAddressCollection Convert(ResolutionContext context)\n        {\n            var col = new System.Net.Mail.MailAddressCollection();\n \n            if (!context.IsSourceValueNull)\n            {\n                var source = context.SourceValue as MailAddressCollection;\n                if (source != null)\n                {\n                    foreach (var to in source)\n                    {\n                        col.Add(to.Address);\n                    }\n                }\n            }\n \n            return col;\n        }\n \n        #endregion\n    }",
+    "LastUpdatedDate": "2013-05-16T04:59:05.277-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-02-12T10:40:24.853-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Strange behavior when mapping inner collection",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4032
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you show us your custom MailMessage class?",
+      "PostedDate": "2011-07-29T12:00:41.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:46:24.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:23.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:05.277-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

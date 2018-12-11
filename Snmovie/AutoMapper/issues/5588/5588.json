@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:30.63-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Can anyone point me to a good aggregation example?\n \nIn particular, I want to go from a flat structure, to a modified deep structure.  All the projection examples deep with deep structures to flat structures.\n \nIn this case, given a list of PricingItem objects, I want a list of ViewCategories with multiple ViewItems under it.  It's an aggregation/coalation problem. \n \nSay I have a source PricingItem class that looks like this:\n \npublic class PricingItem\n    {\n        public int Id { get; set; }\n        public CategoryType Category { get; set; }\n        public int Value { get; set; }\n    }\n \nAnd I have an associated ViewCategory that is an aggegation by CategoryType as determined by the source PricingItem.\n \n    public class ViewCategory\n    {\n        public CategoryType Category { get; set; }\n        public IEnumerable<ViewItem> ViewItems { get; set; }\n    }\n \n    public class ViewItem\n    {\n        public int Id { get; set; }\n        public int Value { get; set; }\n    }\n \nThank you,\n-Steve",
+    "LastUpdatedDate": "2013-05-16T04:59:00.887-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-09-14T12:01:01.373-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Searching for an aggregation example",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5588
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:20:14.293-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n\nI am working on a project using .Net technologies. In our peoject, we are using Entity Framework/Linq/Automapper/POCO.\n\nWe use below functions of Automapper as - \n1. Automapper.CreateMap() - to declare maps.\n2. Automapper.Mapper.Map() - to map source to destination type (i.e. Data Access object to POCO entities).\n\nBut, somehow Automapper is giving performance hit to some extent. So, I was trying to figure out am I making correct use of the plug in?\n\nIt would be great if I could get valuable help from anyone who has worked/studied about this plug-in.\n\nThanks in advance!",
+    "LastUpdatedDate": "2014-05-08T06:20:14.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-06-09T23:18:37.28-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Performance Issue",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 8791
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,64 @@
+<div class="wikidoc"><h1>Custom Type Converters</h1>
+Sometimes, you need to take complete control over the conversion of one type to another.  This is typically when one type looks nothing like the other, a conversion function already exists, and you would like to go from a &quot;looser&quot; type to a stronger type, such as a source type of string to a destination type of Int32.<br /><br />For example, suppose we have a source type of:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Source
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Value1 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Value2 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> <span style="color:Blue;">string</span> Value3 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />But you would like to map it to:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> Destination
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value1 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> DateTime Value2 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> Type Value3 { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />If we were to try and map these two types as-is, AutoMapper would throw an exception (at map time and configuration-checking time), as AutoMapper does not know about any mapping from string to int, DateTime or Type.  To create maps for these types, we must supply a custom type converter, and we have three ways of doing so:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">void</span> ConvertUsing(Func&lt;TSource, TDestination&gt; mappingFunction);
+<span style="color:Blue;">void</span> ConvertUsing(ITypeConverter&lt;TSource, TDestination&gt; converter);
+<span style="color:Blue;">void</span> ConvertUsing&lt;TTypeConverter&gt;() <span style="color:Blue;">where</span> TTypeConverter : ITypeConverter&lt;TSource, TDestination&gt;;
+</pre></div><br />The first option is simply any function that takes a source and returns a destination.  This works for simple cases, but becomes unwieldy for larger ones.  In more difficult cases, we can create a custom ITypeConverter&lt;TSource, TDestination&gt;:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">interface</span> ITypeConverter&lt;TSource, TDestination&gt;
+{
+	TDestination Convert(TSource source);
+}
+</pre></div><br />And supply AutoMapper with either an instance of a custom type converter, or simply the type, which AutoMapper will instantiate at run time.  The mapping configuration for our above source/destination types then becomes:<br /><br /><div style="color:Black;background-color:White;"><pre>
+[Test]
+<span style="color:Blue;">public</span> <span style="color:Blue;">void</span> Example()
+{
+    Mapper.CreateMap&lt;<span style="color:Blue;">string</span>, <span style="color:Blue;">int</span>&gt;().ConvertUsing(Convert.ToInt32);
+    Mapper.CreateMap&lt;<span style="color:Blue;">string</span>, DateTime&gt;().ConvertUsing(<span style="color:Blue;">new</span> DateTimeTypeConverter());
+    Mapper.CreateMap&lt;<span style="color:Blue;">string</span>, Type&gt;().ConvertUsing&lt;TypeTypeConverter&gt;();
+    Mapper.CreateMap&lt;Source, Destination&gt;();
+    Mapper.AssertConfigurationIsValid();
+
+    <span style="color:Blue;">var</span> source = <span style="color:Blue;">new</span> Source
+    {
+        Value1 = <span style="color:#A31515;">&quot;5&quot;</span>,
+        Value2 = <span style="color:#A31515;">&quot;01/01/2000&quot;</span>,
+        Value3 = <span style="color:#A31515;">&quot;AutoMapperSamples.GlobalTypeConverters.GlobalTypeConverters+Destination&quot;</span>
+    };
+
+    Destination result = Mapper.Map&lt;Source, Destination&gt;(source);
+    result.Value3.ShouldEqual(<span style="color:Blue;">typeof</span> (Destination));
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> DateTimeTypeConverter : ITypeConverter&lt;<span style="color:Blue;">string</span>, DateTime&gt;
+{
+    <span style="color:Blue;">public</span> DateTime Convert(<span style="color:Blue;">string</span> source)
+    {
+        <span style="color:Blue;">return</span> System.Convert.ToDateTime(source);
+    }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> TypeTypeConverter : ITypeConverter&lt;<span style="color:Blue;">string</span>, Type&gt;
+{
+    <span style="color:Blue;">public</span> Type Convert(<span style="color:Blue;">string</span> source)
+    {
+        Type type = Assembly.GetExecutingAssembly().GetType(source);
+        <span style="color:Blue;">return</span> type;
+    }
+}
+</pre></div><br />In the first mapping, from string to Int32, we simply use the built-in Convert.ToInt32 function (supplied as a method group).  The next two use custom ITypeConverter implementations.<br /><br />The real power of custom type converters is that they are used any time AutoMapper finds the source/destination pairs on any mapped types.  We can build a set of custom type converters, on top of which other mapping configurations use, without needing any extra configuration.  In the above example, we never have to specify the string/int conversion again.  Where as <a href="https://automapper.codeplex.com/wikipage?title=Custom%20Value%20Resolvers&referringTitle=Custom%20Type%20Converters">Custom Value Resolvers</a> have to be configured at a type member level, custom type converters are global in scope.<br />
+<h1>System Type Converters</h1>
+The .NET Framework also supports the concepts of type converters, through the <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.typeconverter.aspx">TypeConverter</a> class.  AutoMapper supports these types of type converters, in configuration checking and mapping, without the need for any manual configuration.  AutoMapper uses the <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.typedescriptor.getconverter.aspx">TypeDescriptor.GetConverter</a> method for determining if the source/destination type pair can be mapped.</div><div class="ClearBoth"></div>

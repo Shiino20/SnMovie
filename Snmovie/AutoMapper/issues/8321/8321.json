@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Can you post these issue on GitHub&#63; The project is managed there. I&#39;d turn off Issues here if I could.",
+    "ClosedDate": "2012-09-28T08:45:41.867-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When you have a tree heirarcy of objects, and the same value exists in two places of the tree (but with different child values), and when mapping the second instance of the item - it uses the child values of the first instance, instead of re-evaluating what the child values should be.\n \nHere is my example:\nclass Tag { \n  int Id {get; set;}\n  string Name {get; set;}\n  IEnumerable<Tag> ChildTags  {get; set;}\n}\n \npublic void Test()\n{\nvar source =  new List<Tag>\n            {\n                new Tag { Id = 1, Name = \"Tag 1\", ChildTags = new List<Tag>\n                            {\n                                new Tag { Id = 2, Name = \"Tag 2\", ChildTags = new List<Tag> \n                                            {\n                                                new Tag {Id = 3, Name = \"Tag 3\"},\n                                                new Tag {Id = 4, Name = \"Tag 4\"}\n                                            }\n                                    }\n                            }\n                    },\n                new Tag { Id = 1, Name = \"Tag 1\" },\n                new Tag {\n                        Id = 3, Name = \"Tag 3\", ChildTags = new List<Tag>\n                            {\n                                new Tag {Id = 4, Name = \"Tag 4\"}\n                            }\n                    }\n            };\n \nMapper.CreateMap<Tag, Tag>()\n    .ForMember(dest => dest.ChildTags,\n        opt => opt.MapFrom(src => src.ChildTags));\nvar result = Mapper.Map<IList<Tag>, IList<Tag>>(tags);\n}\n \n \nIn the result \n- the first instance of Tag 1 (ie source[0]) and all of its children are perfect \n- the second instance of Tag 1 (ie source[1]) has all the children of the first instance - it should not have any children \n- the second instance of Tag 3 (ie source[2]) does not have any children - it should have Tag 4 as a child",
+    "LastUpdatedDate": "2013-05-16T04:58:53.92-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2012-09-28T02:24:30-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "AutoMapper caching objects when mapping twice",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8321
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "A code format for this issue can be found here:\r\nhttp://stackoverflow.com/questions/11333732/how-do-i-get-automapper-to-not-cache-mapped-objects/12637096#12637096",
+      "PostedDate": "2012-09-28T02:26:02.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-09-28T08:45:41.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:10.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:58:53.92-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,498 @@
+[
+  {
+    "Id": 883,
+    "Title": "Map to class with property with indexer"
+  },
+  {
+    "Id": 1450,
+    "Title": "Mapping base interface property via derived interface (source) to class (destination) does not work..."
+  },
+  {
+    "Id": 1493,
+    "Title": "Mapping concrete to interface, exception"
+  },
+  {
+    "Id": 1637,
+    "Title": "Converting Nullable Types"
+  },
+  {
+    "Id": 1773,
+    "Title": "Mapping between Nullable types doesn't work"
+  },
+  {
+    "Id": 2081,
+    "Title": "Another AutoMapperMappingException with Nullable Types"
+  },
+  {
+    "Id": 2267,
+    "Title": "NestedMappings don't work properly when nested type is Array(or Collection)"
+  },
+  {
+    "Id": 2364,
+    "Title": "Support dependency injection?"
+  },
+  {
+    "Id": 2405,
+    "Title": "Automapper threw stackoverflow exception"
+  },
+  {
+    "Id": 2407,
+    "Title": "Use with webforms load/save typical scenarios"
+  },
+  {
+    "Id": 2436,
+    "Title": "AssertConfigurationIsValid fails to auto-ignore read-only properties"
+  },
+  {
+    "Id": 3093,
+    "Title": "CLS-compilant ValueResolver"
+  },
+  {
+    "Id": 3197,
+    "Title": "Multithreading support"
+  },
+  {
+    "Id": 3220,
+    "Title": "Mapping source member by convention / prefix"
+  },
+  {
+    "Id": 3266,
+    "Title": "Map From dictionary of values"
+  },
+  {
+    "Id": 3332,
+    "Title": "Allow flattening of collection items"
+  },
+  {
+    "Id": 3544,
+    "Title": "Ignore a parameter based on an func expression parameter"
+  },
+  {
+    "Id": 3567,
+    "Title": "Error mapping IDataReader to DTO with nullable field"
+  },
+  {
+    "Id": 3727,
+    "Title": "Support implicit/explicit conversion operators"
+  },
+  {
+    "Id": 3970,
+    "Title": "Ignore option is no longer Function (or now returns void)"
+  },
+  {
+    "Id": 3986,
+    "Title": "Rev. 141 breaks nested mappings"
+  },
+  {
+    "Id": 4025,
+    "Title": "Map using constructor instead of properties"
+  },
+  {
+    "Id": 4031,
+    "Title": "Ignore source properties"
+  },
+  {
+    "Id": 4032,
+    "Title": "Strange behavior when mapping inner collection"
+  },
+  {
+    "Id": 4036,
+    "Title": "Multiple mappings for the same type"
+  },
+  {
+    "Id": 4052,
+    "Title": "Map from property with _ to camel case"
+  },
+  {
+    "Id": 4056,
+    "Title": "using UseValue"
+  },
+  {
+    "Id": 4126,
+    "Title": "comment source code"
+  },
+  {
+    "Id": 4134,
+    "Title": "Support open generic types"
+  },
+  {
+    "Id": 4144,
+    "Title": "Map Func<T, bool> and Expression<Func<T, bool>>"
+  },
+  {
+    "Id": 4165,
+    "Title": "Debug Version"
+  },
+  {
+    "Id": 4168,
+    "Title": "Silverlight version broken; uses restricted call"
+  },
+  {
+    "Id": 4266,
+    "Title": "Incorrect behaviour of the method AutoMapper.Configuration.FindTypeMap(object, Type, Type) when sourceType implements more than one interface"
+  },
+  {
+    "Id": 4300,
+    "Title": "AssertConfigurationIsValid false positives after .ForAllMembers(opt => opt.Ignore());"
+  },
+  {
+    "Id": 4346,
+    "Title": "MapFrom return null when AllowDestinationNullValues is false"
+  },
+  {
+    "Id": 4453,
+    "Title": "Automapper clones inner collection items that have inner collections that have back pointers to that collection item"
+  },
+  {
+    "Id": 4629,
+    "Title": "Support for polymorphic mappings"
+  },
+  {
+    "Id": 4656,
+    "Title": ".NET Framework 4.0 Support"
+  },
+  {
+    "Id": 4758,
+    "Title": "Mapping an array which is null becomes an empty array"
+  },
+  {
+    "Id": 4826,
+    "Title": "Map Nullable byte to Nullable Enum"
+  },
+  {
+    "Id": 4838,
+    "Title": "UsingConvert configuration dose not work"
+  },
+  {
+    "Id": 4847,
+    "Title": "Mapping objects and dtos"
+  },
+  {
+    "Id": 4973,
+    "Title": "ReflectionPermission issue when running in WCF service"
+  },
+  {
+    "Id": 4975,
+    "Title": "Nested mapping between two collection properties does not working when destination only has a getter"
+  },
+  {
+    "Id": 4986,
+    "Title": "Unit tests not executed after adding reference to AutoMapper (resolved)"
+  },
+  {
+    "Id": 4999,
+    "Title": "Bidirectional many-to-one relationships not mapped for multiple levels"
+  },
+  {
+    "Id": 5163,
+    "Title": "Mapping ILIST within the Object"
+  },
+  {
+    "Id": 5332,
+    "Title": "Mapping EF collections to IEnumerable"
+  },
+  {
+    "Id": 5353,
+    "Title": "Mapper.Map<IEnumerable<string>, List<int>>(values)"
+  },
+  {
+    "Id": 5402,
+    "Title": "Automapper"
+  },
+  {
+    "Id": 5538,
+    "Title": "Name-based EnumMapping doesn't work out-of-the-box"
+  },
+  {
+    "Id": 5581,
+    "Title": "Using AutoMapper on Windows Phone 7"
+  },
+  {
+    "Id": 5582,
+    "Title": "Usisng AutoMapper on Windows Phone 7"
+  },
+  {
+    "Id": 5588,
+    "Title": "Searching for an aggregation example"
+  },
+  {
+    "Id": 5592,
+    "Title": "AutoMapper 1.1 RTW and Visual Studio 2010"
+  },
+  {
+    "Id": 5769,
+    "Title": "Cannot map using IDataReader if incoming type cannot be cast to destination type."
+  },
+  {
+    "Id": 5793,
+    "Title": "AutoMapper fails on \"Ignore()\" when it comes to complex types of a base class"
+  },
+  {
+    "Id": 5798,
+    "Title": "is automapper  able not to copy nullable"
+  },
+  {
+    "Id": 5799,
+    "Title": "is automapper  able not to copy nullable"
+  },
+  {
+    "Id": 5800,
+    "Title": "is automapper  able not to copy nullable"
+  },
+  {
+    "Id": 5835,
+    "Title": "\"must resolve to top-level member.\" mapping exception."
+  },
+  {
+    "Id": 5876,
+    "Title": "GetSourceValueResolvers() result can't be cast to IMemberGetter"
+  },
+  {
+    "Id": 5877,
+    "Title": "DynamicMap and ExpandoObject"
+  },
+  {
+    "Id": 5916,
+    "Title": "Do not require static registration"
+  },
+  {
+    "Id": 6003,
+    "Title": "MapFrom expressions are evaluated even when the condition is false"
+  },
+  {
+    "Id": 6044,
+    "Title": "Automapper not mapping child collection within entities."
+  },
+  {
+    "Id": 6077,
+    "Title": "Duplicate, please delete"
+  },
+  {
+    "Id": 6078,
+    "Title": "Polymorphic collection mapping may break if interface mappings are added"
+  },
+  {
+    "Id": 6127,
+    "Title": "DataReaderMapper should create case-insensitive mappings by default"
+  },
+  {
+    "Id": 6181,
+    "Title": "Automapper breaks when mapping objects with a property named \"Type\""
+  },
+  {
+    "Id": 6194,
+    "Title": "DataReaderMapper throws InvalidCastException when mapping to nullable type"
+  },
+  {
+    "Id": 6293,
+    "Title": "Need to speed up automapper...Take 32 seconds to map 113 objects"
+  },
+  {
+    "Id": 6306,
+    "Title": "Access to Destination object within a MapFrom?"
+  },
+  {
+    "Id": 6339,
+    "Title": "Error LINQ to Entities does not recognize the method with entity framework 4"
+  },
+  {
+    "Id": 6342,
+    "Title": "AutoMapper not playing nice with LLBLGen"
+  },
+  {
+    "Id": 6346,
+    "Title": "ForAllMembers() bug where mapping config for Dest is already configured"
+  },
+  {
+    "Id": 6372,
+    "Title": "Cannot map to properties if the setter is private and the property is of a grandparent of the mapped object's class"
+  },
+  {
+    "Id": 6460,
+    "Title": "Cannot map nested DTO"
+  },
+  {
+    "Id": 6481,
+    "Title": "Cannot map to default constructor with optional parameters"
+  },
+  {
+    "Id": 6489,
+    "Title": "[Feature request] Value comparer"
+  },
+  {
+    "Id": 6491,
+    "Title": "ConstructUsing does not properly construct object when using a DataReader"
+  },
+  {
+    "Id": 6501,
+    "Title": "SourceValue property of ResolutionContext should be lazy"
+  },
+  {
+    "Id": 6507,
+    "Title": "Formatter won't trigger"
+  },
+  {
+    "Id": 6514,
+    "Title": "[Feature request] XML Configuration"
+  },
+  {
+    "Id": 6604,
+    "Title": "Multiple calls to AfterMap for bidirectional relationships"
+  },
+  {
+    "Id": 6605,
+    "Title": "AutoMapper and Parent-Child mapping"
+  },
+  {
+    "Id": 6656,
+    "Title": "Recognize sufixes bug"
+  },
+  {
+    "Id": 6773,
+    "Title": "Multiple mappings for the same type"
+  },
+  {
+    "Id": 6931,
+    "Title": "Automapper suddenly started throwing exception and then it worked"
+  },
+  {
+    "Id": 6940,
+    "Title": "Mapping to a Target Property Without a Getter Fails"
+  },
+  {
+    "Id": 6991,
+    "Title": "Source equals dest type"
+  },
+  {
+    "Id": 7011,
+    "Title": "CreateMap.ForAllMembers - Condition - Destination value is NULL"
+  },
+  {
+    "Id": 7039,
+    "Title": "Security Exception"
+  },
+  {
+    "Id": 7052,
+    "Title": "NullReferenceException in DataReaderMapper.MapPropertyValues()"
+  },
+  {
+    "Id": 7061,
+    "Title": "AutoMapper throws StackOverflowException when using Profiles"
+  },
+  {
+    "Id": 7077,
+    "Title": "Put AutoMapper.Silverlight into NuGet package"
+  },
+  {
+    "Id": 7080,
+    "Title": "Mapping back from a contract to an interface leaves me with Castle proxies"
+  },
+  {
+    "Id": 7082,
+    "Title": "AutoInclude for EntityFramework"
+  },
+  {
+    "Id": 7108,
+    "Title": "System.Security.VerificationException: Operation could destabilize the runtime"
+  },
+  {
+    "Id": 7122,
+    "Title": "Conditional mapping MapFrom is executed even when the condition hasn't been met"
+  },
+  {
+    "Id": 7125,
+    "Title": "DO NOT CREATE ANY NEW WORK ITEMS - CREATE THEM ON GITHUB"
+  },
+  {
+    "Id": 8289,
+    "Title": "Error: implicit operator is not cast."
+  },
+  {
+    "Id": 8321,
+    "Title": "AutoMapper caching objects when mapping twice"
+  },
+  {
+    "Id": 8372,
+    "Title": "Mapper.Map error"
+  },
+  {
+    "Id": 8791,
+    "Title": "Performance Issue"
+  },
+  {
+    "Id": 8812,
+    "Title": "Set resolver sequence"
+  },
+  {
+    "Id": 8911,
+    "Title": "Mapping EFcomplex Entities into WCF DataContracts using AutoMapper"
+  },
+  {
+    "Id": 9028,
+    "Title": "Memory Issues with AutoMapper"
+  },
+  {
+    "Id": 9113,
+    "Title": "Empty string to nullable type conversion using automapper."
+  },
+  {
+    "Id": 9114,
+    "Title": "Empty string to nullable types conversion using automapper."
+  },
+  {
+    "Id": 9123,
+    "Title": "A way to also ignore source properties"
+  },
+  {
+    "Id": 9144,
+    "Title": "Automapper throws StackOverFlowException"
+  },
+  {
+    "Id": 9158,
+    "Title": "Throw better exception messages"
+  },
+  {
+    "Id": 9199,
+    "Title": "AutoMapper.Net4.dll twofold in main project folder and References"
+  },
+  {
+    "Id": 9262,
+    "Title": "Auto Mapper 3.1.1.0 accessing destination item get method"
+  },
+  {
+    "Id": 9274,
+    "Title": "Error generated due to property name"
+  },
+  {
+    "Id": 9285,
+    "Title": "Value disappears in AutoMapper's EnumerableMapper.SetElementValue"
+  },
+  {
+    "Id": 9323,
+    "Title": "Not getting ProjectTo option for IQueryable collection"
+  },
+  {
+    "Id": 9426,
+    "Title": "AutoMapper does not convert the decimal? type"
+  },
+  {
+    "Id": 9461,
+    "Title": "TFS Test Build breaks with AutoMapper Exception"
+  },
+  {
+    "Id": 9476,
+    "Title": "Strange behavior when ResolveUsing first time returns null"
+  },
+  {
+    "Id": 9541,
+    "Title": "Assert.ConfigurationIsValid throws an exception when  target is constructed with ConstructUsing"
+  },
+  {
+    "Id": 9613,
+    "Title": "Extension point for mapping"
+  },
+  {
+    "Id": 9710,
+    "Title": "Automapper Profile settings with EF6"
+  }
+]

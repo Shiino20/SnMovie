@@ -1,0 +1,28 @@
+﻿namespace AutoMapperBug
+{
+	using System;
+	using System.Collections.Generic;
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+			AutoMapper.Mapper.CreateMap<string, int>().ConvertUsing(src => Convert.ToInt32(src));
+
+			var values = GetTestValues();
+            List<int> result = AutoMapper.Mapper.Map<IEnumerable<string>, List<int>>(values);
+
+            foreach (int i in result)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        static IEnumerable<string> GetTestValues()
+        {
+            Console.WriteLine("run");
+            yield return "1";
+            yield return "2";
+        }
+    }
+}

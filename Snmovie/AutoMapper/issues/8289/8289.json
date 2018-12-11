@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "I can&#39;t close the project - can you post this issue on GitHub&#63; I don&#39;t track them here.",
+    "ClosedDate": "2012-09-28T08:44:47.503-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have following class\n \n public struct Money\n    {\n        public Money(decimal amount = 0) : this()\n        {\n            Value = amount;\n            CurrencyCode = CurrencyCode.USD;\n        }\n \n        public decimal Value { get; set; }\n        public CurrencyCode CurrencyCode { get; set; }\n \n        // define implicit Money-to-Nullable<double> conversion operator:\n        public static implicit operator double?(Money money)\n        {\n            return Decimal.Zero == money.Value \n                ? null \n                : new double?( Convert.ToDouble(money.Value));\n        }\n    }\n \n \nWhen I try to map it to I getting Specifica cast is not valid exception. \n \nEception Message:\n \nMapping types:\nMoney -> Nullable`1\nMSB.Chup.Policy.Model.Primitives.Money -> System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]\n \nDestination path:\nBuilding.CurrentCoverage\n \nSource value:\nMSB.Chup.Policy.Model.Primitives.Money",
+    "LastUpdatedDate": "2013-05-16T04:58:54.05-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2012-09-19T06:38:13.083-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error: implicit operator is not cast.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 8289
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

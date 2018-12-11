@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:46:37.637-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "AutoMapper doesn't seem to be compatible with ExpandoObjects, all the properites are null:\n \nvoid Main()\n{\n\tdynamic d = new ExpandoObject();\n\td.Str = \"hej\";\n\tvar m = Mapper.DynamicMap<Klass>(d);\n \n\tConsole.WriteLine(m.Str); // <-- Is null\n}\n \nclass Klass  {\n \tpublic string Str {get;set;}\n}",
+    "LastUpdatedDate": "2013-05-16T04:58:59.58-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-11-29T09:01:58.383-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DynamicMap and ExpandoObject",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 5877
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

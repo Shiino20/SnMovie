@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed both these issues, I was doing ILMerge wrong, and fixed the reflection issue as well.",
+    "ClosedDate": "2010-03-20T17:45:03.387-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Silverlight version of AutoMapper seems to be broken.\n \nI tried the merged version first but when you try to add a reference to it in Visual Studio it complains that it is not a Silverlight assembly. Taking a look at it in reflector I noticed it references mscorlib version 2.0.0.0 instead of the Silverlight version 2.0.5.0.\n \nNext I tried the unmerged version but that blows up at runtime with a MethodAccessException when trying to use System.Reflection.Emit.DynamicMethod..ctor(String, Type, Type[], Type, Boolean). This method is restricted and cannot be used from application code. Checking with reflector I see this is used from DelegateFactory.CreateDynamicMethod and DelegateFactory.CreateValueTypeSet.",
+    "LastUpdatedDate": "2013-05-16T04:59:04.21-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-03-18T03:33:50.883-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Silverlight version broken; uses restricted call",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 4168
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Great. Any idea when you'll have a new Silverlight version available (with those fixes)?",
+      "PostedDate": "2010-03-23T11:00:23.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, forgot to mention the latest version is always at the teamcity.codebetter.com download page.  Check the 1.1.0.178 release, that one contains the fix, and let me know if it now works for you.",
+      "PostedDate": "2010-03-23T12:37:18.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, that version works great. And it's a *lot* quicker that the old version. Thanks",
+      "PostedDate": "2010-03-24T05:11:27.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:22.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:04.21-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

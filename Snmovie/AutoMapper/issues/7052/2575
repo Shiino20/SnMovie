@@ -1,0 +1,32 @@
+using System.Collections.Generic;
+using System.Data;
+using AutoMapper;
+using NUnit.Framework;
+
+namespace AutoMapperBug
+{
+    public class AutoMapperBug
+    {
+        public class Foo
+        {
+            public string Name { get; set; }
+        }
+
+        [Test]
+        public void Should_throw_missing_type_map_exception()
+        {
+            Mapper.Reset();
+
+            // When mapping is not registered...
+            //Mapper.CreateMap<IDataReader, IEnumerable<Foo>>();
+
+            var dataTable = new DataTable();
+            dataTable.Columns.Add("Name", typeof (string));
+            dataTable.Rows.Add(new[] {"Richard"});
+
+            // should be "Missing type map configuration or unsupported mapping" but is
+            // actually "Object reference not set to an instance of an object"
+            Mapper.Map<IDataReader, IEnumerable<Foo>>(dataTable.CreateDataReader());
+        }
+    }
+}

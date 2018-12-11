@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:15:56.673-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am mapping a Linq-to-SQL object to a domain model using AutoMapper. This Linq-to-SQL object has child objects. After mapping the Linq-to-SQL object to it's domain model counterpart all child objects lose their parent id.\n\nI have narrowed it down to the SetElementValue() method in AutoMapper's EnumerableMapper class. The child object reference (an argument named mappedValue in SetElementValue()) keeps it's parent id up until it is added to the enumerable which in this case is an implementation of IBindingList. After being added to said implementation it's parent id is set to 0. I have compared all values in both the Linq-to-SQL object and domain model object, and all values are equal to their original state except for the parent id.\n\nI am inclined to believe that this is related to the usage of IBindingList, does it make any sense at all that the parent id should be removed here? Am I overlooking something?",
+    "LastUpdatedDate": "2014-05-08T06:16:01.64-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-04-03T05:46:34.7-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Value disappears in AutoMapper's EnumerableMapper.SetElementValue",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9285
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you post this to GitHub? That's where the project is now.",
+      "PostedDate": "2014-05-08T06:16:01.64-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

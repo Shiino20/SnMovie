@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:17:31.14-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I use NuGet to get AutoMapper, AutoMapper.Net4.dll appears properly in References directory and in main project folder. It looks bad when same dll appears in two places - waste of resources. It is really needed in main folder? Any other NuGet project has that behavior :/",
+    "LastUpdatedDate": "2014-05-08T06:17:31.14-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-02-05T01:33:41.393-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "AutoMapper.Net4.dll twofold in main project folder and References",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 6,
+    "Id": 9199
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4294,
+      "FileName": "automapper.png",
+      "DownloadUrl": ".\\4294"
+    }
+  ],
+  "Comments": []
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "155667",
+    "ThreadId": "46587",
+    "Html": "On a internal project where I work we have a very basic Mapping framework. It is currently needing some work on it so I am looking around at what is available (I hate to reinvent the wheel).<br>\r\n<br>\r\nIn our system we are predominately mapping from DTO to entity objects, as the DTO's orginate from untrusted clients via a web services layer (XML deserialized to objects via WCF) we need to provide some validation on the data as we translate. We have 2 basic types of conditions applied to our translations.<br>\r\n<ol>\r\n    <li>If some condition is meet do the mapping (e.g. if value is not null in the dto set the corresponding value in the entity).</li>\r\n    <li>Map the value if it falls with in some validation and throw an exception if it doesn't (e.g map a dto field to the corresponding entity field unless the dto field is greater than 50 chars, then through (which eventially&nbsp; end up with a HTTP 400 back to the client)).</li>\r\n</ol>\r\nIs this something that AutoMapper already supports? After looking over the code I see that I could apply some of the validation logic in a customer resolver or customer formatter, just unsure what is going to happen to exceptions thrown from in there. Also is this the correct place for this logic to live.<br>\r\nI would be happy to contibute patches that might implement something like this, if you think that they would be useful (would probably need a helping hand in getting started). Any thoughts?<br>\r\n<br>\r\nNic<br>\r\n",
+    "PostedDate": "2009-02-08T20:46:05.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

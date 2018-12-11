@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Yep, this one&#39;s a bug, and fixed in commit bde50bc.",
+    "ClosedDate": "2010-06-08T05:26:30.62-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First off thankyou for Automapper it is better than mapping manually.  My only wish is that automapper could generate the c# source to do the automappings so you can see what is going on.  I believe I have found a bug and have written a unit test attached below to demonstrate the issue.\n \nBasically the issue is very subtle but important for large data structures.  If you have an item 'A' that contains a collection of 'B'  and each 'B' contains a collection of 'C' and each 'C' can point back to its 'B' then Automapper will CLONE the 'B' that is pointed to from 'C' for the second 'B' found in collection 'A'.  I apologise for that mind bender.  But basically it means your node graph is no longer the same as you have extra instances that can change independently of each other even though that start off mapped correctly.\n \nI created this unit test in the Automapper -> Unit Test Project so you should be able to drop the attachment below this into the proj and see the failing test and understand exactly what I am talking about.",
+    "LastUpdatedDate": "2013-05-16T04:59:03.69-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-05-06T03:10:25.037-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Automapper clones inner collection items that have inner collections that have back pointers to that collection item",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 4453
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1612,
+      "FileName": "TestInnerCollectionsInInnerCollectsMapCorrectly.cs",
+      "DownloadUrl": ".\\1612"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have exactly the same problem.... I had to hack it around to make it work, but it's far from ideal. Good luck for the fix!!!",
+      "PostedDate": "2010-05-06T03:16:05.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-06T03:16:26.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there any update on this bug please? It's really causing a lot of problems.",
+      "PostedDate": "2010-06-06T05:35:43.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-08T05:26:30.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fantastic, thanks so much for fixing it.",
+      "PostedDate": "2010-06-11T05:19:56.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would you please release a new version - with this fix applied??\r\n\r\nIt's March, 2011 - I am still having this exact same problem.  Both Recommended Download and Nuget Package is from May, 2010!  This bug still exists in the recommended download.  I'm sure others are having this same problem.  Two-way references on a deep object graph is hugely important.\r\n\r\nThank you -\r\n\r\nRyan",
+      "PostedDate": "2011-03-17T11:37:03.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:21.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:03.69-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

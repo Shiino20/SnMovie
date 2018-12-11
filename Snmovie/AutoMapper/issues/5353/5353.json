@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All issues moved to GitHub https&#58;&#47;&#47;github.com&#47;AutoMapper&#47;AutoMapper&#47;issues",
+    "ClosedDate": "2011-09-02T15:47:34.067-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The following sample outputs the following:\n========\nrun\nrun\n1\n2\n3\n========\n \nThis output is not expected. It is expected that the following would be written:\n========\nrun\n1\n2\n3\n========\n \nThere is some sort of bug where the IEnumerable<T> is called twice but not returning its values twice. It is expected that the the IEnumerable<T> source is executed just once.\n \n \n \n \nnamespace AutoMapperBug\n{\n\tusing System;\n\tusing System.Collections.Generic;\n \n    class Program\n    {\n        static void Main(string[] args)\n        {\n\t\t\tAutoMapper.Mapper.CreateMap<string, int>().ConvertUsing(src => Convert.ToInt32(src));\n \n\t\t\tvar values = GetTestValues();\n            List<int> result = AutoMapper.Mapper.Map<IEnumerable<string>, List<int>>(values);\n \n            foreach (int i in result)\n            {\n                Console.WriteLine(i);\n            }\n        }\n \n        static IEnumerable<string> GetTestValues()\n        {\n            Console.WriteLine(\"run\");\n            yield return \"1\";\n            yield return \"2\";\n            yield return \"3\";\n        }\n    }\n}",
+    "LastUpdatedDate": "2013-05-16T04:59:01.77-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2010-08-06T06:54:02.303-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mapper.Map<IEnumerable<string>, List<int>>(values)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 5353
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1954,
+      "FileName": "Program.cs",
+      "DownloadUrl": ".\\1954"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have also issued this on github.",
+      "PostedDate": "2010-08-06T06:58:02.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-02T15:47:34.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T17:49:19.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T04:59:01.77-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "155603",
+    "ThreadId": "46565",
+    "Html": "The mapper returns a new object and for 99% of the cases this is god.<br>\r\n<br>\r\nlike this:<br>\r\nMapper.CreateMap&lt;Model.Site.RamSite, RamSite&gt;();<br>\r\nRamsiteDTO = Mapper.Map&lt;Model.Site.RamSite, RamSite&gt;(ramsite);<br>\r\n<br>\r\nBut the DTO object has a lot going on in the property setters like NotifyChange and validations rules and I need to create the object first to bypass this checks.<br>\r\n<br>\r\nvar RamsiteDTO = new RamSite();<br>\r\nusing (RamsiteDTO.BypassPropertyChecks)<br>\r\n{<br>\r\n Mapper.CreateMap&lt;Model.Site.RamSite, RamSite&gt;();<br>\r\n Mapper.Map&lt;Model.Site.RamSite, RamSite&gt;(ramsite, RamsiteDTO);<br>\r\n}<br>\r\n<br>\r\nIs this possible?\r\n",
+    "PostedDate": "2009-02-08T14:10:05.15-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156495",
+    "ThreadId": "46565",
+    "Html": "I also had a request/patch on the user group, so I can get this added pretty easily.<br>\r\n<br>\r\nBasically, you want to fill an object, rather than map it.&nbsp; I'll update with the revision number that includes the new feature.<br>\r\n",
+    "PostedDate": "2009-02-10T18:29:55.353-08:00",
+    "UserRole": "Coordinator",
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156505",
+    "ThreadId": "46565",
+    "Html": "Integrated a patch for this in R23 on the trunk.&nbsp; Enjoy!<br>\r\n",
+    "PostedDate": "2009-02-10T18:53:37.523-08:00",
+    "UserRole": "Coordinator",
+    "MarkedAsAnswerDate": null
+  }
+]

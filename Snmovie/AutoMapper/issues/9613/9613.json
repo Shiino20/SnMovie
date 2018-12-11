@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "The project has moved to GitHub.",
+    "ClosedDate": "2015-07-30T06:04:57.04-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Does AutoMapper have an extension point like Map(PropertyInfo sourceProperty, PropertyInfo) ? I'm trying to achieve what I described [here](http://stackoverflow.com/questions/31706697/custom-mapping-with-automapper), but obviously that's not possible, or am I missing something?\n\nhttp://stackoverflow.com/questions/31706697/custom-mapping-with-automapper",
+    "LastUpdatedDate": "2015-07-30T06:04:57.04-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2015-07-29T12:15:39.023-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Extension point for mapping",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9613
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

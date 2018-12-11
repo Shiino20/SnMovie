@@ -1,0 +1,43 @@
+<div class="wikidoc"><h1>Nested Mappings</h1>
+As the mapping engine executes the mapping, it can use one of a variety of methods to resolve a destination member value.  One of these methods is to use another type map, where the source member type and destination member type are also configured in the mapping configuration.  This allows us to not only flatten our source types, but create complex destination types as well.  For example, our source type might contain another complex type:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> OuterSource
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> InnerSource Inner { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> InnerSource
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> OtherValue { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />We <i>could</i> simply flatten the OuterSource.Inner.OtherValue to one InnerOtherValue property, but we might also want to create a corresponding complex type for the Inner property:<br /><br /><div style="color:Black;background-color:White;"><pre>
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> OuterDest
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> Value { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+	<span style="color:Blue;">public</span> InnerDest Inner { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+
+<span style="color:Blue;">public</span> <span style="color:Blue;">class</span> InnerDest
+{
+	<span style="color:Blue;">public</span> <span style="color:Blue;">int</span> OtherValue { <span style="color:Blue;">get</span>; <span style="color:Blue;">set</span>; }
+}
+</pre></div><br />In that case, we would need to configure the additional source/destination type mappings:<br /><br /><div style="color:Black;background-color:White;"><pre>
+Mapper.CreateMap&lt;OuterSource, OuterDest&gt;();
+Mapper.CreateMap&lt;InnerSource, InnerDest&gt;();
+Mapper.AssertConfigurationIsValid();
+
+<span style="color:Blue;">var</span> source = <span style="color:Blue;">new</span> OuterSource
+	{
+		Value = 5,
+		Inner = <span style="color:Blue;">new</span> InnerSource {OtherValue = 15}
+	};
+
+<span style="color:Blue;">var</span> dest = Mapper.Map&lt;OuterSource, OuterDest&gt;(source);
+
+dest.Value.ShouldEqual(5);
+dest.Inner.ShouldNotBeNull();
+dest.Inner.OtherValue.ShouldEqual(15);
+</pre></div><br />A few things to note here:
+<ul><li>Order of configuring types does not matter</li>
+<li>Call to Map does not need to specify any inner type mappings, only the type map to use for the source value passed in</li></ul>
+With both flattening and nested mappings, we can create a variety of destination shapes to suit whatever our needs may be.</div><div class="ClearBoth"></div>

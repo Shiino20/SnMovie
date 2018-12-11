@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2014-05-08T06:19:27.077-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have asked this question on stackoverflow\nhttp://stackoverflow.com/questions/19772118/empty-string-to-nullable-type-conversion-using-automapper\n\nI'm trying to convert properties on source object of strings to destination object properties of nullable datatypes(int?,bool?,DateTime?). properties of type string on my source can be empty and when they are empty an equivalent null should be mapped on destination property.It works fine when property has value but when it is empty\nIt throws an exception {\"String was not recognized as a valid Boolean.\"}\n\n\n    public class SourceTestString\n    {\n      public string IsEmptyString {get; set;}\n    }\n    \n    public class DestinationTestBool\n    {\n      public bool? IsEmptyString {get; set;}\n    }\n    \nMy Converter class\n\n    public class StringToNullableBooleanConverter : ITypeConverter<string,bool?>\n     {\n         public bool? Convert(ResolutionContext context) \n\t     {\n\t        if(String.IsNullOrEmpty(System.Convert.ToString(context.SourceValue)) ||  String.IsNullOrWhiteSpace(System.Convert.ToString(context.SourceValue)))\n\t\t \t {\n\t\t \t\treturn default(bool?);\n\t\t \t }\n\t\t \t else\n\t\t \t {\n\t\t \t\tbool boolValue = false;\n\t\t\t\treturn bool.TryParse(context.SourceValue.ToString(),out boolValue) ?         (bool?)boolValue : default(bool?);\n\t\t \t }\n          }\n      }\n    \nCreate Map \n     \n    AutoMapper.Mapper.CreateMap<string,bool?>().ConvertUsing(new StringToNullableBooleanConverter());\n\nMap Method\n\n    SourceTestString source = SourceTestString();\n    source.IsEmptyString = \"\"; \n    var destination = Mapper.Map<SourceTestString,DestinationTestBool>(source);",
+    "LastUpdatedDate": "2014-05-08T06:19:27.077-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2013-11-04T09:43:40.733-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Empty string to nullable type conversion using automapper.",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9113
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "** Closed by jbogard 5/8/2014 6:19 AM",
+      "PostedDate": "2014-05-08T06:19:09.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-05-08T06:19:09.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-05-08T06:19:19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-05-08T06:19:27.077-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

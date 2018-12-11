@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "The project has moved to GitHub.",
+    "ClosedDate": "2015-07-30T06:04:17.94-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Example in attachment.",
+    "LastUpdatedDate": "2015-07-30T06:04:17.94-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "AutoMapper",
+    "ReportedDate": "2014-12-10T07:39:24.03-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Move to GitHub"
+    },
+    "Summary": "Strange behavior when ResolveUsing first time returns null",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 9476
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4364,
+      "FileName": "AutoMapperResolveUsingErrorSample.zip",
+      "DownloadUrl": ".\\4364"
+    }
+  ],
+  "Comments": []
+}
